@@ -1,7 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<body>
-<H2>list page</H2>
+<head>
 
+</head>
+<body>
+home page
 </body>
 </html>
