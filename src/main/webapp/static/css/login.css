@@ -32,3 +32,15 @@
     top: 7px;
     left: 7px;
 }
+
+.container-fluid .login .prompt{
+    line-height: 34px;
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+
+.btn{
+    line-height: 20px;
+}
