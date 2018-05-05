@@ -147,17 +147,3 @@ pop.prototype.popdown = function(){
 // 		flag.popup();
 // 	});
 // })
-
-// 模拟placeholder
-function placeholder(obj1,obj2){
-    $(obj1).keyup(function(){
-        if($(this).val()==""){
-            $(this).siblings(obj2).show();
-        }else{
-            $(this).siblings(obj2).hide();
-        }
-    })
-    $(obj2).click(function(){
-        $(this).siblings(obj1).focus();
-    })
-}

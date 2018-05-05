@@ -1,12 +1,6 @@
 $(function(){
 
-    placeholder(".username",".prompt");
-    placeholder(".password",".prompt");
-
-
-
     $("#loginBtn").on('click',function () {
-
         login();
     });
 
@@ -21,7 +15,8 @@ $(function(){
                 if (serverResponse.success) {
                     window.location.href = "/security/home";
                 } else {
-                    alert(serverResponse.reason);
+                    $("#userError").text(serverResponse.reason);
+                    $("#userError").addClass("red_1");
                 }
             },
             error: function (xmlHttpReq, textStatus, errorThrow) {

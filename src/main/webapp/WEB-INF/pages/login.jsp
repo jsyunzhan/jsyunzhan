@@ -26,21 +26,18 @@
                     <div class="icon pa">
                         <img src="../../static/images/ic_username.png">
                     </div>
-                    <div class="prompt gray_1">请输入用户名</div>
-                    <input type="text" name="loginName" class="btn w100 bor_gray b_gray username tl">
+                    <input type="text" placeholder="请输入用户名" name="loginName" class="btn w100 bor_gray b_gray username tl">
                 </div>
                 <div class="w80 mtb20 pr">
                     <div class="icon pa">
                         <img src="../../static/images/ic_password.png">
                     </div>
-                    <div class="prompt gray_1">请输入密码</div>
-                    <input type="password"  name="password" class="btn w100 bor_gray b_gray password tl">
+                    <input type="password" placeholder="请输入密码" name="password" class="btn w100 bor_gray b_gray password tl">
                 </div>
-                <div class="w80 mtb20 f12 tc red_1 none" id="userError"></div>
+                <div class="w80 mtb20 f12 tc gray_1" id="userError">（请输入用户名及密码）</div>
             </form>
             <div class="w80 mtb20">
                 <input id="loginBtn" type="submit" class="btn btn-primary w100" value="登录">
-
             </div>
         </div>
     </div>
