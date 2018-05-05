@@ -151,10 +151,13 @@ pop.prototype.popdown = function(){
 // 模拟placeholder
 function placeholder(obj1,obj2){
     $(obj1).keyup(function(){
-        if($(obj1).val()==""){
-            $(obj1).siblings(obj2).show();
+        if($(this).val()==""){
+            $(this).siblings(obj2).show();
         }else{
-            $(obj1).siblings(obj2).hide();
+            $(this).siblings(obj2).hide();
         }
+    })
+    $(obj2).click(function(){
+        $(this).siblings(obj1).focus();
     })
 }

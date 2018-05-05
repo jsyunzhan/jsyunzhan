@@ -34,6 +34,8 @@
                 <div class="prompt gray_1">请输入密码</div>
                 <input type="password"  name="password" class="btn w100 bor_gray b_gray password tl">
             </div>
+            <div class="w80 mtb20 f12 tc red_1 none userError">该账号不存在！</div>
+            <div class="w80 mtb20 f12 tc red_1 none wordError">密码错误！</div>
             <div class="w80 mtb20">
                 <input type="submit" class="btn btn-primary w100" value="登录">
             </div>

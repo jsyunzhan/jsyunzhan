@@ -13,17 +13,20 @@
 .container-fluid .login{
     position: fixed;
     z-index: 2;
-    right: 10%;
-    top: 20%;
+    right: 15%;
+    top: 50%;
+    margin-top: -150px;
     width: 20%;
     background: #E2E7ED;
 }
 
 .username,.password{
-    padding-left: 40px;
     box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0 0 0 40px;
+    height: 32px;
+    line-height: 32px;
 }
 
 .container-fluid .login .icon{
@@ -34,13 +37,10 @@
 }
 
 .container-fluid .login .prompt{
-    line-height: 34px;
+    line-height: 20px;
     font-size: 14px;
     position: absolute;
     top: 0;
     left: 40px;
-}
-
-.btn{
-    line-height: 20px;
+    padding: 7px 0;
 }
