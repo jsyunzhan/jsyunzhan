@@ -32,6 +32,7 @@
             </div>
             <div class="w80 mtb20">
                 <input type="submit" class="btn btn-primary w100" value="登录">
+
             </div>
         </div>
     </div>
