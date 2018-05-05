@@ -1,6 +1,5 @@
 package domain.shiro;
 
-import domain.shiro.entity.AccountEntity;
 import domain.shiro.service.UserSecurityService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -40,13 +39,15 @@ public class UserAuthorizingRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         final UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
         final String loginName = usernamePasswordToken.getUsername();
-        final AccountEntity accountEntity = userSecurityService.accoutInfo(loginName);
+//        final AccountEntity accountEntity = userSecurityService.accoutInfo(loginName);
+//
+//        //账户是否存在
+//        if (accountEntity == null) {
+//            throw new UnknownAccountException("该账号不存在.");
+//        }
 
-        //账户是否存在
-        if (accountEntity == null) {
-            throw new UnknownAccountException("该账号不存在.");
-        }
+//        return new SimpleAuthenticationInfo(loginName, accountEntity.getPassword(),getName());
+        return new SimpleAuthenticationInfo(loginName, "admin",getName());
 
-        return new SimpleAuthenticationInfo(loginName, accountEntity.getPassword(),getName());
     }
 }
