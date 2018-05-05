@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="domain.shiro.dao.AccountDao">
+
+    <select id="accoutInfo" resultType="AccountEntityInfo">
+        select
+        t.ID id,
+        t.USER_NAME userName,
+        t.PASSWORD password,
+        t.ROLE_ID roleId,
+        t.CREATE_USER_ID createUserId,
+        t.CREATE_DATA createDate,
+        t.UPDATE_USER_ID updateUserId,
+        t.UPDATE_DATA updateDate
+        from t_sys_account t where t.USER_NAME=#{userName} AND t.DELETE_FLAG='1'
+    </select>
+</mapper>
