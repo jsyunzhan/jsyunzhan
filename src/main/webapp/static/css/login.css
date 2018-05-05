@@ -1,0 +1,34 @@
+.container-fluid .banner{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.container-fluid .banner img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.container-fluid .login{
+    position: fixed;
+    z-index: 2;
+    right: 10%;
+    top: 20%;
+    width: 20%;
+    background: #E2E7ED;
+}
+
+.username,.password{
+    padding-left: 40px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.container-fluid .login .icon{
+    width: 20px;
+    height: 20px;
+    top: 7px;
+    left: 7px;
+}

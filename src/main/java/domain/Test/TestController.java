@@ -11,7 +11,7 @@ public class TestController {
     @RequestMapping(value = "/list")
     public ModelAndView list()
     {
-        ModelAndView mv=new ModelAndView("/show");
+        ModelAndView mv=new ModelAndView("login");
 
         return mv;
     }
