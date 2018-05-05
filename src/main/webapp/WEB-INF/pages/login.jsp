@@ -11,6 +11,7 @@
     <script src="../../static/jquery/jquery-1.7.2.min.js"></script>
     <script src="../../static/js/public.js"></script>
     <script src="../../static/js/login.js"></script>
+    <script src="../../static/js/untis/jquery.jdirk.js"></script>
     <title>后台登录</title>
 </head>
 <body>
@@ -20,22 +21,23 @@
         </div>
         <div class="login round5 bor_gray">
             <div class="w80 mtb30 f18 gray_1">LOGIN</div>
-            <div class="w80 mtb20 pr">
-                <div class="icon pa">
-                    <img src="../../static/images/ic_username.png">
+            <form id="loginForm">
+                <div class="w80 mtb20 pr">
+                    <div class="icon pa">
+                        <img src="../../static/images/ic_username.png">
+                    </div>
+                    <input type="text" name="loginName" class="btn w100 bor_gray b_gray username tl">
                 </div>
-                <div class="prompt gray_1">请输入用户名</div>
-                <input type="text" name="username" class="btn w100 bor_gray b_gray username tl">
-            </div>
-            <div class="w80 mtb20 pr">
-                <div class="icon pa">
-                    <img src="../../static/images/ic_password.png">
+                <div class="w80 mtb20 pr">
+                    <div class="icon pa">
+                        <img src="../../static/images/ic_password.png">
+                    </div>
+                    <input type="password"  name="password" class="btn w100 bor_gray b_gray password tl">
                 </div>
-                <div class="prompt gray_1">请输入密码</div>
-                <input type="password"  name="password" class="btn w100 bor_gray b_gray password tl">
-            </div>
+            </form>
             <div class="w80 mtb20">
-                <input type="submit" class="btn btn-primary w100" value="登录">
+                <input id="loginBtn" type="submit" class="btn btn-primary w100" value="登录">
+
             </div>
         </div>
     </div>

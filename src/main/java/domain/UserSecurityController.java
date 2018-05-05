@@ -7,6 +7,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -32,8 +33,9 @@ public class UserSecurityController {
      * @return Boolean
      */
     @RequestMapping(value = "/login")
-    public String userLogin(@RequestParam("loginName") String loginName,
-                             @RequestParam("passWord") String passWord){
+    @ResponseBody
+    public JsonResponseVO userLogin(@RequestParam("loginName") String loginName,
+                             @RequestParam("password") String password){
 
         //登录信息验证
         final Subject securitySubject = SecurityUtils.getSubject();
@@ -41,9 +43,10 @@ public class UserSecurityController {
 
         try {
 
-            final UsernamePasswordToken token = new UsernamePasswordToken(loginName, passWord);
+            final UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
             securitySubject.login(token);
             result.setSuccess(Boolean.TRUE);
+            result.setReason("");
         }   catch (UnknownAccountException ex) {
 
             result.setReason("账号不存在");
@@ -60,9 +63,18 @@ public class UserSecurityController {
 
             result.setReason("其他错误");
         } catch (Exception ex) {
-
+            System.out.println("2");
         }
 
-        return "redirect:/list.jsp";
+        return result;
+    }
+
+    /**
+     * 去主页
+     * @returnModelAndView ModelAndView
+     */
+    @RequestMapping(value = "/home")
+    public ModelAndView toHomePage(){
+        return new ModelAndView("home");
     }
 }

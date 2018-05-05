@@ -77,7 +77,7 @@
         <!-- 用户访问无权限的链接时跳转此页面  -->
         <property name="unauthorizedUrl" value="/unauthorized.jsp"/>
         <!-- 验证成功跳转此页面  -->
-        <property name="successUrl" value="/list.jsp"/>
+        <property name="successUrl" value="/security/home"/>
         <!-- 过滤链定义 -->
         <property name="filterChainDefinitions">
             <value><!-- 注意拦截顺序，从上往下依次设置-->
