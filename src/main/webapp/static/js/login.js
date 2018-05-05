@@ -8,7 +8,7 @@ $(function(){
     $("#loginBtn").on('click',function () {
 
         login();
-    })
+    });
 
     function login() {
         var data = $('#loginForm').serializeObject();
