@@ -102,6 +102,7 @@ hr {
 
 /*字体色号*/
 .gray_1{color: #777E86;}
+.red_1{color: #f12312;}
 
 /*margin*/
 .mtb20{margin: 20px auto;}
@@ -203,6 +204,11 @@ input[type=button],input[type=submit],input[type=file],button{
 img{
 	display: inline-block;
 	width: 100%;
+}
+
+/*隐藏*/
+.none{
+	display: none;
 }
 
 /*弹窗样式*/
