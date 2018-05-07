@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 用户登录验证和获取起源service
+ */
 @Service
 public class UserSecurityServiceImpl implements UserSecurityService{
 

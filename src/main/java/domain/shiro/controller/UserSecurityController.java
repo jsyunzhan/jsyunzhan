@@ -1,6 +1,5 @@
-package domain;
+package domain.shiro.controller;
 
-import domain.shiro.controller.AbstractActionController;
 import domain.shiro.entity.JsonResponseVO;
 import domain.shiro.entity.ResourceEntity;
 import domain.shiro.service.UserSecurityService;

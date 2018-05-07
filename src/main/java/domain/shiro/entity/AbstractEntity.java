@@ -2,6 +2,7 @@ package domain.shiro.entity;
 
 import java.util.Date;
 
+//抽象公用实体类
 public class AbstractEntity {
 
     private Long id;

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+//登录Session
 public class WebSessionObject {
 
     //登录人ID

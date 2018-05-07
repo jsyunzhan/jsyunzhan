@@ -5,6 +5,9 @@ import domain.shiro.entity.ResourceEntity;
 
 import java.util.List;
 
+/**
+ * 用户认证和获取资源Service
+ */
 public interface UserSecurityService {
 
     /**

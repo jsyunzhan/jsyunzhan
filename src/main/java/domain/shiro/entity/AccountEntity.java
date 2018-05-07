@@ -5,6 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
+/**
+ * 用户表
+ */
 public final class AccountEntity extends AbstractEntity{
 
     //用户名称
