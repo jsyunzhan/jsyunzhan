@@ -7,9 +7,9 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/gydyxx" />
+        <property name="url" value="jdbc:mysql://180.100.216.22:3306/gydyxx" />
         <property name="username" value="root" />
-        <property name="password" value="123" />
+        <property name="password" value="YZyz$123" />
     </bean>
 
     <!-- 配置数据源,加载配置,也就是dataSource -->
