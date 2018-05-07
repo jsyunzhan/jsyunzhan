@@ -5,24 +5,21 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public final class AccountEntity extends AbstractEntity{
+public class WebSessionObject {
 
-    //用户名称
+    //登录人ID
+    private Long id;
+
+    //用户姓名
     private String userName;
 
     //登录名
     private String loginName;
 
-    //密码
-    private String password;
-
-    //关联(系统角色表)
+    //角色ID
     private Long roleId;
 
     //角色名称
     private String roleName;
-
-
-
 
 }

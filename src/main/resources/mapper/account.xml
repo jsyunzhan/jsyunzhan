@@ -7,12 +7,16 @@
         select
         t.ID id,
         t.USER_NAME userName,
+        t.LOGIN_NAME loginName,
         t.PASSWORD password,
         t.ROLE_ID roleId,
+        b.ROLE_NAME roleName,
         t.CREATE_USER_ID createUserId,
         t.CREATE_DATA createDate,
         t.UPDATE_USER_ID updateUserId,
         t.UPDATE_DATA updateDate
-        from t_sys_account t where t.USER_NAME=#{userName} AND t.DELETE_FLAG='1'
+        from t_sys_account t
+        LEFT JOIN t_sys_role b ON t.ROLE_ID=b.ID
+        where t.LOGIN_NAME=#{loginName} AND t.DELETE_FLAG='1'
     </select>
 </mapper>

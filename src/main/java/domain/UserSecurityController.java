@@ -1,14 +1,21 @@
 package domain;
 
+import domain.shiro.controller.AbstractActionController;
 import domain.shiro.entity.JsonResponseVO;
+import domain.shiro.entity.ResourceEntity;
+import domain.shiro.service.UserSecurityService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 
 /**
@@ -17,7 +24,14 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping(value = "/security")
-public class UserSecurityController {
+public class UserSecurityController extends AbstractActionController{
+
+    private UserSecurityService userSecurityService;
+
+    @Autowired
+    public UserSecurityController (UserSecurityService userSecurityService){
+        this.userSecurityService = userSecurityService;
+    }
 
     /**
      * 去登录页面
@@ -75,6 +89,19 @@ public class UserSecurityController {
      */
     @RequestMapping(value = "/home")
     public ModelAndView toHomePage(){
-        return new ModelAndView("home");
+        final Long roleId = getRoleId();
+
+        final ModelAndView mv = new ModelAndView("home");
+        mv.addObject("roleId",roleId);
+
+        return mv;
+    }
+
+
+    @RequestMapping(value = "/resources")
+    @ResponseBody
+    public List<ResourceEntity> getResourceInfoByRoleId(@PathVariable("roleId") Long roleId){
+        final List<ResourceEntity> resourceEntities = userSecurityService.getResourceInfoByRoleId(roleId);
+        return resourceEntities;
     }
 }

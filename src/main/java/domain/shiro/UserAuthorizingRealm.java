@@ -1,5 +1,7 @@
 package domain.shiro;
 
+import domain.shiro.entity.AccountEntity;
+import domain.shiro.entity.WebSessionObject;
 import domain.shiro.service.UserSecurityService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -7,6 +9,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import static domain.shiro.entity.SystemConfig.LOGIN_SESSION;
+import static org.apache.shiro.SecurityUtils.getSubject;
 
 @Service
 public class UserAuthorizingRealm extends AuthorizingRealm {
@@ -39,15 +44,26 @@ public class UserAuthorizingRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         final UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
         final String loginName = usernamePasswordToken.getUsername();
-//        final AccountEntity accountEntity = userSecurityService.accoutInfo(loginName);
-//
-//        //账户是否存在
-//        if (accountEntity == null) {
-//            throw new UnknownAccountException("该账号不存在.");
-//        }
+        final AccountEntity accountEntity = userSecurityService.accoutInfo(loginName);
 
-//        return new SimpleAuthenticationInfo(loginName, accountEntity.getPassword(),getName());
-        return new SimpleAuthenticationInfo(loginName, "admin",getName());
+        final WebSessionObject webSessionObject = new WebSessionObject();
+        //设置当前登录ID
+        webSessionObject.setId(accountEntity.getId());
+        //设置用户名称
+        webSessionObject.setUserName(accountEntity.getUserName());
+        //设置角色ID
+        webSessionObject.setRoleId(accountEntity.getRoleId());
+        //设置角色名称
+        webSessionObject.setRoleName(accountEntity.getRoleName());
 
+        //登录信息放入session中
+        getSubject().getSession().setAttribute(LOGIN_SESSION,webSessionObject);
+
+        //账户是否存在
+        if (accountEntity == null) {
+            throw new UnknownAccountException("该账号不存在.");
+        }
+
+        return new SimpleAuthenticationInfo(loginName, accountEntity.getPassword(),getName());
     }
 }

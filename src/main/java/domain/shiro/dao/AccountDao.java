@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AccountDao {
-    AccountEntity accoutInfo(String username);
+    AccountEntity accoutInfo(String loginName);
 }
