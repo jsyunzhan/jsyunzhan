@@ -98,6 +98,11 @@ public class UserSecurityController extends AbstractActionController{
     }
 
 
+    /**
+     * 获取资源
+     * @param roleId 角色ID
+     * @return List<ResourceEntity> 资源信息
+     */
     @RequestMapping(value = "/resources/{roleId}")
     @ResponseBody
     public List<ResourceEntity> getResourceInfoByRoleId(@PathVariable("roleId") Long roleId){
