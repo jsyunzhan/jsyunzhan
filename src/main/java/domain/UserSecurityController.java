@@ -98,7 +98,7 @@ public class UserSecurityController extends AbstractActionController{
     }
 
 
-    @RequestMapping(value = "/resources")
+    @RequestMapping(value = "/resources/{roleId}")
     @ResponseBody
     public List<ResourceEntity> getResourceInfoByRoleId(@PathVariable("roleId") Long roleId){
         final List<ResourceEntity> resourceEntities = userSecurityService.getResourceInfoByRoleId(roleId);
