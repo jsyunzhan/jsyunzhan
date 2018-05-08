@@ -8,6 +8,7 @@
         t.ID id,
         t.RESOURCE_NAME resourceName,
         t.RESOURCE_URL resourceUrl,
+        t.IMAGE_URL imageUrl,
         t.ORDER_NUMBER orderNumber,
         t.PARENT_ID parentId,
         t.CREATE_USER_ID createUserId,
