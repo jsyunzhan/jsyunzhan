@@ -1,27 +1,32 @@
 .tit_home img{
-    height: 80px;
+    height: 70px;
 }
 
 .tit_home div{
-    line-height: 80px;
+    line-height: 70px;
     font-size: 20px;
 }
 
 .title_project{
     top: 0;
-    left: 5%;
-}
-
-.tit_home .time{
-    width: 20%;
-    top: 0;
-    left: 40%;
+    left: 8%;
 }
 
 .sidebar{
     width: 15%;
     cursor: pointer;
     background: #2B3541;
+    float: left;
+}
+
+.main_content{
+    float: left;
+    width: 85%;
+}
+
+iframe{
+    outline: 0;
+    border: 0;
 }
 
 .modular .title_first{
@@ -32,4 +37,39 @@
 .modular li{
     line-height: 40px;
     font-size: 14px;
+}
+
+.modular .icon_title,.modular .arrow{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.modular .arrow{
+    margin-right: 0px;
+    margin-left: 30px;
+    transition: 0.5s;
+}
+
+.rotate90{
+    transform: rotate(90deg);
+    -ms-transform:rotate(90deg);
+    -o-tranform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+}
+
+.rotate0{
+    transform: rotate(0deg);
+    -ms-transform:rotate(0deg);
+    -o-tranform:rotate(0deg);
+    -webkit-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+}
+
+.modular .none{
+    display: none;
 }

@@ -12,45 +12,21 @@
     <link rel="stylesheet" href="../../static/css/home.css">
     <script src="../../static/jquery/jquery-1.12.4.min.js"></script>
     <script src="../../static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="../../static/js/public.js"></script>
     <script src="../../static/js/home.js"></script>
     <title>后台首页</title>
 </head>
-<body>
-
-    <div  class="container-fluid p0">
+<body class="b_gray2">
+    <div class="container-fluid p0">
         <div class="tit_home row m0 pr white">
             <img src="../../static/images/tit_bg.jpg">
             <div class="pa title_project">高邮市教育局听课管理系统</div>
-            <div class="pa tc time">2018-5-8 8:34</div>
+            <div class="pa"></div>
         </div>
-        <div>
-            <div class="sidebar tc white">
-                <div class="modular">
-                    <div class="title_first" data-target="#modular_child1" data-toggle="collapse">
-                        <div class="icon"></div>
-                        评价查询
-                        <div class=""></div>
-                    </div>
-                    <ul id="modular_child1" class="collapse">
-                        <li>新增评价</li>
-                        <li>评价管理</li>
-                        <li>管理过往</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="sidebar tc white">
-                <div class="modular">
-                    <div class="title_first" data-target="#modular_child2" data-toggle="collapse">
-                        <div class="icon"></div>
-                        评价查询
-                        <div class=""></div>
-                    </div>
-                    <ul id="modular_child2" class="collapse">
-                        <li>新增评价</li>
-                        <li>评价管理</li>
-                        <li>管理过往</li>
-                    </ul>
-                </div>
+        <div class="clearfix">
+            <div class="sidebar tc white"></div>
+            <div class="main_content">
+                <iframe src="http://baidu.com" width="100%" height="300px"></iframe>
             </div>
         </div>
     </div>

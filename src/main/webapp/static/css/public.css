@@ -67,9 +67,8 @@ hr {
 .bor_gray{ border: 1px solid #B4BEC7;}
 
 /*背景色*/
-.b_gray{
-	background: #E2E7ED;
-}
+.b_gray{background: #E2E7ED;}
+.b_gray2{background: #2B3541;}
 
 /*字体*/
 .family1{font-family: "Microsoft YaHei";}
