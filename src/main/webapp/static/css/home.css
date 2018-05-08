@@ -1,0 +1,35 @@
+.tit_home img{
+    height: 80px;
+}
+
+.tit_home div{
+    line-height: 80px;
+    font-size: 20px;
+}
+
+.title_project{
+    top: 0;
+    left: 5%;
+}
+
+.tit_home .time{
+    width: 20%;
+    top: 0;
+    left: 40%;
+}
+
+.sidebar{
+    width: 15%;
+    cursor: pointer;
+    background: #2B3541;
+}
+
+.modular .title_first{
+    line-height: 50px;
+    font-size: 16px;
+}
+
+.modular li{
+    line-height: 40px;
+    font-size: 14px;
+}
