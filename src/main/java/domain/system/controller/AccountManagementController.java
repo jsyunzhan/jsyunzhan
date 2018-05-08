@@ -23,4 +23,5 @@ public class AccountManagementController extends AbstractActionController{
         return new ModelAndView(ACCOUNTMANAGEMENTPANEL);
     }
 
+
 }

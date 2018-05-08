@@ -14,4 +14,11 @@ public interface AccountDao {
      * @return AccountEntity 用户信息
      */
     AccountEntity accoutInfo(String loginName);
+
+    /**
+     * 新增用户
+     * @param accountEntity 用户实体
+     * @return Integer
+     */
+    Integer addAccout(AccountEntity accountEntity);
 }
