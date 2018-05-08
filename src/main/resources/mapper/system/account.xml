@@ -3,6 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.shiro.dao.AccountDao">
 
+    <sql id="accountConditionSql">
+
+    </sql>
+
+
+    <!--根据用户名查询-->
     <select id="accoutInfo" resultType="AccountEntityInfo">
         select
         t.ID id,
@@ -20,6 +26,7 @@
         where t.LOGIN_NAME=#{loginName} AND t.DELETE_FLAG='1'
     </select>
 
+    <!--新增-->
     <insert id="addAccout" >
         INSERT INTO t_sys_account
         (
@@ -38,4 +45,30 @@
         NOW()
         )
     </insert>
+
+    <!--查总数-->
+    <select id="accountCount" resultType="Integer">
+        SELECT COUNT(*)
+        FROM t_sys_account t
+        WHERE t.DELETE_FLAG='1'
+        <include refid="accountConditionSql"/>
+    </select>
+
+    <!--查询集合-->
+    <select id="accountListInfo" resultType="AccountEntityInfo">
+        SELECT
+        t.ID id,
+        t.USER_NAME userName,
+        t.LOGIN_NAME loginName,
+        t.PASSWORD password,
+        t.ROLE_ID roleId,
+        b.ROLE_NAME roleName,
+        t.CREATE_USER_ID createUserId,
+        t.CREATE_DATA createDate,
+        t.UPDATE_USER_ID updateUserId,
+        t.UPDATE_DATA updateDate
+        FROM t_sys_account t
+        WHERE t.DELETE_FLAG='1'
+        <include refid="accountConditionSql"/>
+    </select>
 </mapper>

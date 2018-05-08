@@ -3,6 +3,8 @@ package domain.shiro.dao;
 import domain.shiro.entity.AccountEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 用户表dao
  */
@@ -21,4 +23,18 @@ public interface AccountDao {
      * @return Integer
      */
     Integer addAccout(AccountEntity accountEntity);
+
+    /**
+     * 获取总数
+     * @param accountEntity 查询实体
+     * @return Integer
+     */
+    Integer accountCount(AccountEntity accountEntity);
+
+    /**
+     * 获取集合总数
+     * @param accountEntity 查询实体
+     * @return List<AccountEntity>
+     */
+    List<AccountEntity> accountListInfo(AccountEntity accountEntity);
 }

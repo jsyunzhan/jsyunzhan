@@ -25,7 +25,14 @@ public final class AccountEntity extends AbstractEntity{
     //角色名称
     private String roleName;
 
-
-
-
+    @Override
+    public String toString() {
+        return "AccountEntity{" +
+                "userName='" + userName + '\'' +
+                ", loginName='" + loginName + '\'' +
+                ", password='" + password + '\'' +
+                ", roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                '}';
+    }
 }
