@@ -19,4 +19,23 @@
         LEFT JOIN t_sys_role b ON t.ROLE_ID=b.ID
         where t.LOGIN_NAME=#{loginName} AND t.DELETE_FLAG='1'
     </select>
+
+    <insert id="addAccout" >
+        INSERT INTO t_sys_account
+        (
+        USER_NAME,
+        LOGIN_NAME,
+        PASSWORD,
+        ROLE_ID,
+        CREATE_USER_ID
+        CREATE_DATA
+        ) VALUE (
+        userName,
+        loginName,
+        password,
+        roleId,
+        createUserId,
+        NOW()
+        )
+    </insert>
 </mapper>
