@@ -83,7 +83,7 @@
             <value><!-- 注意拦截顺序，从上往下依次设置-->
                 /security/login = anon
                 /static/** = anon
-                /** = authc
+                <!--/** = authc-->
 
             </value>
         </property>

@@ -22,4 +22,6 @@ public final class SystemWebURLMapping {
      * 去用户管理页面
      */
     public static final String ACCOUNT_MANAGEMENT_PAGE = SYSTEM_ROOT + "accountmanpage";
+
+    public static final String ACCOUT_LIST_GET = ACCOUNT_MANAGEMENT_PAGE + "/accountlist";
 }

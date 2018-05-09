@@ -68,6 +68,7 @@
         t.UPDATE_USER_ID updateUserId,
         t.UPDATE_DATA updateDate
         FROM t_sys_account t
+        LEFT JOIN t_sys_role b ON t.ROLE_ID=b.ID
         WHERE t.DELETE_FLAG='1'
         <include refid="accountConditionSql"/>
     </select>
