@@ -23,5 +23,8 @@ public final class SystemWebURLMapping {
      */
     public static final String ACCOUNT_MANAGEMENT_PAGE = SYSTEM_ROOT + "accountmanpage";
 
+    /**
+     * 分页
+     */
     public static final String ACCOUT_LIST_GET = ACCOUNT_MANAGEMENT_PAGE + "/accountlist";
 }
