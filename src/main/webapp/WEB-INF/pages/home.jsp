@@ -19,14 +19,34 @@
 <body class="b_gray2">
     <div class="container-fluid p0">
         <div class="tit_home row m0 pr white">
-            <img src="../../static/images/tit_bg.jpg">
+            <img src="../../static/images/tit_bg.jpg" class="tit_bg">
             <div class="pa title_project">高邮市教育局听课管理系统</div>
-            <div class="pa"></div>
+            <div class="pa personal">
+                <div class="clearfix">
+                    <div style="width:30px; height:30px;">
+                        <img src="../../static/images/person.png">
+                    </div>
+                    <div style="width:60px;line-height: 30px;">调研员</div>
+                    <div style="width:16px; height: 16px;margin: 7px;">
+                        <img src="../../static/images/white_down.png">
+                    </div>
+                </div>
+                <ul class="dropdown-menu personal_ul">
+                    <li class="clearfix">
+                        <a href="javascript:;"><span><img src="../../static/images/modify.png"></span>忘记密码</a>
+                    </li>
+                    <li class="clearfix">
+                        <a href="javascript:;"><span><img src="../../static/images/signOut.png"></span>退出登录</a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="clearfix">
-            <div class="sidebar tc white"></div>
+            <div class="aa">
+                <div class="sidebar tc white"></div>
+            </div>
             <div class="main_content">
-                <iframe src="http://baidu.com" width="100%" height="300px"></iframe>
+                <iframe src="" width="100%" height="300px"></iframe>
             </div>
         </div>
     </div>

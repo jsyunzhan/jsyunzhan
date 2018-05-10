@@ -20,9 +20,9 @@ $(function(){
                     num++;
                 }else{
                     if(resouces[i+1]&&resouces[i+1].parentId) {
-                        _html += '<li>'+resouces[i].resourceName+'</li>';
+                        _html += '<li><a href="'+resouces[i].resourceUrl+'">'+resouces[i].resourceName+'</a></li>';
                     }else{
-                        _html += '<li>'+resouces[i].resourceName+'</li></ul></div>';
+                        _html += '<li><a href="'+resouces[i].resourceUrl+'">'+resouces[i].resourceName+'</a></li></ul></div>';
                     }
                 }
             }
@@ -60,5 +60,19 @@ $(function(){
     }
 
     $("iframe").attr("height",$(window).height()-80);
+    $(".sidebar").css("max-height",$(window).height()-80);
+
+    function personal(){
+        $(".personal").mouseover(function(){
+            $(".personal_ul").show();
+            $(".personal").mouseout(function (){
+                $(".personal_ul").hide();
+            })
+        });
+        $(".personal_ul li").click(function () {
+            $(".personal_ul").hide();
+        })
+    }
+    personal();
 
 })

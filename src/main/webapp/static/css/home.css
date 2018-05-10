@@ -1,4 +1,4 @@
-.tit_home img{
+.tit_bg{
     height: 70px;
 }
 
@@ -13,10 +13,16 @@
 }
 
 .sidebar{
-    width: 15%;
     cursor: pointer;
     background: #2B3541;
+    overflow-y: scroll;
+    width: 110%;
+}
+
+.aa{
+    width: 15%;
     float: left;
+    overflow: hidden;
 }
 
 .main_content{
@@ -72,4 +78,45 @@ iframe{
 
 .modular .none{
     display: none;
+}
+
+.personal{
+    width: 140px;
+    padding: 5px 0;
+    top: 15px;
+    right: 8%;
+    cursor: pointer;
+}
+
+.personal div{
+    float: left;
+    font-size: 14px;
+    text-align: center;
+}
+
+.tit_home .personal div img{
+    width: 100%;
+}
+
+.personal_ul{
+    min-width: 140px;
+    margin: 0;
+}
+
+.personal_ul li a{
+    float: left;
+    clear: inherit;
+    width: 100%;
+    text-align: center;
+    padding: 3px 25px;
+    color: #666;
+}
+
+.personal_ul span{
+    display: block;
+    vertical-align: top;
+    float: left;
+    width: 14px;
+    height: 14px;
+    margin-top: 3px;
 }
