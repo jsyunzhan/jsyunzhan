@@ -37,7 +37,7 @@ public class AccountManagementController extends AbstractActionController{
     }
 
     /**
-     * 角色管理分页
+     * 用户管理分页
      * @param accountEntity
      * @return
      */
