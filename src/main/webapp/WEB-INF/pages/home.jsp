@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="shortcut icon" href="../../static/images/favicon.ico">
     <%--以上三个meta不可或缺--%>
     <link rel="stylesheet" href="../../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/css/public.css">
@@ -21,7 +22,7 @@
         <div class="tit_home row m0 pr white">
             <img src="../../static/images/tit_bg.jpg" class="tit_bg">
             <div class="pa title_project">高邮市教育局听课管理系统</div>
-            <div class="pa personal">
+            <div class="pa personal" style="background: url(123.png)">
                 <div class="clearfix">
                     <div style="width:30px; height:30px;">
                         <img src="../../static/images/person.png">

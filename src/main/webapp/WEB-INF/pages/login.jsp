@@ -3,8 +3,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="shortcut icon" href="../../static/images/favicon.ico">
     <%--以上三个meta不可或缺--%>
     <link rel="stylesheet" href="../../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/css/public.css">
