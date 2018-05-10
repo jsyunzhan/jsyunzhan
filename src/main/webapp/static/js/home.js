@@ -20,14 +20,15 @@ $(function(){
                     num++;
                 }else{
                     if(resouces[i+1]&&resouces[i+1].parentId) {
-                        _html += '<li><a href="'+resouces[i].resourceUrl+'">'+resouces[i].resourceName+'</a></li>';
+                        _html += '<li url="'+resouces[i].resourceUrl+'">'+resouces[i].resourceName+'</li>';
                     }else{
-                        _html += '<li><a href="'+resouces[i].resourceUrl+'">'+resouces[i].resourceName+'</a></li></ul></div>';
+                        _html += '<li url="'+resouces[i].resourceUrl+'">'+resouces[i].resourceName+'</li></ul></div>';
                     }
                 }
             }
             $(".sidebar").append(_html);
             modular_click();
+            li_url();
         }
     });
 
@@ -74,5 +75,11 @@ $(function(){
         })
     }
     personal();
+
+    function li_url(){
+        $(".modular ul li").click(function(){
+            $("iframe").attr("src",$(this).attr("url"))
+        })
+    }
 
 })
