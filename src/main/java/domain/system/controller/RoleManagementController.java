@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import static domain.system.SystemWebForward.ROLEMANAGEMENTPANEL;
+import static domain.system.SystemWebURLMapping.ROLE_LIST_GET;
 import static domain.system.SystemWebURLMapping.ROLE_MANAGEMENT_PAGE;
 
 /**
@@ -37,6 +39,13 @@ public class RoleManagementController extends AbstractActionController{
         return new ModelAndView(ROLEMANAGEMENTPANEL);
     }
 
+    /**
+     * 角色管理分页
+     * @param roleEntity 查询实体
+     * @return PageQueryResult
+     */
+    @RequestMapping(value = ROLE_LIST_GET)
+    @ResponseBody
     public PageQueryResult roleListInfo(@RequestBody RoleEntity roleEntity){
         return roleManagementService.roleListInfo(roleEntity);
     }
