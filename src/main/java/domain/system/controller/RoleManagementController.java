@@ -6,7 +6,6 @@ import domain.system.entity.RoleEntity;
 import domain.system.service.RoleManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,12 +40,13 @@ public class RoleManagementController extends AbstractActionController{
 
     /**
      * 角色管理分页
-     * @param roleEntity 查询实体
+     * @param  查询实体
      * @return PageQueryResult
      */
     @RequestMapping(value = ROLE_LIST_GET)
     @ResponseBody
-    public PageQueryResult roleListInfo(@RequestBody RoleEntity roleEntity){
+    public PageQueryResult roleListInfo(){
+        RoleEntity roleEntity = new RoleEntity();
         return roleManagementService.roleListInfo(roleEntity);
     }
 }
