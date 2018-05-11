@@ -26,8 +26,23 @@ public final class SystemWebURLMapping {
      */
     public static final String ROLE_ADD_POST = ROLE_MANAGEMENT_PAGE + "/add";
 
+    //验证是否重名
     public static final String ROLE_CHECK_ROLE_NAME = ROLE_MANAGEMENT_PAGE + "/checkrolename";
 
+    /**
+     * 修改
+     */
+    public static final String ROLE_EDIT_POST = ROLE_MANAGEMENT_PAGE + "/edit";
+
+    /**
+     * 删除
+     */
+    public static final String ROLE_DELETE_GET = ROLE_MANAGEMENT_PAGE + "/delete/{id}";
+
+    /**
+     * 资源数
+     */
+    public static final String RESOURCES_LIST_GET = ROLE_MANAGEMENT_PAGE + "/resources";
 
     /*------------------用户管理--------------------------------------------------------- */
     /**

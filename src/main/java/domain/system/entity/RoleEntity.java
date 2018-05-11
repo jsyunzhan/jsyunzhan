@@ -15,7 +15,7 @@ public class RoleEntity extends AbstractEntity{
     private String roleName;
 
     //角色被使用的个数,>0则不能被删除
-    private Integer userCount;
+    private Integer useCount;
 
     @Override
     public String toString() {

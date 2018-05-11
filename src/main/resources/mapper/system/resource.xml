@@ -19,4 +19,20 @@
         LEFT JOIN t_mapping_role_resource b ON t.ID=b.RESOURCE_ID
         where b.ROLE_ID=#{roleId} AND t.DELETE_FLAG='1' AND b.DELETE_FLAG='1'
     </select>
+
+    <select id="resourceList" resultType="ResourceEntityInfo">
+        select
+        t.ID id,
+        t.RESOURCE_NAME resourceName,
+        t.RESOURCE_URL resourceUrl,
+        t.IMAGE_URL imageUrl,
+        t.ORDER_NUMBER orderNumber,
+        t.PARENT_ID parentId,
+        t.CREATE_USER_ID createUserId,
+        t.CREATE_DATA createDate,
+        t.UPDATE_USER_ID updateUserId,
+        t.UPDATE_DATA updateDate
+        from t_sys_resource t
+        where t.DELETE_FLAG='1'
+    </select>
 </mapper>

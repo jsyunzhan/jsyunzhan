@@ -16,4 +16,10 @@ public interface ResourceDao {
      * @return 资源信息
      */
     List<ResourceEntity> getResourceInfoByRoleId(Long roleId);
+
+    /**
+     * 获取所有的资源
+     * @return 资源信息
+     */
+    List<ResourceEntity> resourceList();
 }
