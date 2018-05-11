@@ -27,6 +27,9 @@
         t.UPDATE_DATA updateDate
         FROM t_sys_role t
         WHERE t.DELETE_FLAG='1'
+        ORDER BY t.CREATE_DATA
+        LIMIT #{rows} OFFSET #{page}
         <include refid="roleConditionSql"/>
     </select>
 </mapper>
+

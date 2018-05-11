@@ -40,13 +40,13 @@ public class RoleManagementController extends AbstractActionController{
 
     /**
      * 角色管理分页
-     * @param  查询实体
+     * @param roleEntity 查询实体 roleEntity
      * @return PageQueryResult
      */
     @RequestMapping(value = ROLE_LIST_GET)
     @ResponseBody
-    public PageQueryResult roleListInfo(){
-        RoleEntity roleEntity = new RoleEntity();
+    public PageQueryResult roleListInfo(RoleEntity roleEntity ){
+
         return roleManagementService.roleListInfo(roleEntity);
     }
 }
