@@ -45,5 +45,16 @@
         NOW()
         )
     </insert>
+
+    <!--判断roleName是否重复-->
+    <select id="checkRoleName" resultType="Integer">
+        SELECT COUNT(*)
+        FROM t_sys_role t
+        WHERE t.DELETE_FLAG='1'
+        AND t.ROLE_NAME = #{roleName}
+        <if test="id!=null">
+            t.Id!= #{id}
+        </if>
+    </select>
 </mapper>
 

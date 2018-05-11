@@ -14,21 +14,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
-    <link href="../../../static/easyui/themes/default/easyui.css" rel="stylesheet" />
-    <link href="../../../static/easyui/themes/icon.css" rel="stylesheet" />
-    <script src="../../../static/easyui/jquery.min.js"></script>
-    <script src="../../../static/easyui/jquery.easyui.min.js"></script>
-    <script src="../../../static/js/untis/jquery.jdirk.js"></script>
 
-
-
-    <link href="../../../static/css/customer.css" rel="stylesheet" />
-    <script src="../../../static/easyui/locale/easyui-lang-zh_CN.js"></script>
-
-
+    <jsp:include flush="true" page="/WEB-INF/pages/commons/servercommonjs.jsp"/>
 
     <script src="../../../static/js/system/rolemanagementpanel.js"></script>
-    <script src="../../../static/js/untis/datautils.js"></script>
+
     <title>Title</title>
 </head>
 
@@ -46,7 +36,8 @@
 
                 </label>
                 </th>
-                <td width="200"><input class="easyui-textbox control" name="roleName" required="required"/></td>
+                <td width="200"><input class="easyui-textbox control" name="roleName" required="required"
+                                       data-options="validType:['checkNameAdd'],prompt:'请输入...'"/></td>
             </tr>
 
         </table>

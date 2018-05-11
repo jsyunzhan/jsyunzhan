@@ -1,6 +1,7 @@
 package domain.system.dao;
 
 import domain.system.entity.RoleEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,4 +29,9 @@ public interface RoleDao {
      * @return Integer
      */
     Integer addRole(RoleEntity roleEntity);
+
+    /*
+    判断是否重复
+     */
+    Integer checkRoleName(@Param("id") Long id,@Param("roleName") String roleName);
 }
