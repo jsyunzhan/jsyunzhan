@@ -37,7 +37,7 @@ $(function () {
                 }
             },
             {
-                text: "删除", iconCls: 'icondelete',
+                text: "删除", iconCls: 'icon-remove',
                 handler: function () {
                     removeHandle();
                 }
@@ -164,7 +164,6 @@ $(function () {
     /************删除*************/
 
     function removeHandle() {
-        debugger
         if (!selectedrole) {
             showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
             return
