@@ -68,13 +68,19 @@ $(function () {
 
     $('#addRolesWinSubmitBtn').linkbutton({
         onClick: function () {
-
             if (!$('#addRolesForm').form('enableValidation').form('validate')) {
                 return;
             }
 
             var addRoleData = $addRolesForm.serializeObject(),
                 url = "/system/rolemanpage/add";
+
+            var data = {roleName:addRoleData.roleName};
+            if (!checkRoleName(data)){
+                alert("重复");
+                return
+            }
+
             $.ajax({
                 url: url, type: "POST", contentType: "application/json", timeout: 360000, cache: false,
                 data: JSON.stringify(addRoleData),
@@ -121,6 +127,12 @@ $(function () {
                 url = "/system/rolemanpage/edit";
 
             editRoleData.id = selectedrole.id;
+
+            var data = {id:editRoleData.id,roleName:editRoleData.roleName};
+            if (!checkRoleName(data)){
+                alert("重复")
+                return
+            }
             $.ajax({
                 url: url, type: "POST", contentType: "application/json",
                 data: JSON.stringify(editRoleData),
@@ -141,41 +153,4 @@ $(function () {
         }
     });
 
-    /*****************************校验新增是否重复************************************/
-
-    $.extend($.fn.textbox.defaults.rules, {
-        checkNameAdd: {// 验证故障类型存在与否
-            validator: function (value) {
-                var flag = true;
-                var data = {roleName:value};
-                $.ajax({
-                    url: "/system/rolemanpage/checkrolename" , type: "POST", dataType:"json",data:data,
-                    success: function (r) {
-                        flag = r;
-                    }
-                });
-                return flag;
-            },
-            message: "角色名称重复,请重新输入！"
-        }
-    });
-
-
-    /*****************************校验修改是否重复************************************/
-    $.extend($.fn.textbox.defaults.rules, {
-        checkNameEdit: {// 验证消息类型名称存在与否
-            validator: function (value) {
-                var flag = true;
-                var data = {id:selectedrole.id,roleName:value};
-                $.ajax({
-                    url: "/system/rolemanpage/checkrolename" , type: "POST", dataType:"json",data:data,
-                    success: function (r) {
-                        flag = r;
-                    }
-                });
-                return flag;
-            },
-            message: "角色名称重复,请重新输入！"
-        }
-    });
 });
