@@ -54,6 +54,35 @@
         </a>
     </div>
 </div>
+
+<!--修改窗口-->
+<div id="editRolesWin">
+    <form id="editRolesForm" class="control-form">
+        <table class="table_list" style="text-align: right;margin:3px;width:99%">
+            <tr>
+                <th width="100"><label class="control-label required-mark" style="width:100px"
+                                       required="required">角色名称
+
+                </label>
+                </th>
+                <td width="200"><input class="easyui-textbox control" name="roleName" required="required"
+                                       data-options="prompt:'请输入...'"/></td>
+            </tr>
+
+        </table>
+    </form>
+
+    <div id="editRolesWinFooter" style="text-align:center;padding:5px">
+        <a id="editRolesWinSubmitBtn" href="javascript:void(0);" iconCls="icon-ok" class="easyui-linkbutton"
+           style="margin-right:20px;">
+            确认
+        </a>
+        <a id="editRolesWinCloseBtn" href="javascript:void(0);" iconCls="icon-cancel" style="margin-left:20px;"
+           class="easyui-linkbutton">
+            取消
+        </a>
+    </div>
+</div>
 </body>
 </html>
 

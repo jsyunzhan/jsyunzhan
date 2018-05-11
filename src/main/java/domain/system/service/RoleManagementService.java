@@ -20,4 +20,10 @@ public interface RoleManagementService {
     判断是否roleName是否重复
      */
     Boolean checkRoleName(Long id, String roleName);
+
+    /**
+     * 修改
+     * @param roleEntity 修改实体
+     */
+    Boolean editRole(RoleEntity roleEntity);
 }

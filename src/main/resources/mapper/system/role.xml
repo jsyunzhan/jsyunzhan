@@ -53,8 +53,17 @@
         WHERE t.DELETE_FLAG='1'
         AND t.ROLE_NAME = #{roleName}
         <if test="id!=null">
-            t.Id!= #{id}
+            AND t.ID!= #{id}
         </if>
     </select>
+
+    <!--修改-->
+    <update id="editRole">
+        UPDATE t_sys_role SET
+        ROLE_NAME=#{roleName},
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
 </mapper>
 

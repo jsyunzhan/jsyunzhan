@@ -77,4 +77,17 @@ public class RoleManagementController extends AbstractActionController{
     @RequestParam(value = "id",required = false) Long id){
         return roleManagementService.checkRoleName(id,roleName);
     }
+
+    /*
+    修改
+     */
+    @RequestMapping(value = ROLE_EDIT_POST)
+    @ResponseBody
+    public JsonResponseVO editRole(@RequestBody RoleEntity roleEntity){
+        roleEntity.setUpdateUserId(getLoginId());
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        final Boolean flag = roleManagementService.editRole(roleEntity);
+        jsonResponseVO.setSuccess(flag);
+        return jsonResponseVO;
+    }
 }

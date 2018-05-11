@@ -34,4 +34,11 @@ public interface RoleDao {
     判断是否重复
      */
     Integer checkRoleName(@Param("id") Long id,@Param("roleName") String roleName);
+
+    /**
+     * 修改
+     * @param roleEntity 修改实体
+     * @return Integer
+     */
+    Integer editRole(RoleEntity roleEntity);
 }
