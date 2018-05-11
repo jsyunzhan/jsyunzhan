@@ -55,4 +55,9 @@ public class RoleManagementServiceImpl implements RoleManagementService{
     public Boolean editRole(RoleEntity roleEntity) {
         return roleDao.editRole(roleEntity) > 0;
     }
+
+    @Override
+    public Boolean deleRole(Long id, Long loginId) {
+        return roleDao.deleRole(id,loginId);
+    }
 }

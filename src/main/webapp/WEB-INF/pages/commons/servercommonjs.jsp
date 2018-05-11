@@ -16,6 +16,8 @@
     <link href="../../../static/css/customer.css" rel="stylesheet" />
     <script src="../../../static/easyui/locale/easyui-lang-zh_CN.js"></script>
     <script src="../../../static/js/untis/datautils.js"></script>
+    <script src="../../../static/js/untis/commonutil4easyui.js"></script>
+    <script src="../../../static/js/untis/message.js"></script>
 </head>
 <body>
 

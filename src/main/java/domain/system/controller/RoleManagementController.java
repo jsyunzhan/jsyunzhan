@@ -7,10 +7,7 @@ import domain.system.entity.RoleEntity;
 import domain.system.service.RoleManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import static domain.system.SystemWebForward.ROLEMANAGEMENTPANEL;
@@ -87,6 +84,18 @@ public class RoleManagementController extends AbstractActionController{
         roleEntity.setUpdateUserId(getLoginId());
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
         final Boolean flag = roleManagementService.editRole(roleEntity);
+        jsonResponseVO.setSuccess(flag);
+        return jsonResponseVO;
+    }
+
+    /**
+     * 删除
+     */
+    @RequestMapping(value = ROLE_DELETE_GET)
+    @ResponseBody
+    public JsonResponseVO deleRole(@PathVariable("id") Long id){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        final Boolean flag = roleManagementService.deleRole(id,getLoginId());
         jsonResponseVO.setSuccess(flag);
         return jsonResponseVO;
     }

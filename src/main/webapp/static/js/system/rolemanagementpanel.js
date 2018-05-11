@@ -28,12 +28,18 @@ $(function () {
                 handler: function () {
 
                     if (!selectedrole) {
-                        alert("请先选中")
+                        showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
                     } else {
                         $editRolesForm.form('load', selectedrole);
                         $editRolesWin.window('open');
                     }
 
+                }
+            },
+            {
+                text: "删除", iconCls: 'icondelete',
+                handler: function () {
+                    removeHandle();
                 }
             }
 
@@ -88,6 +94,7 @@ $(function () {
                     if (serverResponse.success){
                         $rolesGrid.datagrid('reload');
                         $addRolesWin.window('close');
+                        showInfoMessage(SYSTEM_MESSAGE.msg_action_success);
                     }
                 }
             });
@@ -140,6 +147,7 @@ $(function () {
                     if (serverResponse.success){
                         $rolesGrid.datagrid('reload');
                         $editRolesWin.window('close');
+                        showInfoMessage(SYSTEM_MESSAGE.msg_action_success);
                     }
                 }
             });
@@ -152,5 +160,32 @@ $(function () {
             $editRolesWin.window('close');
         }
     });
+
+    /************删除*************/
+
+    function removeHandle() {
+        debugger
+        if (!selectedrole) {
+            showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
+            return
+        }
+
+        if (selectedrole.useCount > 0) {
+            showErrorMessage("已有用户选择此角色，不能删除！");
+            return
+        }
+
+        var msg = String.format("您确定要删除角色：<span style='color: red;'>{0}</span>？", selectedrole.roleName);
+
+        showConfirm(msg, function () {
+            $.ajax({
+                url:"/system/rolemanpage/delete/"+selectedrole.id,
+                type:"GET",dataType:"json",
+                success:function (r) {
+                    $rolesGrid.datagrid('reload');
+                }
+            })
+        })
+    }
 
 });

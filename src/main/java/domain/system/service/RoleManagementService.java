@@ -26,4 +26,12 @@ public interface RoleManagementService {
      * @param roleEntity 修改实体
      */
     Boolean editRole(RoleEntity roleEntity);
+
+    /**
+     * 删除
+     * @param id id
+     * @param loginId 登录id
+     * @return Boolean
+     */
+    Boolean deleRole(Long id, Long loginId);
 }

@@ -1,5 +1,5 @@
 
-//过去分页page
+//计算分页page
 function getPage(param) {
     var rows = param.rows;
     var page = param.page;

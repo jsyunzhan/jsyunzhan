@@ -34,6 +34,11 @@ public final class SystemWebURLMapping {
      */
     public static final String ROLE_EDIT_POST = ROLE_MANAGEMENT_PAGE + "/edit";
 
+    /**
+     * 删除
+     */
+    public static final String ROLE_DELETE_GET = ROLE_MANAGEMENT_PAGE + "/delete/{id}";
+
     /*------------------用户管理--------------------------------------------------------- */
     /**
      * 去用户管理页面
