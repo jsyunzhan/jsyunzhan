@@ -27,6 +27,23 @@
         t.UPDATE_DATA updateDate
         FROM t_sys_role t
         WHERE t.DELETE_FLAG='1'
+        ORDER BY t.CREATE_DATA
+        LIMIT #{rows} OFFSET #{page}
         <include refid="roleConditionSql"/>
     </select>
+
+    <!--新增-->
+    <insert id="addRole" >
+        INSERT INTO t_sys_role
+        (
+        ROLE_NAME,
+        CREATE_USER_ID,
+        CREATE_DATA
+        ) VALUE (
+        #{roleName},
+        #{createUserId},
+        NOW()
+        )
+    </insert>
 </mapper>
+

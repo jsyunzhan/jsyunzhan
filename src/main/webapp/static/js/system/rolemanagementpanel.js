@@ -1,7 +1,7 @@
 $(function () {
 
-    var selectedFaultType, reqObj = {};
-    var $faultTypesGrid = $('#faultTypesGrid').datagrid({
+    var selectedrole, reqObj = {};
+    var $rolesGrid = $('#rolesGrid').datagrid({
         url: '/system/rolemanpage/rolelist', method: 'GET',
         rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
         singleSelect: true,
@@ -17,17 +17,68 @@ $(function () {
             }
         ]],
         toolbar: [
-
+            {
+                text: "新增", iconCls: 'icon-add',
+                handler: function () {
+                    $addRolesWin.window('open');
+                }
+            }
 
         ],
         onBeforeLoad: function (param) {
+            getPage(param);
             $.extend(param, reqObj);
         },
         onSelect: function (index, row) {
-            selectedFaultType = row;
+            selectedrole = row;
         },
         onLoadSuccess: function () {
-            selectedFaultType = $faultTypesGrid.datagrid('getSelected');
+            selectedrole = $rolesGrid.datagrid('getSelected');
+        }
+    });
+
+
+    /*************新增*******************/
+
+    var $addRolesForm = $('#addRolesForm').form({
+        novalidate: true
+    });
+
+    var $addRolesWin = $('#addRolesWin').window({
+        title: "新增", closed: true, modal: true, height: 215,
+        width: 360, iconCls: 'icon-add', collapsible: false, minimizable: false,
+        footer: '#addRolesWinFooter',
+        onClose: function () {
+            $('#addRolesForm').form('disableValidation').form('reset');
+        }
+    });
+
+    $('#addRolesWinSubmitBtn').linkbutton({
+        onClick: function () {
+
+            if (!$('#addRolesForm').form('enableValidation').form('validate')) {
+                return;
+            }
+
+            var addRoleData = $addRolesForm.serializeObject(),
+                url = "/system/rolemanpage/add";
+            $.ajax({
+                url: url, type: "POST", contentType: "application/json", timeout: 360000, cache: false,
+                data: JSON.stringify(addRoleData),
+                success: function (serverResponse) {
+                    if (serverResponse.success){
+                        $rolesGrid.datagrid('reload');
+                        $addRolesWin.window('close');
+                    }
+                }
+            });
+
+        }
+    });
+
+    $('#addRolesWinCloseBtn').linkbutton({
+        onClick: function () {
+            $addRolesWin.window('close');
         }
     });
 });

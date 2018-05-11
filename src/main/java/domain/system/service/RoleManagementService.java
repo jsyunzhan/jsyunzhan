@@ -10,4 +10,6 @@ public interface RoleManagementService {
      * @return PageQueryResult
      */
     PageQueryResult roleListInfo(RoleEntity roleEntity);
+
+    Boolean addRole(RoleEntity roleEntity);
 }
