@@ -36,7 +36,8 @@
 
                 </label>
                 </th>
-                <td width="200"><input class="easyui-textbox control" name="roleName" required="required"/></td>
+                <td width="200"><input class="easyui-textbox control" name="roleName" required="required"
+                                       data-options="validType:['checkNameAdd'],prompt:'请输入...'"/></td>
             </tr>
 
         </table>

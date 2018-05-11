@@ -11,5 +11,13 @@ public interface RoleManagementService {
      */
     PageQueryResult roleListInfo(RoleEntity roleEntity);
 
+    /*
+    新增
+     */
     Boolean addRole(RoleEntity roleEntity);
+
+    /*
+    判断是否roleName是否重复
+     */
+    Boolean checkRoleName(Long id, String roleName);
 }

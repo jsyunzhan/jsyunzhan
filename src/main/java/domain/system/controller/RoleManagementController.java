@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,6 +52,9 @@ public class RoleManagementController extends AbstractActionController{
         return roleManagementService.roleListInfo(roleEntity);
     }
 
+    /**
+     * 新增
+     */
     @RequestMapping(value = ROLE_ADD_POST)
     @ResponseBody
     public JsonResponseVO addRole(@RequestBody RoleEntity roleEntity){
@@ -62,5 +66,15 @@ public class RoleManagementController extends AbstractActionController{
 
         jsonResponseVO.setSuccess(flag);
         return jsonResponseVO;
+    }
+
+    /*
+    验证roleName是否重名
+     */
+    @RequestMapping(value = ROLE_CHECK_ROLE_NAME)
+    @ResponseBody
+    public Boolean checkRoleName(@RequestParam("roleName") String roleName,
+    @RequestParam(value = "id",required = false) Long id){
+        return roleManagementService.checkRoleName(id,roleName);
     }
 }

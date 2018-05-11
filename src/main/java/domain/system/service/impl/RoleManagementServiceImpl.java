@@ -44,4 +44,10 @@ public class RoleManagementServiceImpl implements RoleManagementService{
     public Boolean addRole(RoleEntity roleEntity) {
         return roleDao.addRole(roleEntity) > 0;
     }
+
+    @Override
+    public Boolean checkRoleName(Long id, String roleName) {
+        Integer flag = roleDao.checkRoleName(id,roleName);
+        return flag<1;
+    }
 }
