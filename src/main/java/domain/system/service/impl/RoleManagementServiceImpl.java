@@ -39,4 +39,9 @@ public class RoleManagementServiceImpl implements RoleManagementService{
         pageQueryResult.setRows(roleEntities);
         return pageQueryResult;
     }
+
+    @Override
+    public Boolean addRole(RoleEntity roleEntity) {
+        return roleDao.addRole(roleEntity);
+    }
 }

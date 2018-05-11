@@ -21,6 +21,8 @@ public final class SystemWebURLMapping {
      */
     public static final String ROLE_LIST_GET = ROLE_MANAGEMENT_PAGE + "/rolelist";
 
+    public static final String ROLE_ADD_POST = ROLE_MANAGEMENT_PAGE + "/add";
+
 
     /*------------------用户管理--------------------------------------------------------- */
     /**

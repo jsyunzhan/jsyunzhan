@@ -21,4 +21,11 @@ public interface RoleDao {
      * @return
      */
     List<RoleEntity> roleListInfo(RoleEntity roleEntity);
+
+    /**
+     * 新增
+     * @param roleEntity 新增实体
+     * @return Integer
+     */
+    Integer addRole(RoleEntity roleEntity);
 }
