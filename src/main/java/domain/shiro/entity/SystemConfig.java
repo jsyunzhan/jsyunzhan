@@ -10,4 +10,9 @@ public final class SystemConfig {
 
     //登录Session
     public static final String LOGIN_SESSION= "loginSession";
+
+    /**
+     * 字符串
+     */
+    public static final String ROWS = "rows";
 }

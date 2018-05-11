@@ -23,8 +23,11 @@
 </head>
 
 <body class="easyui-layout">
-<div data-options="region:'center'">
+<div data-options="region:'west'" style="width: 50%">
     <table id="rolesGrid"></table>
+</div>
+<div data-options="region:'center'">
+    <table id="reourecesGrid"></table>
 </div>
 <!--新增窗口-->
 <div id="addRolesWin">

@@ -1,6 +1,8 @@
 package domain.system.service.impl;
 
+import domain.shiro.dao.ResourceDao;
 import domain.shiro.entity.PageQueryResult;
+import domain.shiro.entity.ResourceEntity;
 import domain.system.dao.RoleDao;
 import domain.system.entity.RoleEntity;
 import domain.system.service.RoleManagementService;
@@ -17,10 +19,12 @@ import static com.google.common.collect.Lists.newArrayList;
 public class RoleManagementServiceImpl implements RoleManagementService{
 
     private final RoleDao roleDao;
+    private final ResourceDao resourceDao;
 
     @Autowired
-    public RoleManagementServiceImpl(RoleDao roleDao){
+    public RoleManagementServiceImpl(RoleDao roleDao,ResourceDao resourceDao){
         this.roleDao = roleDao;
+        this.resourceDao = resourceDao;
     }
     @Override
     public PageQueryResult roleListInfo(RoleEntity roleEntity) {
@@ -59,5 +63,10 @@ public class RoleManagementServiceImpl implements RoleManagementService{
     @Override
     public Boolean deleRole(Long id, Long loginId) {
         return roleDao.deleRole(id,loginId);
+    }
+
+    @Override
+    public List<ResourceEntity> resourceList() {
+        return resourceDao.resourceList();
     }
 }

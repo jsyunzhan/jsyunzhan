@@ -1,7 +1,10 @@
 package domain.system.service;
 
 import domain.shiro.entity.PageQueryResult;
+import domain.shiro.entity.ResourceEntity;
 import domain.system.entity.RoleEntity;
+
+import java.util.List;
 
 public interface RoleManagementService {
     /**
@@ -33,5 +36,12 @@ public interface RoleManagementService {
      * @param loginId 登录id
      * @return Boolean
      */
+
     Boolean deleRole(Long id, Long loginId);
+
+    /**
+     * 获取资源数
+     * @return List<ResourceEntity> 资源数
+     */
+    List<ResourceEntity> resourceList();
 }

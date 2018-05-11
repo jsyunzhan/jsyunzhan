@@ -187,4 +187,31 @@ $(function () {
         })
     }
 
+
+    /****************************************右边树*****************************/
+    var selectedOrganization, reqTreeObj = {};
+    var $reourecesGrid = $('#reourecesGrid').treegrid({
+        url: '/system/rolemanpage/resources', method: 'GET',
+        treeField:'resourceName',
+        rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
+        singleSelect: true, border: false, remoteSort: false,
+        columns: [[
+            {
+                field: 'resourceName', title: "资源名称", width: 300, sortable: true,
+                align: 'left'
+            }
+        ]],
+        toolbar: [
+
+        ],
+        onBeforeLoad: function (param) {
+            $.extend(param, reqTreeObj);
+        },
+        onSelect: function (row) {
+            selectedOrganization = row;
+        },
+        onLoadSuccess: function () {
+            selectedOrganization = $reourecesGrid.treegrid('getSelected');
+        }
+    });
 });
