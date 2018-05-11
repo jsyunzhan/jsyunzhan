@@ -198,11 +198,29 @@ $(function () {
         columns: [[
             {
                 field: 'resourceName', title: "资源名称", width: 300, sortable: true,
-                align: 'left'
+                align: 'left',formatter:function (value,rowData,rowIndex) {
+                return "<input id='"+ rowData.id +"'  type='checkbox' name='checkName' >" + rowData.resourceName;
+                }
             }
         ]],
         toolbar: [
+            {
+                text: "确定", iconCls: 'icon-ok',
+                handler: function () {
+                    var obj=document.getElementsByName('checkName');
+                    var objArray = [];
+                    for(var i=0; i<obj.length; i++){
+                        if(obj[i].checked){
+                            objArray.push(obj[i].id);
+                        }
+                    }
+                }
+            }, {
+                text: "取消", iconCls: 'icon-cancel',
+                handler: function () {
 
+                }
+            }
         ],
         onBeforeLoad: function (param) {
             $.extend(param, reqTreeObj);

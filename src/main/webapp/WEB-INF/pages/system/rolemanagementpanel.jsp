@@ -27,7 +27,10 @@
     <table id="rolesGrid"></table>
 </div>
 <div data-options="region:'center'">
+
     <table id="reourecesGrid"></table>
+
+
 </div>
 <!--新增窗口-->
 <div id="addRolesWin">
