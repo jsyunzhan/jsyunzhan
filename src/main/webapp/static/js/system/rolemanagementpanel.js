@@ -66,7 +66,10 @@ $(function () {
                 url: url, type: "POST", contentType: "application/json", timeout: 360000, cache: false,
                 data: JSON.stringify(addRoleData),
                 success: function (serverResponse) {
-
+                    if (serverResponse.success){
+                        $rolesGrid.datagrid('reload');
+                        $addRolesWin.window('close');
+                    }
                 }
             });
 

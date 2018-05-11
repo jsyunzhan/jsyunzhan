@@ -42,6 +42,6 @@ public class RoleManagementServiceImpl implements RoleManagementService{
 
     @Override
     public Boolean addRole(RoleEntity roleEntity) {
-        return roleDao.addRole(roleEntity);
+        return roleDao.addRole(roleEntity) > 0;
     }
 }

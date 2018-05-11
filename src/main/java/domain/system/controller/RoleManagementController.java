@@ -54,6 +54,8 @@ public class RoleManagementController extends AbstractActionController{
     @RequestMapping(value = ROLE_ADD_POST)
     @ResponseBody
     public JsonResponseVO addRole(@RequestBody RoleEntity roleEntity){
+
+        roleEntity.setCreateUserId(getLoginId());
         JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
 
         final Boolean flag = roleManagementService.addRole(roleEntity);
