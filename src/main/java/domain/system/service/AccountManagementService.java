@@ -31,4 +31,11 @@ public interface AccountManagementService {
      * @return List<RoleEntity>
      */
     List<RoleEntity> getAllRole();
+
+    /**
+     * 用户添加
+     * @param accountEntity 添加实体
+     * @return Boolean
+     */
+    Boolean accountAdd(AccountEntity accountEntity);
 }

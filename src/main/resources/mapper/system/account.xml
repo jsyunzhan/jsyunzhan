@@ -8,7 +8,7 @@
     </sql>
 
 
-    <!--根据用户名查询-->
+    <!--根据用户名查询-用登录验证-->
     <select id="accoutInfo" resultType="AccountEntityInfo">
         select
         t.ID id,
@@ -37,11 +37,11 @@
         CREATE_USER_ID,
         CREATE_DATA
         ) VALUE (
-        userName,
-        loginName,
-        password,
-        roleId,
-        createUserId,
+        #{userName},
+        #{loginName},
+        #{password},
+        #{roleId},
+        #{createUserId},
         NOW()
         )
     </insert>

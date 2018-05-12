@@ -54,4 +54,9 @@ public class AccountManagementServiceImpl implements AccountManagementService{
     public List<RoleEntity> getAllRole() {
         return roleDao.getAllRole();
     }
+
+    @Override
+    public Boolean accountAdd(AccountEntity accountEntity) {
+        return accountDao.addAccout(accountEntity) > 0;
+    }
 }

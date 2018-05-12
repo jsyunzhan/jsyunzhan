@@ -64,4 +64,9 @@ public final class SystemWebURLMapping {
      * 获取所有角色,下拉框加载
      */
     public static final String GET_ALL_ROLE = ACCOUNT_MANAGEMENT_PAGE + "/getAllRole";
+
+    /**
+     * 新增
+     */
+    public static final String ACCOUNT_ADD_POST = ACCOUNT_MANAGEMENT_PAGE + "/add";
 }

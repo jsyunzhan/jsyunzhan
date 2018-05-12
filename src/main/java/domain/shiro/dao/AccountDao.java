@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface AccountDao {
     /**
-     * 获取用户信息
+     * 获取用户信息-用于登录
      * @param loginName 登录名
      * @return AccountEntity 用户信息
      */
@@ -37,4 +37,11 @@ public interface AccountDao {
      * @return List<AccountEntity>
      */
     List<AccountEntity> accountListInfo(AccountEntity accountEntity);
+
+    /**
+     * 用户添加
+     * @param accountEntity 添加实体
+     * @return Integer
+     */
+    Integer accountAdd(AccountEntity accountEntity);
 }

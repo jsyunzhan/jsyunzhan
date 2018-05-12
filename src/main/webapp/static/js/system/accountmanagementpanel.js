@@ -104,7 +104,18 @@ $(function () {
                 return;
             }
 
-            alert("1")
+            var accountData = $addAccountForm.serializeObject(),
+                url = "/system/accountmanpage/add";
+
+            $.ajax({
+                url:url,type:"POST",contentType: "application/json",data:JSON.stringify(accountData),
+                success:function (r) {
+                    $accountGrid.datagrid('reload');
+                    $addAccountWin.window('close');
+                    showInfoMessage(SYSTEM_MESSAGE.msg_action_success)
+                }
+            })
+
         }
     });
 

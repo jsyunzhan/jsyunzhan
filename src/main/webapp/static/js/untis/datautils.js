@@ -8,7 +8,6 @@ function getPage(param) {
 }
 
 //角色验证是否重复
-
 function checkRoleName(data) {
     var flag = false;
     $.ajax({
@@ -19,3 +18,13 @@ function checkRoleName(data) {
     });
     return flag;
 }
+
+//验证密码是否一样
+$.extend($.fn.validatebox.defaults.rules, {
+    passwordMatch: {
+        validator: function (value, param) {
+            return value == $(param[0]).val();
+        },
+        message: "两次输入密码不匹配"
+    }
+});
