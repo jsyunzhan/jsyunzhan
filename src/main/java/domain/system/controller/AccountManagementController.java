@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -74,5 +75,12 @@ public class AccountManagementController extends AbstractActionController{
         final Boolean flage = accountManagementService.accountAdd(accountEntity);
         jsonResponseVO.setSuccess(flage);
         return jsonResponseVO;
+    }
+
+    @RequestMapping(value = CHECK_LOGIN_NAME)
+    @ResponseBody
+    public Boolean checkLoginName(@RequestParam(value = "id",required = false) Long id,
+                                         @RequestParam("loginName") String loginName){
+        return accountManagementService.checkLoginName(id,loginName);
     }
 }

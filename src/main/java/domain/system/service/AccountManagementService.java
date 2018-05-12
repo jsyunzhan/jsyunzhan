@@ -38,4 +38,12 @@ public interface AccountManagementService {
      * @return Boolean
      */
     Boolean accountAdd(AccountEntity accountEntity);
+
+    /**
+     * 新增和修改，验证登录名是否重
+     * @param id id
+     * @param loginName 登录名
+     * @return Boolean
+     */
+    Boolean checkLoginName(Long id, String loginName);
 }

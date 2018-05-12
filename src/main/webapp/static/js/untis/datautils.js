@@ -19,6 +19,18 @@ function checkRoleName(data) {
     return flag;
 }
 
+//登录名验证是否重复
+function checkLoginName(data) {
+    var flag = false;
+    $.ajax({
+        url: "/system/accountmanpage/checkaccountname" , type: "POST", dataType:"json",data:data,async: false,
+        success: function (r) {
+            flag = r;
+        }
+    });
+    return flag;
+}
+
 //验证密码是否一样
 $.extend($.fn.validatebox.defaults.rules, {
     passwordMatch: {

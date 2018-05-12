@@ -1,6 +1,7 @@
 package domain.shiro.dao;
 
 import domain.shiro.entity.AccountEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -44,4 +45,12 @@ public interface AccountDao {
      * @return Integer
      */
     Integer accountAdd(AccountEntity accountEntity);
+
+    /**
+     * 根据id和 loginName获取个数-用于新增和修改的验证
+     * @param id id
+     * @param loginName 登录名
+     * @return Integer
+     */
+    Integer checkLoginName(@Param("id") Long id,@Param("loginName") String loginName);
 }

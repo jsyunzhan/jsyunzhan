@@ -107,6 +107,12 @@ $(function () {
             var accountData = $addAccountForm.serializeObject(),
                 url = "/system/accountmanpage/add";
 
+            var data = {loginName:accountData.loginName};
+            if (!checkLoginName(data)){
+                showWarningMessage("已存在的登录名，请重新输入");
+                return
+            }
+
             $.ajax({
                 url:url,type:"POST",contentType: "application/json",data:JSON.stringify(accountData),
                 success:function (r) {

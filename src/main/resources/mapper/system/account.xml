@@ -74,4 +74,15 @@
         LIMIT #{rows} OFFSET #{page}
         <include refid="accountConditionSql"/>
     </select>
+
+    <!--判断loginName是否重复-->
+    <select id="checkLoginName" resultType="Integer">
+        SELECT COUNT(*)
+        FROM t_sys_account t
+        WHERE t.DELETE_FLAG='1'
+        AND t.LOGIN_NAME = #{loginName}
+        <if test="id!=null">
+            AND t.ID!= #{id}
+        </if>
+    </select>
 </mapper>
