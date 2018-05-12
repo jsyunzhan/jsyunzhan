@@ -1,6 +1,5 @@
 package domain.system.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import domain.shiro.controller.AbstractActionController;
 import domain.shiro.entity.JsonResponseVO;
 import domain.shiro.entity.PageQueryResult;
@@ -13,11 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Map;
 
-import static com.alibaba.fastjson.JSON.toJSONString;
-import static com.google.common.collect.Maps.newHashMapWithExpectedSize;
-import static domain.shiro.entity.SystemConfig.ROWS;
+import static domain.shiro.entity.SystemConfig.ZERO;
 import static domain.system.SystemWebForward.ROLEMANAGEMENTPANEL;
 import static domain.system.SystemWebURLMapping.*;
 
@@ -29,8 +25,8 @@ public class RoleManagementController extends AbstractActionController{
 
     private final RoleManagementService roleManagementService;
 
+    private static final String RESOURCE_NAME = "resourceName";
     private static final String PARENT_ID = "parentId";
-    private static final String EASYUI_PARENT_ID = "_parentId";
 
     @Autowired
     public RoleManagementController (RoleManagementService roleManagementService){
@@ -114,18 +110,31 @@ public class RoleManagementController extends AbstractActionController{
 
     @RequestMapping(value = RESOURCES_LIST_GET)
     @ResponseBody
-    public JSONObject resourceList(){
+    public List resourceList(){
 
         final List<ResourceEntity> list = roleManagementService.resourceList();
 
-        long root = 0;
-        list.get(0).setParentId(root);
+//        long root = 0;
+//        list.get(0).setParentId(root);
+//
+//
+//        final Map<String, Object> organizationMap = newHashMapWithExpectedSize(1);
+//        organizationMap.put(ROWS, list);
+//        String res = toJSONString(organizationMap);
+//        res = res.replaceAll(PARENT_ID, EASYUI_PARENT_ID);
+//        return JSONObject.parseObject(res);
 
-
-        final Map<String, Object> organizationMap = newHashMapWithExpectedSize(1);
-        organizationMap.put(ROWS, list);
-        String res = toJSONString(organizationMap);
-        res = res.replaceAll(PARENT_ID, EASYUI_PARENT_ID);
-        return JSONObject.parseObject(res);
+        List treeList = null;
+        try {
+            treeList = createTreeGridTree(list, ZERO, ResourceEntity.class,
+                    RESOURCE_NAME, PARENT_ID);
+        } catch (ClassNotFoundException e) {
+//            LOGGER.error("构建树反射未找到类异常:", e);
+        } catch (IllegalAccessException e) {
+//            LOGGER.error("构建树反射安全权限异常:", e);
+        } catch (NoSuchFieldException e) {
+//            LOGGER.error("构建树反射未找到文件异常:", e);
+        }
+        return treeList;
     }
 }
