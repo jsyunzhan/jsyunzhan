@@ -49,4 +49,10 @@ public interface RoleDao {
      * @return Boolean
      */
     Boolean deleRole(@Param("id") Long id,@Param("updateUserId") Long loginId);
+
+    /**
+     * 获取所有角色-供下拉框加载
+     * @return List<RoleEntity>
+     */
+    List<RoleEntity> getAllRole();
 }

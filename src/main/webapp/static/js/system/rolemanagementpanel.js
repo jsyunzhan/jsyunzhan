@@ -117,7 +117,7 @@ $(function () {
     });
 
     var $addRolesWin = $('#addRolesWin').window({
-        title: "新增", closed: true, modal: true, height: 215,
+        title: "新增", closed: true, modal: true, height: 143,
         width: 360, iconCls: 'icon-add', collapsible: false, minimizable: false,
         footer: '#addRolesWinFooter',
         onClose: function () {
@@ -168,7 +168,7 @@ $(function () {
     });
 
     var $editRolesWin = $('#editRolesWin').window({
-        title: "修改", closed: true, modal: true, height: 215,
+        title: "修改", closed: true, modal: true, height: 143,
         width: 360, iconCls: 'icon-edit', collapsible: false, minimizable: false,
         footer: '#editRolesWinFooter',
         onClose: function () {

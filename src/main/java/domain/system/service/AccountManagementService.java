@@ -2,6 +2,9 @@ package domain.system.service;
 
 import domain.shiro.entity.AccountEntity;
 import domain.shiro.entity.PageQueryResult;
+import domain.system.entity.RoleEntity;
+
+import java.util.List;
 
 /**
  * 用户管理接口
@@ -17,9 +20,15 @@ public interface AccountManagementService {
 
 
     /**
-     *
+     *分页
      * @param  accountEntity
      * @return PageQueryResult
      */
     PageQueryResult accountListInof(AccountEntity accountEntity);
+
+    /**
+     * 获取所有角色，下拉框加载
+     * @return List<RoleEntity>
+     */
+    List<RoleEntity> getAllRole();
 }

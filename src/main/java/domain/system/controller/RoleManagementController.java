@@ -134,7 +134,7 @@ public class RoleManagementController extends AbstractActionController{
      * @param authorizationVOEntity 授权实体
      * @return JsonResponseVO
      */
-    @RequestMapping(value = "/system/rolemanpage/authorization")
+    @RequestMapping(value = RESOURCES_AUTHORIZATION)
     @ResponseBody
     public JsonResponseVO authorization(@RequestBody AuthorizationVOEntity authorizationVOEntity){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);

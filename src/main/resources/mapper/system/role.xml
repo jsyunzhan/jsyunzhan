@@ -74,5 +74,14 @@
         UPDATE_DATA=NOW()
         WHERE ID=#{id}
     </update>
+
+    <!--获取所有角色-供下拉框加载-->
+    <select id="getAllRole" resultType="RoleEntityInfo">
+        SELECT
+        t.ID id,
+        t.ROLE_NAME roleName
+        FROM t_sys_role t
+        WHERE t.DELETE_FLAG='1'
+    </select>
 </mapper>
 
