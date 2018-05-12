@@ -114,16 +114,6 @@ public class RoleManagementController extends AbstractActionController{
 
         final List<ResourceEntity> list = roleManagementService.resourceList();
 
-//        long root = 0;
-//        list.get(0).setParentId(root);
-//
-//
-//        final Map<String, Object> organizationMap = newHashMapWithExpectedSize(1);
-//        organizationMap.put(ROWS, list);
-//        String res = toJSONString(organizationMap);
-//        res = res.replaceAll(PARENT_ID, EASYUI_PARENT_ID);
-//        return JSONObject.parseObject(res);
-
         List treeList = null;
         try {
             treeList = createTreeGridTree(list, ZERO, ResourceEntity.class,
