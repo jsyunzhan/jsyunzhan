@@ -45,13 +45,36 @@ $(function () {
                 }
             },
             {
-                text: "获取", iconCls: 'icon-remove',
+                text: "树确定", iconCls: 'icon-remove',
                 handler: function () {
 
-                    var nodes = $('#reourecesTree').tree('getChecked');
+                    var data = $('#reourecesTree').tree('getChecked'),
+                    url = "/system/rolemanpage/authorization";
+
+                    var reourecesArray = [];
+
+                    for (var i=0;i<data.length;i++){
+                        reourecesArray.push({id:data[i].id});
+                    }
 
 
-                    console.log(nodes);
+                    var data = {resourceEntities:reourecesArray,roleId:selectedrole.id};
+                    $.ajax({
+                        url:url,type:"POST",contentType: "application/json",data:JSON.stringify(data),
+                        success:function (r) {
+                            showInfoMessage(SYSTEM_MESSAGE.msg_action_success)
+                        }
+                    })
+
+
+                }
+            },
+            {
+                text: "树取消", iconCls: 'icon-remove',
+                handler: function () {
+
+                    $('#reourecesTree').tree('reload');
+
 
                 }
             }
@@ -74,7 +97,11 @@ $(function () {
                     reourceObj = r;
                 }
             });
-            $('#reourecesTree').tree({cascadeCheck:false});
+            $('#reourecesTree').tree('reload');
+
+
+
+            //$("#reourecesTree").tree('uncheck', childNode[i].target);
 
         },
         onLoadSuccess: function () {
@@ -217,13 +244,28 @@ $(function () {
     /****************************************右边树*****************************/
 
     var $reourecesTree = $('#reourecesTree').tree({
-        url: '/system/rolemanpage/resources', method: 'GET', checkbox:true,animate: true,lines: true,
+        url: '/system/rolemanpage/resources', method: 'GET', checkbox:true,animate: true,lines: true,cascadeCheck: false,
         onLoadSuccess: function (node, param) {
             for (var i=0;i<reourceObj.length;i++){
                 var node = $('#reourecesTree').tree('find', reourceObj[i].id);
                 $('#reourecesTree').tree('check', node.target);
             }
 
+        },
+        onCheck: function(node, checked) {
+            if(checked) {
+                var parentNode = $("#reourecesTree").tree('getParent', node.target);
+                if(parentNode != null) {
+                    $("#reourecesTree").tree('check', parentNode.target);
+                }
+            } else {
+                var childNode = $("#reourecesTree").tree('getChildren', node.target);
+                if(childNode.length > 0) {
+                    for(var i = 0; i < childNode.length; i++) {
+                        $("#reourecesTree").tree('uncheck', childNode[i].target);
+                    }
+                }
+            }
         }
     });
 

@@ -39,6 +39,8 @@ public final class SystemWebURLMapping {
      */
     public static final String ROLE_DELETE_GET = ROLE_MANAGEMENT_PAGE + "/delete/{id}";
 
+
+
     /**
      * 资源数
      */

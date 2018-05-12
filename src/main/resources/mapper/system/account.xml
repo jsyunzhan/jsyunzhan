@@ -34,7 +34,7 @@
         LOGIN_NAME,
         PASSWORD,
         ROLE_ID,
-        CREATE_USER_ID
+        CREATE_USER_ID,
         CREATE_DATA
         ) VALUE (
         userName,
