@@ -1,6 +1,5 @@
 
 var reourceObj = [];
-
 $(function () {
 
     var selectedrole, reqObj = {};
@@ -44,6 +43,17 @@ $(function () {
                 handler: function () {
                     removeHandle();
                 }
+            },
+            {
+                text: "获取", iconCls: 'icon-remove',
+                handler: function () {
+
+                    var nodes = $('#reourecesTree').tree('getChecked');
+
+
+                    console.log(nodes);
+
+                }
             }
 
         ],
@@ -52,21 +62,19 @@ $(function () {
             $.extend(param, reqObj);
         },
         onSelect: function (index, row) {
+
             selectedrole = row;
             var roleId = row.id;
 
             $.ajax({
                 url: '/security/resources/'+roleId,
                 type: 'GET',
-                dataType: "json",
+                dataType: "json",async: false,
                 success: function (r) {
                     reourceObj = r;
-                    console.log(r);
-                    console.log(reourceObj);
                 }
             });
-
-            loadTree();
+            $('#reourecesTree').tree({cascadeCheck:false});
 
         },
         onLoadSuccess: function () {
@@ -207,68 +215,16 @@ $(function () {
 
 
     /****************************************右边树*****************************/
-    var selectedOrganization, reqTreeObj = {};
 
-    // function loadTree() {
-    //     var $reourecesGrid = $('#reourecesGrid').tree({
-    //         url: '/system/rolemanpage/resources', method: 'GET',
-    //         treeField:'resourceName',
-    //         rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
-    //         singleSelect: true, border: false, remoteSort: false,
-    //         columns: [[
-    //             {
-    //                 field: 'resourceName', title: "资源名称", width: 300, sortable: true,
-    //                 align: 'left',formatter:function (value,rowData,rowIndex) {
-    //
-    //                 var flag = true;
-    //
-    //                 for (var i=0;i<reourceObj.length;i++){
-    //                     if (reourceObj[i].id=rowData.id){
-    //                         flag = false;
-    //                         return "<input id='"+ rowData.id +"'  type='checkbox' name='checkName' checked>" + rowData.resourceName;
-    //                     }
-    //                 }
-    //
-    //                 if (flag){
-    //                     return "<input id='"+ rowData.id +"'  type='checkbox' name='checkName'>" + rowData.resourceName;
-    //                 }
-    //
-    //             }
-    //             }
-    //         ]],
-    //         toolbar: [
-    //             {
-    //                 text: "确定", iconCls: 'icon-ok',
-    //                 handler: function () {
-    //                     var obj=document.getElementsByName('checkName');
-    //                     var objArray = [];
-    //                     for(var i=0; i<obj.length; i++){
-    //                         if(obj[i].checked){
-    //                             objArray.push(obj[i].id);
-    //                         }
-    //                     }
-    //                 }
-    //             }, {
-    //                 text: "取消", iconCls: 'icon-cancel',
-    //                 handler: function () {
-    //
-    //                 }
-    //             }
-    //         ],
-    //         onBeforeLoad: function (param) {
-    //             $.extend(param, reqTreeObj);
-    //         },
-    //         onSelect: function (row) {
-    //             selectedOrganization = row;
-    //         },
-    //         onLoadSuccess: function () {
-    //             selectedOrganization = $reourecesGrid.treegrid('getSelected');
-    //         }
-    //     });
-    // }
+    var $reourecesTree = $('#reourecesTree').tree({
+        url: '/system/rolemanpage/resources', method: 'GET', checkbox:true,animate: true,lines: true,
+        onLoadSuccess: function (node, param) {
+            for (var i=0;i<reourceObj.length;i++){
+                var node = $('#reourecesTree').tree('find', reourceObj[i].id);
+                $('#reourecesTree').tree('check', node.target);
+            }
 
-    var $measureUnitGroupTree = $('#reourecesGrid').tree({
-        url: '/system/rolemanpage/resources', method: 'GET', checkbox:true
+        }
     });
 
 });

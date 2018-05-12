@@ -28,7 +28,7 @@
 </div>
 <div data-options="region:'center'">
 
-    <table id="reourecesGrid"></table>
+    <table id="reourecesTree"></table>
 
 
 </div>

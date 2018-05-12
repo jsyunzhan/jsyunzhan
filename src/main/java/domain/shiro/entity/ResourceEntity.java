@@ -25,6 +25,8 @@ public class ResourceEntity extends AbstractEntity{
     //父标题ID,一级标题为空
     private Long parentId;
 
+    private Boolean checked = true;
+
     @Override
     public String toString() {
         return "ResourceEntity{" +
