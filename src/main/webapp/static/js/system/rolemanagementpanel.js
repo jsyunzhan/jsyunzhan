@@ -1,3 +1,6 @@
+
+var reourceObj = [];
+
 $(function () {
 
     var selectedrole, reqObj = {};
@@ -50,6 +53,21 @@ $(function () {
         },
         onSelect: function (index, row) {
             selectedrole = row;
+            var roleId = row.id;
+
+            $.ajax({
+                url: '/security/resources/'+roleId,
+                type: 'GET',
+                dataType: "json",
+                success: function (r) {
+                    reourceObj = r;
+                    console.log(r);
+                    console.log(reourceObj);
+                }
+            });
+
+            loadTree();
+
         },
         onLoadSuccess: function () {
             selectedrole = $rolesGrid.datagrid('getSelected');
@@ -190,46 +208,68 @@ $(function () {
 
     /****************************************右边树*****************************/
     var selectedOrganization, reqTreeObj = {};
-    var $reourecesGrid = $('#reourecesGrid').treegrid({
-        url: '/system/rolemanpage/resources', method: 'GET',
-        treeField:'resourceName',
-        rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
-        singleSelect: true, border: false, remoteSort: false,
-        columns: [[
-            {
-                field: 'resourceName', title: "资源名称", width: 300, sortable: true,
-                align: 'left',formatter:function (value,rowData,rowIndex) {
-                return "<input id='"+ rowData.id +"'  type='checkbox' name='checkName' >" + rowData.resourceName;
-                }
-            }
-        ]],
-        toolbar: [
-            {
-                text: "确定", iconCls: 'icon-ok',
-                handler: function () {
-                    var obj=document.getElementsByName('checkName');
-                    var objArray = [];
-                    for(var i=0; i<obj.length; i++){
-                        if(obj[i].checked){
-                            objArray.push(obj[i].id);
-                        }
-                    }
-                }
-            }, {
-                text: "取消", iconCls: 'icon-cancel',
-                handler: function () {
 
-                }
-            }
-        ],
-        onBeforeLoad: function (param) {
-            $.extend(param, reqTreeObj);
-        },
-        onSelect: function (row) {
-            selectedOrganization = row;
-        },
-        onLoadSuccess: function () {
-            selectedOrganization = $reourecesGrid.treegrid('getSelected');
-        }
+    // function loadTree() {
+    //     var $reourecesGrid = $('#reourecesGrid').tree({
+    //         url: '/system/rolemanpage/resources', method: 'GET',
+    //         treeField:'resourceName',
+    //         rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
+    //         singleSelect: true, border: false, remoteSort: false,
+    //         columns: [[
+    //             {
+    //                 field: 'resourceName', title: "资源名称", width: 300, sortable: true,
+    //                 align: 'left',formatter:function (value,rowData,rowIndex) {
+    //
+    //                 var flag = true;
+    //
+    //                 for (var i=0;i<reourceObj.length;i++){
+    //                     if (reourceObj[i].id=rowData.id){
+    //                         flag = false;
+    //                         return "<input id='"+ rowData.id +"'  type='checkbox' name='checkName' checked>" + rowData.resourceName;
+    //                     }
+    //                 }
+    //
+    //                 if (flag){
+    //                     return "<input id='"+ rowData.id +"'  type='checkbox' name='checkName'>" + rowData.resourceName;
+    //                 }
+    //
+    //             }
+    //             }
+    //         ]],
+    //         toolbar: [
+    //             {
+    //                 text: "确定", iconCls: 'icon-ok',
+    //                 handler: function () {
+    //                     var obj=document.getElementsByName('checkName');
+    //                     var objArray = [];
+    //                     for(var i=0; i<obj.length; i++){
+    //                         if(obj[i].checked){
+    //                             objArray.push(obj[i].id);
+    //                         }
+    //                     }
+    //                 }
+    //             }, {
+    //                 text: "取消", iconCls: 'icon-cancel',
+    //                 handler: function () {
+    //
+    //                 }
+    //             }
+    //         ],
+    //         onBeforeLoad: function (param) {
+    //             $.extend(param, reqTreeObj);
+    //         },
+    //         onSelect: function (row) {
+    //             selectedOrganization = row;
+    //         },
+    //         onLoadSuccess: function () {
+    //             selectedOrganization = $reourecesGrid.treegrid('getSelected');
+    //         }
+    //     });
+    // }
+
+    var $measureUnitGroupTree = $('#reourecesGrid').tree({
+        url: '/system/rolemanpage/resources', method: 'GET', checkbox:true
     });
+
 });
+

@@ -15,4 +15,9 @@ public final class SystemConfig {
      * 字符串
      */
     public static final String ROWS = "rows";
+
+    /**
+     * 字符串-0
+     */
+    public static final String ZERO = "0";
 }
