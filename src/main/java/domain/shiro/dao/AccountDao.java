@@ -53,4 +53,19 @@ public interface AccountDao {
      * @return Integer
      */
     Integer checkLoginName(@Param("id") Long id,@Param("loginName") String loginName);
+
+    /**
+     * 用户修改
+     * @param accountEntity 修改实体
+     * @return Boolean
+     */
+    Boolean editAccount(AccountEntity accountEntity);
+
+    /**
+     * 删除
+     * @param id id
+     * @param loginId 登录id
+     * @return Boolean
+     */
+    Boolean deleteAccount(@Param("id") Long id,@Param("updateUserId") Long loginId);
 }

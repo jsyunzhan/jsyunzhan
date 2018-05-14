@@ -1,7 +1,7 @@
 $(function () {
 
     /*****************下拉框加载************************/
-    var $addRoleId = $('#addRoleId').combobox({
+    var $addRoleId = $('#addRoleId,#editRoleId').combobox({
         panelHeight: 'auto', valueField: 'id',
         textField: 'roleName', editable: false
     });
@@ -49,11 +49,11 @@ $(function () {
                 text: "修改", iconCls: 'icon-edit',
                 handler: function () {
 
-                    if (!selectedrole) {
+                    if (!selectedaccount) {
                         showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
                     } else {
-                        $editRolesForm.form('load', selectedrole);
-                        $editRolesWin.window('open');
+                        $editAccountForm.form('load', selectedaccount);
+                        $editAccountWin.window('open');
                     }
 
                 }
@@ -130,4 +130,79 @@ $(function () {
             $addAccountWin.window('close');
         }
     });
+
+    /*************修改*******************/
+
+    $('#editPassword').textbox({
+        validType: 'passwordMatch["#editConfirmPassword"]'
+    });
+
+    var $editAccountForm = $('#editAccountForm').form({
+        novalidate: true
+    });
+
+    var $editAccountWin = $('#editAccountWin').window({
+        title: "修改", closed: true, modal: true, height: 260,
+        width: 360, iconCls: 'icon-edit', collapsible: false, minimizable: false,
+        footer: '#editAccountWinFooter',
+        onClose: function () {
+            $('#editAccountForm').form('disableValidation').form('reset');
+        }
+    });
+
+    $('#editAccountWinSubmitBtn').linkbutton({
+        onClick: function () {
+            if (!$('#editAccountForm').form('enableValidation').form('validate')) {
+                return;
+            }
+
+            var accountData = $editAccountForm.serializeObject(),
+                url = "/system/accountmanpage/edit";
+
+            var data = {id:selectedaccount.id,loginName:accountData.loginName};
+            if (!checkLoginName(data)){
+                showWarningMessage("已存在的登录名，请重新输入");
+                return
+            }
+
+            accountData.id = selectedaccount.id;
+            $.ajax({
+                url:url,type:"POST",contentType: "application/json",data:JSON.stringify(accountData),
+                success:function (r) {
+                    $accountGrid.datagrid('reload');
+                    $editAccountWin.window('close');
+                    showInfoMessage(SYSTEM_MESSAGE.msg_action_success)
+                }
+            })
+
+        }
+    });
+
+    $('#editAccountWinCloseBtn').linkbutton({
+        onClick: function () {
+            $editAccountWin.window('close');
+        }
+    });
+
+    /************删除*************/
+
+    function removeHandle() {
+        if (!selectedaccount) {
+            showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
+            return
+        }
+
+
+        var msg = String.format("您确定要删除用户：<span style='color: red;'>{0}</span>？", selectedaccount.userName);
+
+        showConfirm(msg, function () {
+            $.ajax({
+                url:"/system/accountmanpage/delete/"+selectedaccount.id,
+                type:"GET",dataType:"json",
+                success:function (r) {
+                    $accountGrid.datagrid('reload');
+                }
+            })
+        })
+    }
 });

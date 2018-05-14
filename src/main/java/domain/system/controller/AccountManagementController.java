@@ -8,10 +8,7 @@ import domain.system.entity.RoleEntity;
 import domain.system.service.AccountManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -77,6 +74,39 @@ public class AccountManagementController extends AbstractActionController{
         return jsonResponseVO;
     }
 
+    /**
+     * 用户修改
+     * @param accountEntity 修改实体
+     * @return JsonResponseVO
+     */
+    @RequestMapping(value = ACCOUNT_EDIT_POST)
+    @ResponseBody
+    public JsonResponseVO accountEdit(@RequestBody AccountEntity accountEntity){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        accountEntity.setUpdateUserId(getLoginId());
+        final Boolean flag = accountManagementService.accountEdit(accountEntity);
+
+        return jsonResponseVO;
+
+    }
+
+    @RequestMapping(value = ACCOUNT_DELETE_POST)
+    @ResponseBody
+    public JsonResponseVO accountDelete(@PathVariable("id") Long id){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+
+        final Boolean flag = accountManagementService.accountDelete(id,getLoginId());
+        jsonResponseVO.setSuccess(flag);
+        return jsonResponseVO;
+    }
+
+
+    /**
+     * 验证登录名是否，重复
+     * @param id id
+     * @param loginName 登录名
+     * @return Boolean 
+     */
     @RequestMapping(value = CHECK_LOGIN_NAME)
     @ResponseBody
     public Boolean checkLoginName(@RequestParam(value = "id",required = false) Long id,

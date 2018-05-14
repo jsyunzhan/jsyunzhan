@@ -60,7 +60,6 @@
         t.ID id,
         t.USER_NAME userName,
         t.LOGIN_NAME loginName,
-        t.PASSWORD password,
         t.ROLE_ID roleId,
         b.ROLE_NAME roleName,
         t.CREATE_USER_ID createUserId,
@@ -85,4 +84,25 @@
             AND t.ID!= #{id}
         </if>
     </select>
+
+    <!--修改-->
+    <update id="editAccount">
+        UPDATE t_sys_account SET
+        USER_NAME=#{userName},
+        LOGIN_NAME=#{loginName},
+        PASSWORD=#{password},
+        ROLE_ID=#{roleId},
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
+
+    <!--删除-->
+    <update id="deleteAccount">
+        UPDATE t_sys_account SET
+        DELETE_FLAG='0',
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
 </mapper>

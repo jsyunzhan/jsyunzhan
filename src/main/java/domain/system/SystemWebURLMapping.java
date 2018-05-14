@@ -71,6 +71,16 @@ public final class SystemWebURLMapping {
     public static final String ACCOUNT_ADD_POST = ACCOUNT_MANAGEMENT_PAGE + "/add";
 
     /**
+     * 新增
+     */
+    public static final String ACCOUNT_EDIT_POST = ACCOUNT_MANAGEMENT_PAGE + "/edit";
+
+    /**
+     * 删除
+     */
+    public static final String ACCOUNT_DELETE_POST = ACCOUNT_MANAGEMENT_PAGE + "/delete/{id}";
+
+    /**
      * 验证登录名是否重复
      */
     public static final String CHECK_LOGIN_NAME = ACCOUNT_MANAGEMENT_PAGE + "/checkaccountname";

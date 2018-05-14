@@ -64,4 +64,14 @@ public class AccountManagementServiceImpl implements AccountManagementService{
     public Boolean checkLoginName(Long id, String loginName) {
         return accountDao.checkLoginName(id,loginName) < 1;
     }
+
+    @Override
+    public Boolean accountEdit(AccountEntity accountEntity) {
+        return accountDao.editAccount(accountEntity);
+    }
+
+    @Override
+    public Boolean accountDelete(Long id, Long loginId) {
+        return accountDao.deleteAccount(id,loginId);
+    }
 }

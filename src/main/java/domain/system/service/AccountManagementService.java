@@ -46,4 +46,19 @@ public interface AccountManagementService {
      * @return Boolean
      */
     Boolean checkLoginName(Long id, String loginName);
+
+    /**
+     * 用户修改
+     * @param accountEntity 修改实体
+     * @return Boolean
+     */
+    Boolean accountEdit(AccountEntity accountEntity);
+
+    /**
+     * 删除
+     * @param id id
+     * @param loginId 登录id
+     * @return Boolean
+     */
+    Boolean accountDelete(Long id, Long loginId);
 }
