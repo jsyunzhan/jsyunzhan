@@ -48,7 +48,7 @@
                     <th width="100"><label class="control-label required-mark" style="width:100px">角色名称</label>
                     </th>
                     <td width="200"><input id="addRoleId" class="easyui-textbox control" name="roleId" required="required"
-                                           data-options="prompt:'请输入...'"/></td>
+                                           data-options="prompt:'请选择...'"/></td>
                 </tr>
 
                 <tr>
