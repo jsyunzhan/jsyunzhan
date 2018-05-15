@@ -17,14 +17,14 @@
 <body class="easyui-layout">
 
 <div style="height:110px" data-options="region:'north',collapsible:false">
-    <form id="queryManufacturerFrom" name="queryOperationLogFrom" method="post">
+    <form id="queryLitenerFrom" name="queryLitenerFrom" method="post">
         <table align="center" style="line-height: 30px;margin-top: 10px">
             <tr>
-                <td><span style="margin-left: 15px;"><spring:message code="lab.manufacturer.manufacturer"/>听课人员姓名</td>
-                <td><input id="manufacturer" class="easyui-textbox" name="manufacturer" data-options="prompt:'请输入...'"/></td>
+                <td><span style="margin-left: 15px;">听课人员姓名</td>
+                <td><input class="easyui-textbox" name="listenerName" data-options="prompt:'请输入...'"/></td>
 
-                <td><span style="margin-left: 15px;"><spring:message code="lab.manufacturer.nationId"/>听课人员姓名</td>
-                <td><input id="manufacturerNationId" class="easyui-textbox" name="nationId" data-options="prompt:'请输入...'"></td>
+                <td><span style="margin-left: 15px;">听课人员身份证</td>
+                <td><input class="easyui-textbox" name="listenerNumb" data-options="prompt:'请输入...'"></td>
             </tr>
         </table>
         <table align="center" style="margin-bottom: 10px;margin-top: 10px">

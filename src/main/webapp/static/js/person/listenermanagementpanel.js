@@ -67,4 +67,28 @@ $(function () {
             selectedlistener = $listenerGrid.datagrid('getSelected');
         }
     });
+
+    /********************查询**************************/
+    var $queryLitenerFrom = $('#queryLitenerFrom').form({
+        novalidate: true
+    });
+
+    $('#logSearch').linkbutton({
+        iconCls: 'icon-ok',
+        onClick: function () {
+            reqObj = $queryLitenerFrom.serializeObject();
+
+
+            $listenerGrid.datagrid('load');
+        }
+    });
+
+    $('#logResert').linkbutton({
+        iconCls: 'icon-cancel',
+        onClick: function () {
+            reqObj = null;
+            $queryLitenerFrom.form('reset');
+            $listenerGrid.datagrid('reload');
+        }
+    });
 });
