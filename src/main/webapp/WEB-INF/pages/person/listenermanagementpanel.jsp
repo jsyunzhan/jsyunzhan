@@ -52,7 +52,7 @@
         <form id="addListenerForm" class="control-form">
             <table class="table_list" style="text-align: right;margin:3px;width:99%">
                 <tr>
-                    <th width="100"><label class="control-label required-mark" style="width:100px"
+                    <th width="120"><label class="control-label required-mark" style="width:100px"
                                            required="required">听课人员姓名
 
                     </label>
@@ -62,22 +62,22 @@
                 </tr>
 
                 <tr>
-                    <th width="100"><label class="control-label required-mark" style="width:100px"
+                    <th width="120"><label class="control-label required-mark" style="width:110px"
                                            required="required">听课人员身份证
 
                     </label>
                     </th>
-                    <td width="200"><input class="easyui-textbox control" name="ListenerNumb" required="required"
+                    <td width="200"><input class="easyui-textbox control" name="listenerNumb" required="required"
                                            data-options="prompt:'请输入...'"/></td>
                 </tr>
 
                 <tr>
-                    <th width="100"><label class="control-label required-mark" style="width:100px">是否拥有权限</label>
+                    <th width="120"><label class="control-label required-mark" style="width:100px">是否拥有权限</label>
                     </th>
                     <td width="200">
-                        <select class="easyui-combobox" name="permissionFlag" required="required" data-options="width:'174px',panelHeight:'auto',editable:false">
-                            <option value="1">否</option>
-                            <option value="0">是</option>
+                        <select class="easyui-combobox" name="permissionFlag" required="required" data-options="width:'169',panelHeight:'auto',editable:false">
+                            <option value="0">否</option>
+                            <option value="1">是</option>
                         </select>
                     </td>
                 </tr>

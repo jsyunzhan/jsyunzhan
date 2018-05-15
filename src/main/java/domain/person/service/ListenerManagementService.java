@@ -10,4 +10,11 @@ public interface ListenerManagementService {
      * @return PageQueryResult
      */
     PageQueryResult listenerList(ListenerEntity listenerEntity);
+
+    /**
+     * 听课人员新增
+     * @param listenerEntity 新增实体
+     * @return Boolean
+     */
+    Boolean addListener(ListenerEntity listenerEntity);
 }

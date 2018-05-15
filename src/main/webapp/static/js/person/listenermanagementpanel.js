@@ -97,8 +97,8 @@ $(function () {
     });
 
     var $addListenerWin = $('#addListenerWin').window({
-        title: "新增", closed: true, modal: true, height: 260,
-        width: 360, iconCls: 'icon-add', collapsible: false, minimizable: false,
+        title: "新增", closed: true, modal: true, height: 200,
+        width: 375, iconCls: 'icon-add', collapsible: false, minimizable: false,
         footer: '#addListenerWinFooter',
         onClose: function () {
             $('#addListenerForm').form('disableValidation').form('reset');
@@ -111,20 +111,15 @@ $(function () {
                 return;
             }
 
-            var accountData = $addAccountForm.serializeObject(),
-                url = "/system/accountmanpage/add";
+            var listenerData = $addListenerForm.serializeObject(),
+                url = "/person/listenermanpage/add";
 
-            var data = {loginName:accountData.loginName};
-            if (!checkLoginName(data)){
-                showWarningMessage("已存在的登录名，请重新输入");
-                return
-            }
 
             $.ajax({
-                url:url,type:"POST",contentType: "application/json",data:JSON.stringify(accountData),
+                url:url,type:"POST",contentType: "application/json",data:JSON.stringify(listenerData),
                 success:function (r) {
-                    $accountGrid.datagrid('reload');
-                    $addAccountWin.window('close');
+                    $listenerGrid.datagrid('reload');
+                    $addListenerWin.window('close');
                     showInfoMessage(SYSTEM_MESSAGE.msg_action_success)
                 }
             })

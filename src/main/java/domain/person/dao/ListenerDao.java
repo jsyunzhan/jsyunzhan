@@ -20,4 +20,11 @@ public interface ListenerDao {
      * @return List<ListenerEntity>
      */
     List<ListenerEntity> listenerListInof(ListenerEntity listenerEntity);
+
+    /**
+     * 听课人员新增
+     * @param listenerEntity 新增实体
+     * @return Integer
+     */
+    Integer addListener(ListenerEntity listenerEntity);
 }

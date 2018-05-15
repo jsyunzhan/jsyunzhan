@@ -38,4 +38,21 @@
         LIMIT #{rows} OFFSET #{page}
     </select>
 
+    <!--听课人员新增-->
+    <insert id="addListener" >
+        INSERT INTO t_person_listener
+        (
+        LISTENER_NAME,
+        LISTENER_NUMB,
+        PERMISSION_FLAG,
+        CREATE_USER_ID,
+        CREATE_DATA
+        ) VALUE (
+        #{listenerName},
+        #{listenerNumb},
+        #{permissionFlag},
+        #{createUserId},
+        NOW()
+        )
+    </insert>
 </mapper>

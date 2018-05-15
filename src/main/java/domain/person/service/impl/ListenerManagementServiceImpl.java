@@ -39,4 +39,9 @@ public class ListenerManagementServiceImpl implements ListenerManagementService{
         pageQueryResult.setTotal(count);
         return pageQueryResult;
     }
+
+    @Override
+    public Boolean addListener(ListenerEntity listenerEntity) {
+        return listenerDao.addListener(listenerEntity) > 0;
+    }
 }
