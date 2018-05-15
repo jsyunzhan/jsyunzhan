@@ -40,9 +40,14 @@ public final class SystemWebURLMapping {
     public static final String ROLE_DELETE_GET = ROLE_MANAGEMENT_PAGE + "/delete/{id}";
 
     /**
-     * 资源数
+     * 资源树
      */
     public static final String RESOURCES_LIST_GET = ROLE_MANAGEMENT_PAGE + "/resources";
+
+    /**
+     * 授权
+     */
+    public static final String RESOURCES_AUTHORIZATION = ROLE_MANAGEMENT_PAGE + "/authorization";
 
     /*------------------用户管理--------------------------------------------------------- */
     /**
@@ -54,4 +59,29 @@ public final class SystemWebURLMapping {
      * 分页
      */
     public static final String ACCOUT_LIST_GET = ACCOUNT_MANAGEMENT_PAGE + "/accountlist";
+
+    /**
+     * 获取所有角色,下拉框加载
+     */
+    public static final String GET_ALL_ROLE = ACCOUNT_MANAGEMENT_PAGE + "/getAllRole";
+
+    /**
+     * 新增
+     */
+    public static final String ACCOUNT_ADD_POST = ACCOUNT_MANAGEMENT_PAGE + "/add";
+
+    /**
+     * 新增
+     */
+    public static final String ACCOUNT_EDIT_POST = ACCOUNT_MANAGEMENT_PAGE + "/edit";
+
+    /**
+     * 删除
+     */
+    public static final String ACCOUNT_DELETE_POST = ACCOUNT_MANAGEMENT_PAGE + "/delete/{id}";
+
+    /**
+     * 验证登录名是否重复
+     */
+    public static final String CHECK_LOGIN_NAME = ACCOUNT_MANAGEMENT_PAGE + "/checkaccountname";
 }

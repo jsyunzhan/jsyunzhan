@@ -4,6 +4,7 @@ import domain.shiro.dao.ResourceDao;
 import domain.shiro.entity.PageQueryResult;
 import domain.shiro.entity.ResourceEntity;
 import domain.system.dao.RoleDao;
+import domain.system.entity.AuthorizationVOEntity;
 import domain.system.entity.RoleEntity;
 import domain.system.service.RoleManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +69,20 @@ public class RoleManagementServiceImpl implements RoleManagementService{
     @Override
     public List<ResourceEntity> resourceList() {
         return resourceDao.resourceList();
+    }
+
+    @Override
+    public Boolean authorization(AuthorizationVOEntity authorizationVOEntity, Long loginId) {
+        final Long roleId = authorizationVOEntity.getRoleId();
+        final List<ResourceEntity> resourceEntities = authorizationVOEntity.getResourceEntities();
+
+        resourceDao.deleteResourceByRoleId(roleId,loginId);
+
+        for (ResourceEntity resourceEntity:
+        resourceEntities) {
+            resourceEntity.setCreateUserId(loginId);
+            resourceDao.addAuthorization(resourceEntity.getId(),roleId,loginId);
+        }
+        return Boolean.TRUE;
     }
 }

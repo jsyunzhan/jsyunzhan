@@ -10,5 +10,6 @@ public class SystemWebForward {
     //角色管理页面
     public final static String ROLEMANAGEMENTPANEL = "system/rolemanagementpanel";
 
-    public final static String ACCOUNTMANAGEMENTPANEL = "accountmanagementpanel";
+    //用户管理页面
+    public final static String ACCOUNTMANAGEMENTPANEL = "system/accountmanagementpanel";
 }

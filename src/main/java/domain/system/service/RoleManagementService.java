@@ -2,6 +2,7 @@ package domain.system.service;
 
 import domain.shiro.entity.PageQueryResult;
 import domain.shiro.entity.ResourceEntity;
+import domain.system.entity.AuthorizationVOEntity;
 import domain.system.entity.RoleEntity;
 
 import java.util.List;
@@ -44,4 +45,13 @@ public interface RoleManagementService {
      * @return List<ResourceEntity> 资源数
      */
     List<ResourceEntity> resourceList();
+
+    /**
+     * 授权
+     * 先删除，再授权
+     * @param authorizationVOEntity 授权实体
+     * @param loginId 当前登录id
+     * @return Boolean
+     */
+    Boolean authorization(AuthorizationVOEntity authorizationVOEntity, Long loginId);
 }

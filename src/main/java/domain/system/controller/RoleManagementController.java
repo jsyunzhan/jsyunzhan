@@ -4,6 +4,7 @@ import domain.shiro.controller.AbstractActionController;
 import domain.shiro.entity.JsonResponseVO;
 import domain.shiro.entity.PageQueryResult;
 import domain.shiro.entity.ResourceEntity;
+import domain.system.entity.AuthorizationVOEntity;
 import domain.system.entity.RoleEntity;
 import domain.system.service.RoleManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,5 +127,19 @@ public class RoleManagementController extends AbstractActionController{
 //            LOGGER.error("构建树反射未找到文件异常:", e);
         }
         return treeList;
+    }
+
+    /**
+     * 授权
+     * @param authorizationVOEntity 授权实体
+     * @return JsonResponseVO
+     */
+    @RequestMapping(value = RESOURCES_AUTHORIZATION)
+    @ResponseBody
+    public JsonResponseVO authorization(@RequestBody AuthorizationVOEntity authorizationVOEntity){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        final Boolean flag = roleManagementService.authorization(authorizationVOEntity,getLoginId());
+        jsonResponseVO.setSuccess(flag);
+        return jsonResponseVO;
     }
 }
