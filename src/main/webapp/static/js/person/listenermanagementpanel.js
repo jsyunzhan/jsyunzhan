@@ -20,10 +20,10 @@ $(function () {
             },
             {
                 field: 'permissionFlag', title: "是否拥有权限", width: 100, sortable: true,
-                align: 'left'
+                align: 'left',formatter:permissionResult
             },{
                 field: 'openId', title: "是否注册", width: 100, sortable: true,
-                align: 'left'
+                align: 'left',formatter:registeredResult
             }
 
         ]],
@@ -91,4 +91,24 @@ $(function () {
             $listenerGrid.datagrid('reload');
         }
     });
+
+    /*********************是否拥有权限***********************/
+    function permissionResult(value, row, index) {
+
+        if ('0' == value) {
+            return "<span style='color:red;'>" + '否' + "</span>";
+        } else if ('1' == value) {
+            return "<span style='color:blue;'>" + '是' + "</span>";
+        }
+    }
+
+    /*********************是否注册***********************/
+    function registeredResult(value, row, index) {
+
+        if ('' == value || null == value) {
+            return "<span style='color:red;'>" + '否' + "</span>";
+        } else {
+            return "<span style='color:blue;'>" + '是' + "</span>";
+        }
+    }
 });
