@@ -85,7 +85,7 @@ $(function () {
                 handler: function () {
 
                     if (selectedlistener.permissionFlag == '0'){
-                        showWarningMessage("该用户没有有权限，请重新选择！");
+                        showWarningMessage("该用户没有权限，请重新选择！");
                         return
                     }
 
