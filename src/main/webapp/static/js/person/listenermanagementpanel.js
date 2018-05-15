@@ -19,7 +19,7 @@ $(function () {
                 align: 'left'
             },
             {
-                field: 'schoolName', title: "学校名称", width: 100, sortable: true,
+                field: 'schoolName', title: "单位", width: 100, sortable: true,
                 align: 'left'
             },
             {

@@ -26,7 +26,7 @@
                     <%--<td><span style="margin-left: 15px;">听课人员身份证</td>--%>
                     <%--<td><input class="easyui-textbox" name="listenerNumb" data-options="prompt:'请输入...'"></td>--%>
 
-                    <td><span style="margin-left: 15px;">学校名称</span></td>
+                    <td><span style="margin-left: 15px;">单位</span></td>
                     <td><input class="easyui-textbox" name="schoolName" data-options="prompt:'请输入...'"></td>
                 </tr>
             </table>
@@ -76,7 +76,7 @@
 
                 <tr>
                     <th width="120"><label class="control-label required-mark" style="width:110px"
-                                           required="required">学校名称
+                                           required="required">单位
 
                     </label>
                     </th>
@@ -136,7 +136,7 @@
 
                 <tr>
                     <th width="120"><label class="control-label required-mark" style="width:110px"
-                                           required="required">学校名称
+                                           required="required">单位
 
                     </label>
                     </th>
