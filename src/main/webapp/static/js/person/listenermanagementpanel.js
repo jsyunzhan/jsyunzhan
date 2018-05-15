@@ -77,8 +77,6 @@ $(function () {
         iconCls: 'icon-ok',
         onClick: function () {
             reqObj = $queryLitenerFrom.serializeObject();
-
-
             $listenerGrid.datagrid('load');
         }
     });
