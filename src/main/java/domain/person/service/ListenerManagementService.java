@@ -32,4 +32,12 @@ public interface ListenerManagementService {
      * @return Boolean
      */
     Boolean deleteListener(Long id, Long loginId);
+
+    /**
+     * 听课人员授权
+     * @param id id
+     * @param loginId 当前登录id
+     * @return Boolean
+     */
+    Boolean authorizationListener(Long id, Long loginId);
 }

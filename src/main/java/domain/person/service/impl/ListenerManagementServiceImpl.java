@@ -54,4 +54,9 @@ public class ListenerManagementServiceImpl implements ListenerManagementService{
     public Boolean deleteListener(Long id, Long loginId) {
         return listenerDao.deleteListener(id,loginId) > 0;
     }
+
+    @Override
+    public Boolean authorizationListener(Long id, Long loginId) {
+        return listenerDao.authorizationListener(id,loginId) >0;
+    }
 }

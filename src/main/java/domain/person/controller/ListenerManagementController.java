@@ -75,11 +75,30 @@ public class ListenerManagementController extends AbstractActionController{
         return jsonResponseVO;
     }
 
+    /**
+     * 听课人员删除
+     * @param id id
+     * @return JsonResponseVO
+     */
     @RequestMapping(value = LISTENER_MAN_DELETE)
     @ResponseBody
     public JsonResponseVO deleteListener(@PathVariable("id") Long id){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
         final Boolean flag = listenerManagementService.deleteListener(id,getLoginId());
+        jsonResponseVO.setSuccess(flag);
+        return jsonResponseVO;
+    }
+
+    /**
+     * 听课人员授权
+     * @param id id
+     * @return JsonResponseVO
+     */
+    @RequestMapping(value = LISTENER_MAN_AUTHORIZATION)
+    @ResponseBody
+    public JsonResponseVO  authorizationListener(@PathVariable("id") Long id){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        final Boolean flag = listenerManagementService.authorizationListener(id,getLoginId());
         jsonResponseVO.setSuccess(flag);
         return jsonResponseVO;
     }

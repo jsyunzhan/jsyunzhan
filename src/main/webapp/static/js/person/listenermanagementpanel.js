@@ -52,6 +52,24 @@ $(function () {
                 handler: function () {
                     removeHandle();
                 }
+            },
+            {
+                text: "授权", iconCls: 'icon-remove',
+                handler: function () {
+
+                    var msg = String.format("您确定要授权用户：<span style='color: red;'>{0}</span>？", selectedlistener.listenerName);
+
+                    showConfirm(msg, function () {
+                        $.ajax({
+                            url:"/person/listenermanpage/authorization/"+selectedlistener.id,
+                            type:"GET",dataType:"json",
+                            success:function (r) {
+                                $listenerGrid.datagrid('reload');
+                            }
+                        })
+                    })
+
+                }
             }
 
         ],

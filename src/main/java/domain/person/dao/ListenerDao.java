@@ -43,4 +43,12 @@ public interface ListenerDao {
      * @return Integer
      */
     Integer deleteListener(@Param("id") Long id,@Param("updateUserId") Long loginId);
+
+    /**
+     * 听课人员授权
+     * @param id id
+     * @param loginId 当前登录id
+     * @return 当前登录id
+     */
+    Integer authorizationListener(@Param("id") Long id,@Param("updateUserId") Long loginId);
 }

@@ -29,4 +29,7 @@ public class PersonWebURLMapping {
 
     //听课人员删除
     public final static String LISTENER_MAN_DELETE= LISTENER_MAN_PAGE + "/delete/{id}";
+
+    //听课人员删除
+    public final static String LISTENER_MAN_AUTHORIZATION= LISTENER_MAN_PAGE + "/authorization/{id}";
 }

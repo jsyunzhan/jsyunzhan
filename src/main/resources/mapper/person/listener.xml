@@ -75,4 +75,13 @@
         UPDATE_DATA=NOW()
         WHERE ID=#{id}
     </update>
+
+    <!--授权-->
+    <update id="authorizationListener">
+        UPDATE t_person_listener SET
+        PERMISSION_FLAG='1',
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
 </mapper>
