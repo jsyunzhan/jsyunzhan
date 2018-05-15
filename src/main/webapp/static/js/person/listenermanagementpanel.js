@@ -31,7 +31,7 @@ $(function () {
             {
                 text: "新增", iconCls: 'icon-add',
                 handler: function () {
-                    $addAccountWin.window('open');
+                    $addListenerWin.window('open');
                 }
             },
             {
@@ -90,6 +90,54 @@ $(function () {
         }
     });
 
+    /*************新增*******************/
+
+    var $addListenerForm = $('#addListenerForm').form({
+        novalidate: true
+    });
+
+    var $addListenerWin = $('#addListenerWin').window({
+        title: "新增", closed: true, modal: true, height: 260,
+        width: 360, iconCls: 'icon-add', collapsible: false, minimizable: false,
+        footer: '#addListenerWinFooter',
+        onClose: function () {
+            $('#addListenerForm').form('disableValidation').form('reset');
+        }
+    });
+
+    $('#addListenerWinSubmitBtn').linkbutton({
+        onClick: function () {
+            if (!$('#addListenerForm').form('enableValidation').form('validate')) {
+                return;
+            }
+
+            var accountData = $addAccountForm.serializeObject(),
+                url = "/system/accountmanpage/add";
+
+            var data = {loginName:accountData.loginName};
+            if (!checkLoginName(data)){
+                showWarningMessage("已存在的登录名，请重新输入");
+                return
+            }
+
+            $.ajax({
+                url:url,type:"POST",contentType: "application/json",data:JSON.stringify(accountData),
+                success:function (r) {
+                    $accountGrid.datagrid('reload');
+                    $addAccountWin.window('close');
+                    showInfoMessage(SYSTEM_MESSAGE.msg_action_success)
+                }
+            })
+
+        }
+    });
+
+    $('#addListenerWinCloseBtn').linkbutton({
+        onClick: function () {
+            $addListenerWin.window('close');
+        }
+    });
+
     /*********************是否拥有权限***********************/
     function permissionResult(value, row, index) {
 
@@ -109,4 +157,5 @@ $(function () {
             return "<span style='color:blue;'>" + '是' + "</span>";
         }
     }
+
 });
