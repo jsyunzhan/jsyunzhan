@@ -7,9 +7,11 @@ import domain.shiro.entity.PageQueryResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import static domain.person.PersonWebForward.LISTEER_PAGE;
+import static domain.person.PersonWebURLMapping.LISTENER_MAN_LIST;
 import static domain.person.PersonWebURLMapping.LISTENER_MAN_PAGE;
 
 /**
@@ -35,6 +37,8 @@ public class ListenerManagementController extends AbstractActionController{
      * @param listenerEntity 分页实体
      * @return PageQueryResult
      */
+    @RequestMapping(value = LISTENER_MAN_LIST)
+    @ResponseBody
     public PageQueryResult listenerList(ListenerEntity listenerEntity){
         return listenerManagementService.listenerList(listenerEntity);
     }

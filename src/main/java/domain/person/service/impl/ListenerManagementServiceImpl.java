@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
+
 @Service
 @Transactional
 public class ListenerManagementServiceImpl implements ListenerManagementService{
@@ -24,6 +28,15 @@ public class ListenerManagementServiceImpl implements ListenerManagementService{
         final PageQueryResult pageQueryResult = new PageQueryResult();
 
         final Integer count = listenerDao.listenerCount(listenerEntity);
-        return null;
+
+        List<ListenerEntity> listenerEntities = newArrayList();
+
+        if (count > 0){
+            listenerEntities = listenerDao.listenerListInof(listenerEntity);
+        }
+
+        pageQueryResult.setRows(listenerEntities);
+        pageQueryResult.setTotal(count);
+        return pageQueryResult;
     }
 }

@@ -1,7 +1,7 @@
 $(function () {
     var selectedlistener, reqObj = {};
     var $listenerGrid = $('#listenerGrid').datagrid({
-        url: '/person/listenermanpage/listenerlist', method: 'GET',
+        url: '/person/listenermanpage/list', method: 'GET',
         rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
         singleSelect: true,
         border: false,
@@ -11,17 +11,21 @@ $(function () {
         pageList: [10, 50, 100, 150],
         columns: [[
             {
-                field: 'userName', title: "用户名", width: 100, sortable: true,
+                field: 'listenerName', title: "听课人员姓名", width: 100, sortable: true,
                 align: 'left'
             },
             {
-                field: 'loginName', title: "登录名", width: 100, sortable: true,
+                field: 'listenerNumb', title: "听课人员身份证", width: 100, sortable: true,
                 align: 'left'
             },
             {
-                field: 'roleName', title: "角色名称", width: 100, sortable: true,
+                field: 'permissionFlag', title: "是否拥有权限", width: 100, sortable: true,
+                align: 'left'
+            },{
+                field: 'openId', title: "是否注册", width: 100, sortable: true,
                 align: 'left'
             }
+
         ]],
         toolbar: [
             {

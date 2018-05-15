@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="domain.person.dao.ListenerDao">
+
+
+    <!--查总数-->
+    <select id="listenerCount" resultType="Integer">
+        SELECT COUNT(*)
+        FROM t_person_listener t
+        WHERE t.DELETE_FLAG='1'
+    </select>
+
+    <!--查询集合-->
+    <select id="listenerListInof" resultType="ListenerEntityInfo">
+        SELECT
+        t.ID id,
+        t.LISTENER_NAME listenerName,
+        t.LISTENER_NUMB listenerNumb,
+        t.PERMISSION_FLAG permissionFlag,
+        t.OPEN_ID openId,
+        t.CREATE_USER_ID createUserId,
+        t.CREATE_DATA createDate,
+        t.UPDATE_USER_ID updateUserId,
+        t.UPDATE_DATA updateDate
+        FROM t_person_listener t
+        WHERE t.DELETE_FLAG='1'
+        ORDER BY t.CREATE_DATA
+        LIMIT #{rows} OFFSET #{page}
+    </select>
+
+</mapper>
