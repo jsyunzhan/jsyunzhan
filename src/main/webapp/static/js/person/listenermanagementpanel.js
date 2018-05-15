@@ -38,11 +38,11 @@ $(function () {
                 text: "修改", iconCls: 'icon-edit',
                 handler: function () {
 
-                    if (!selectedaccount) {
+                    if (!selectedlistener) {
                         showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
                     } else {
-                        $editAccountForm.form('load', selectedaccount);
-                        $editAccountWin.window('open');
+                        $editListenerForm.form('load', selectedlistener);
+                        $editListenerWin.window('open');
                     }
 
                 }
@@ -130,6 +130,50 @@ $(function () {
     $('#addListenerWinCloseBtn').linkbutton({
         onClick: function () {
             $addListenerWin.window('close');
+        }
+    });
+
+    /*************修改*******************/
+
+    var $editListenerForm = $('#editListenerForm').form({
+        novalidate: true
+    });
+
+    var $editListenerWin = $('#editListenerWin').window({
+        title: "修改", closed: true, modal: true, height: 200,
+        width: 375, iconCls: 'icon-edit', collapsible: false, minimizable: false,
+        footer: '#editListenerWinFooter',
+        onClose: function () {
+            $('#editListenerForm').form('disableValidation').form('reset');
+        }
+    });
+
+    $('#editListenerWinSubmitBtn').linkbutton({
+        onClick: function () {
+            if (!$('#editListenerForm').form('enableValidation').form('validate')) {
+                return;
+            }
+
+            var listenerData = $editListenerForm.serializeObject(),
+                url = "/person/listenermanpage/edit";
+
+            listenerData.id = selectedlistener.id;
+
+            $.ajax({
+                url:url,type:"POST",contentType: "application/json",data:JSON.stringify(listenerData),
+                success:function (r) {
+                    $listenerGrid.datagrid('reload');
+                    $editListenerWin.window('close');
+                    showInfoMessage(SYSTEM_MESSAGE.msg_action_success)
+                }
+            })
+
+        }
+    });
+
+    $('#editListenerWinCloseBtn').linkbutton({
+        onClick: function () {
+            $editListenerWin.window('close');
         }
     });
 

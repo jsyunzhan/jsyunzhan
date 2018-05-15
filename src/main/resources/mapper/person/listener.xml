@@ -55,4 +55,15 @@
         NOW()
         )
     </insert>
+
+    <!--修改-->
+    <update id="editListener">
+        UPDATE t_person_listener SET
+        LISTENER_NAME=#{listenerName},
+        LISTENER_NUMB=#{listenerNumb},
+        PERMISSION_FLAG=#{permissionFlag},
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
 </mapper>

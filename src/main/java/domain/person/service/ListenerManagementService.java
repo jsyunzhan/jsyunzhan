@@ -17,4 +17,11 @@ public interface ListenerManagementService {
      * @return Boolean
      */
     Boolean addListener(ListenerEntity listenerEntity);
+
+    /**
+     * 听课人员修改
+     * @param listenerEntity 修改实体
+     * @return Boolean
+     */
+    Boolean editListener(ListenerEntity listenerEntity);
 }

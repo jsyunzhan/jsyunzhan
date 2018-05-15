@@ -21,6 +21,9 @@ public class PersonWebURLMapping {
     //听课人员管理分页
     public final static String LISTENER_MAN_LIST = LISTENER_MAN_PAGE + "/list";
 
-    //听课人员管理分页
+    //听课人员新增
     public final static String LISTENER_MAN_ADD = LISTENER_MAN_PAGE + "/add";
+
+    //听课人员修改
+    public final static String LISTENER_MAN_EDIT = LISTENER_MAN_PAGE + "/edit";
 }

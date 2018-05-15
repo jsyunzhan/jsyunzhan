@@ -44,4 +44,9 @@ public class ListenerManagementServiceImpl implements ListenerManagementService{
     public Boolean addListener(ListenerEntity listenerEntity) {
         return listenerDao.addListener(listenerEntity) > 0;
     }
+
+    @Override
+    public Boolean editListener(ListenerEntity listenerEntity) {
+        return listenerDao.editListener(listenerEntity) > 0;
+    }
 }

@@ -27,4 +27,11 @@ public interface ListenerDao {
      * @return Integer
      */
     Integer addListener(ListenerEntity listenerEntity);
+
+    /**
+     * 听课人员修改
+     * @param listenerEntity 修改实体
+     * @return
+     */
+    Integer editListener(ListenerEntity listenerEntity);
 }

@@ -58,4 +58,19 @@ public class ListenerManagementController extends AbstractActionController{
         jsonResponseVO.setSuccess(flag);
         return jsonResponseVO;
     }
+
+    /**
+     * 听课人员修改
+     * @param listenerEntity 修改实体
+     * @return JsonResponseVO
+     */
+    @RequestMapping(value = LISTENER_MAN_EDIT)
+    @ResponseBody
+    public JsonResponseVO editListener(@RequestBody ListenerEntity listenerEntity){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        listenerEntity.setUpdateUserId(getLoginId());
+        final Boolean flag = listenerManagementService.editListener(listenerEntity);
+        jsonResponseVO.setSuccess(flag);
+        return jsonResponseVO;
+    }
 }
