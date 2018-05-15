@@ -24,4 +24,12 @@ public interface ListenerManagementService {
      * @return Boolean
      */
     Boolean editListener(ListenerEntity listenerEntity);
+
+    /**
+     * 听课人员删除
+     * @param id id
+     * @param loginId 当前登录id
+     * @return Boolean
+     */
+    Boolean deleteListener(Long id, Long loginId);
 }

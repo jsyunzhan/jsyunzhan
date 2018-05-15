@@ -1,6 +1,7 @@
 package domain.person.dao;
 
 import domain.person.entity.ListenerEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -31,7 +32,15 @@ public interface ListenerDao {
     /**
      * 听课人员修改
      * @param listenerEntity 修改实体
-     * @return
+     * @return Integer
      */
     Integer editListener(ListenerEntity listenerEntity);
+
+    /**
+     * 听课人员删除
+     * @param id id
+     * @param loginId 当前登录id
+     * @return Integer
+     */
+    Integer deleteListener(@Param("id") Long id,@Param("updateUserId") Long loginId);
 }

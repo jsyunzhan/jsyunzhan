@@ -7,6 +7,7 @@ import domain.shiro.entity.JsonResponseVO;
 import domain.shiro.entity.PageQueryResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -70,6 +71,15 @@ public class ListenerManagementController extends AbstractActionController{
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
         listenerEntity.setUpdateUserId(getLoginId());
         final Boolean flag = listenerManagementService.editListener(listenerEntity);
+        jsonResponseVO.setSuccess(flag);
+        return jsonResponseVO;
+    }
+
+    @RequestMapping(value = LISTENER_MAN_DELETE)
+    @ResponseBody
+    public JsonResponseVO deleteListener(@PathVariable("id") Long id){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        final Boolean flag = listenerManagementService.deleteListener(id,getLoginId());
         jsonResponseVO.setSuccess(flag);
         return jsonResponseVO;
     }

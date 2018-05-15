@@ -26,4 +26,7 @@ public class PersonWebURLMapping {
 
     //听课人员修改
     public final static String LISTENER_MAN_EDIT = LISTENER_MAN_PAGE + "/edit";
+
+    //听课人员删除
+    public final static String LISTENER_MAN_DELETE= LISTENER_MAN_PAGE + "/delete/{id}";
 }

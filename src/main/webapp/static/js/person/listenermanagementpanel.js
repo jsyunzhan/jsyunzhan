@@ -177,6 +177,28 @@ $(function () {
         }
     });
 
+    /************删除*************/
+
+    function removeHandle() {
+        if (!selectedlistener) {
+            showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
+            return
+        }
+
+
+        var msg = String.format("您确定要删除用户：<span style='color: red;'>{0}</span>？", selectedlistener.listenerName);
+
+        showConfirm(msg, function () {
+            $.ajax({
+                url:"/person/listenermanpage/delete/"+selectedlistener.id,
+                type:"GET",dataType:"json",
+                success:function (r) {
+                    $listenerGrid.datagrid('reload');
+                }
+            })
+        })
+    }
+
     /*********************是否拥有权限***********************/
     function permissionResult(value, row, index) {
 

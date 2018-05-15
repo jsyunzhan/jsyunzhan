@@ -66,4 +66,13 @@
         UPDATE_DATA=NOW()
         WHERE ID=#{id}
     </update>
+
+    <!--删除-->
+    <update id="deleteListener">
+        UPDATE t_person_listener SET
+        DELETE_FLAG='0',
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
 </mapper>

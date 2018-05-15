@@ -49,4 +49,9 @@ public class ListenerManagementServiceImpl implements ListenerManagementService{
     public Boolean editListener(ListenerEntity listenerEntity) {
         return listenerDao.editListener(listenerEntity) > 0;
     }
+
+    @Override
+    public Boolean deleteListener(Long id, Long loginId) {
+        return listenerDao.deleteListener(id,loginId) > 0;
+    }
 }
