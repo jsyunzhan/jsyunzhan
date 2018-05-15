@@ -40,4 +40,12 @@ public interface ListenerManagementService {
      * @return Boolean
      */
     Boolean authorizationListener(Long id, Long loginId);
+
+    /**
+     * 解除授权
+     * @param id id
+     * @param loginId 当前登录id
+     * @return Boolean
+     */
+    Boolean authorizationListenerNot(Long id, Long loginId);
 }

@@ -102,4 +102,13 @@ public class ListenerManagementController extends AbstractActionController{
         jsonResponseVO.setSuccess(flag);
         return jsonResponseVO;
     }
+
+    @RequestMapping(value = LISTENER_MAN_AUTHORIZATION_NOT)
+    @ResponseBody
+    public JsonResponseVO authorizationListenerNot(@PathVariable("id") Long id){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        final Boolean flag = listenerManagementService.authorizationListenerNot(id,getLoginId());
+        jsonResponseVO.setSuccess(flag);
+        return jsonResponseVO;
+    }
 }

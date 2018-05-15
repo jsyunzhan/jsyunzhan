@@ -59,4 +59,9 @@ public class ListenerManagementServiceImpl implements ListenerManagementService{
     public Boolean authorizationListener(Long id, Long loginId) {
         return listenerDao.authorizationListener(id,loginId) >0;
     }
+
+    @Override
+    public Boolean authorizationListenerNot(Long id, Long loginId) {
+        return listenerDao.authorizationListenerNot(id,loginId) >0;
+    }
 }

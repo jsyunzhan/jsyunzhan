@@ -30,6 +30,9 @@ public class PersonWebURLMapping {
     //听课人员删除
     public final static String LISTENER_MAN_DELETE= LISTENER_MAN_PAGE + "/delete/{id}";
 
-    //听课人员删除
+    //听课人员授权
     public final static String LISTENER_MAN_AUTHORIZATION= LISTENER_MAN_PAGE + "/authorization/{id}";
+
+    //听课人员解除授权
+    public final static String LISTENER_MAN_AUTHORIZATION_NOT= LISTENER_MAN_PAGE + "/authorizationnot/{id}";
 }
