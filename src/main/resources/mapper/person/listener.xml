@@ -9,6 +9,9 @@
         <if test="listenerNumb!=null and listenerNumb!=''">
             AND t.LISTENER_NUMB like concat(concat('%',#{listenerNumb}),'%')
         </if>
+        <if test="schoolName!=null and schoolName!=''">
+            AND t.SCHOOL_NAME like concat(concat('%',#{schoolName}),'%')
+        </if>
     </sql>
 
     <!--查总数-->
@@ -25,6 +28,7 @@
         t.ID id,
         t.LISTENER_NAME listenerName,
         t.LISTENER_NUMB listenerNumb,
+        t.SCHOOL_NAME schoolName,
         t.PERMISSION_FLAG permissionFlag,
         t.OPEN_ID openId,
         t.CREATE_USER_ID createUserId,
@@ -44,12 +48,14 @@
         (
         LISTENER_NAME,
         LISTENER_NUMB,
+        SCHOOL_NAME,
         PERMISSION_FLAG,
         CREATE_USER_ID,
         CREATE_DATA
         ) VALUE (
         #{listenerName},
         #{listenerNumb},
+        #{schoolName},
         #{permissionFlag},
         #{createUserId},
         NOW()
@@ -61,6 +67,7 @@
         UPDATE t_person_listener SET
         LISTENER_NAME=#{listenerName},
         LISTENER_NUMB=#{listenerNumb},
+        SCHOOL_NAME=#{schoolName},
         PERMISSION_FLAG=#{permissionFlag},
         UPDATE_USER_ID=#{updateUserId},
         UPDATE_DATA=NOW()

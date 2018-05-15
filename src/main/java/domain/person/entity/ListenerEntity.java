@@ -14,6 +14,9 @@ public class ListenerEntity extends AbstractEntity {
     //听课人员身份证
     private Long listenerNumb;
 
+    //学校名称
+    private String schoolName;
+
     //查看私有笔记权限(0为没有权限,1为有权限)
     private Long permissionFlag;
 
@@ -25,6 +28,7 @@ public class ListenerEntity extends AbstractEntity {
         return "ListenerEntity{" +
                 "listenerName='" + listenerName + '\'' +
                 ", listenerNumb=" + listenerNumb +
+                ", schoolName='" + schoolName + '\'' +
                 ", permissionFlag=" + permissionFlag +
                 ", openId=" + openId +
                 '}';

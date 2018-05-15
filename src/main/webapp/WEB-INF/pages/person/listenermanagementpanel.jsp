@@ -20,11 +20,14 @@
         <form id="queryLitenerFrom" name="queryLitenerFrom" method="post">
             <table align="center" style="line-height: 30px;margin-top: 10px">
                 <tr>
-                    <td><span style="margin-left: 15px;">听课人员姓名</td>
+                    <td><span style="margin-left: 15px;">听课人员姓名</span></td>
                     <td><input class="easyui-textbox" name="listenerName" data-options="prompt:'请输入...'"/></td>
 
-                    <td><span style="margin-left: 15px;">听课人员身份证</td>
-                    <td><input class="easyui-textbox" name="listenerNumb" data-options="prompt:'请输入...'"></td>
+                    <%--<td><span style="margin-left: 15px;">听课人员身份证</td>--%>
+                    <%--<td><input class="easyui-textbox" name="listenerNumb" data-options="prompt:'请输入...'"></td>--%>
+
+                    <td><span style="margin-left: 15px;">学校名称</span></td>
+                    <td><input class="easyui-textbox" name="schoolName" data-options="prompt:'请输入...'"></td>
                 </tr>
             </table>
             <table align="center" style="margin-bottom: 10px;margin-top: 10px">
@@ -68,6 +71,16 @@
                     </label>
                     </th>
                     <td width="200"><input class="easyui-textbox control" name="listenerNumb" required="required"
+                                           data-options="prompt:'请输入...'"/></td>
+                </tr>
+
+                <tr>
+                    <th width="120"><label class="control-label required-mark" style="width:110px"
+                                           required="required">学校名称
+
+                    </label>
+                    </th>
+                    <td width="200"><input class="easyui-textbox control" name="schoolName" required="required"
                                            data-options="prompt:'请输入...'"/></td>
                 </tr>
 
@@ -118,6 +131,16 @@
                     </label>
                     </th>
                     <td width="200"><input class="easyui-textbox control" name="listenerNumb" required="required"
+                                           data-options="prompt:'请输入...'"/></td>
+                </tr>
+
+                <tr>
+                    <th width="120"><label class="control-label required-mark" style="width:110px"
+                                           required="required">学校名称
+
+                    </label>
+                    </th>
+                    <td width="200"><input class="easyui-textbox control" name="schoolName" required="required"
                                            data-options="prompt:'请输入...'"/></td>
                 </tr>
 

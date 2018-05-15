@@ -19,6 +19,10 @@ $(function () {
                 align: 'left'
             },
             {
+                field: 'schoolName', title: "学校名称", width: 100, sortable: true,
+                align: 'left'
+            },
+            {
                 field: 'permissionFlag', title: "是否拥有权限", width: 100, sortable: true,
                 align: 'left',formatter:permissionResult
             },{
@@ -143,7 +147,7 @@ $(function () {
     });
 
     var $addListenerWin = $('#addListenerWin').window({
-        title: "新增", closed: true, modal: true, height: 200,
+        title: "新增", closed: true, modal: true, height: 228,
         width: 375, iconCls: 'icon-add', collapsible: false, minimizable: false,
         footer: '#addListenerWinFooter',
         onClose: function () {
@@ -186,7 +190,7 @@ $(function () {
     });
 
     var $editListenerWin = $('#editListenerWin').window({
-        title: "修改", closed: true, modal: true, height: 200,
+        title: "修改", closed: true, modal: true, height: 228,
         width: 375, iconCls: 'icon-edit', collapsible: false, minimizable: false,
         footer: '#editListenerWinFooter',
         onClose: function () {
