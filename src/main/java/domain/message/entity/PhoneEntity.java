@@ -1,6 +1,6 @@
 package domain.message.entity;
 
-import domain.shiro.controller.AbstractActionController;
+import domain.shiro.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PhoneEntity extends AbstractActionController{
+public class PhoneEntity extends AbstractEntity{
 
     //标题
     private String title;

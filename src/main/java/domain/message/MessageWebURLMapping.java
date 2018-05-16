@@ -21,4 +21,14 @@ public class MessageWebURLMapping {
     //手机管理页面分页
     public static final String MESSAGE_PHONE_MAN_LIST = MESSAGE_PHONE_MAN_PAGE + "/list";
 
+    //手机公告增加
+    public static final String MESSAGE_PHONE_MAN_ADD = MESSAGE_PHONE_MAN_PAGE + "/add";
+
+    //手机公告增加
+    public static final String MESSAGE_PHONE_MAN_EDIT = MESSAGE_PHONE_MAN_PAGE + "/edit";
+
+    //手机公告删除
+    public static final String MESSAGE_PHONE_MAN_DELETE = MESSAGE_PHONE_MAN_PAGE + "/delete/{id}";
+
+
 }

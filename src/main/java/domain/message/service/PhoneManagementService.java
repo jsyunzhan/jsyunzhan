@@ -10,4 +10,26 @@ public interface PhoneManagementService {
      * @return PageQueryResult
      */
     PageQueryResult phoneMessInfo(PhoneEntity phoneEntity);
+
+    /**
+     * 手机公告新增
+     * @param phoneEntity 新增实体
+     * @return Boolean
+     */
+    Boolean phoneMessAdd(PhoneEntity phoneEntity);
+
+    /**
+     * 手机公告修改
+     * @param phoneEntity 修改实体
+     * @return Boolean
+     */
+    Boolean phoneMessEdit(PhoneEntity phoneEntity);
+
+    /**
+     * 手机公告删除
+     * @param id id
+     * @param loginId 当前登录id
+     * @return Boolean
+     */
+    Boolean phoneMessDelete(Long id, Long loginId);
 }

@@ -26,4 +26,38 @@
         ORDER BY t.CREATE_DATA
     </select>
 
+    <!--手机公告新增-->
+    <insert id="phoneMessAdd" >
+        INSERT INTO t_message_phone
+        (
+        TITLE,
+        MESSAGE,
+        CREATE_USER_ID,
+        CREATE_DATA
+        ) VALUE (
+        #{title},
+        #{message},
+        #{createUserId},
+        NOW()
+        )
+    </insert>
+
+    <!--手机公告修改-->
+    <update id="phoneMessEdit">
+        UPDATE t_message_phone SET
+        TITLE=#{title},
+        MESSAGE=#{message},
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
+
+    <!--手机公告删除-->
+    <update id="phoneMessDelete">
+        UPDATE t_message_phone SET
+        DELETE_FLAG='0',
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
 </mapper>

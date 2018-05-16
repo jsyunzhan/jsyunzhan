@@ -41,4 +41,19 @@ public class PhoneManagementServiceImpl implements PhoneManagementService{
 
         return pageQueryResult;
     }
+
+    @Override
+    public Boolean phoneMessAdd(PhoneEntity phoneEntity) {
+        return phoneDao.phoneMessAdd(phoneEntity) > 0;
+    }
+
+    @Override
+    public Boolean phoneMessEdit(PhoneEntity phoneEntity) {
+        return phoneDao.phoneMessEdit(phoneEntity) > 0;
+    }
+
+    @Override
+    public Boolean phoneMessDelete(Long id, Long loginId) {
+        return phoneDao.phoneMessDelete(id,loginId) > 0;
+    }
 }
