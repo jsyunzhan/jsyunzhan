@@ -68,12 +68,16 @@ $(function () {
         ]],
         toolbar: [
             {
-                text: "查看笔记", iconCls: 'icon-add',
+                text: "听课记录", iconCls: 'icon-add',
                 handler: function () {
-                    $viewListenNoteGrid.datagrid("options").url = 'quremanpage/notelist';
-                    reqListenNoteObj.listenerId = selectedQure.id;
-                    $viewListenNoteGrid.datagrid("load");
-                    $viewListenNoteWin.window('open');
+                    if (!selectedQure) {
+                        showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
+                    }else {
+                        $viewListenNoteGrid.datagrid("options").url = 'quremanpage/notelist';
+                        reqListenNoteObj.listenerId = selectedQure.id;
+                        $viewListenNoteGrid.datagrid("load");
+                        $viewListenNoteWin.window('open');
+                    }
                 }
             }
         ],
@@ -125,7 +129,7 @@ $(function () {
         pageList: [10, 50, 100, 150],
         columns: [[
             {
-                field: 'schoolName', title: "学校", width: 100, sortable: true,
+                field: 'schoolName', title: "听课学校", width: 100, sortable: true,
                 align: 'left'
             },{
                 field: 'className', title: "班级名称", width: 100, sortable: true,
@@ -154,7 +158,14 @@ $(function () {
             {
                 text: "查看详情", iconCls: 'icon-add',
                 handler: function () {
-
+                    if (!selectedListenNote) {
+                        showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
+                    }else {
+                        selectedListenNote.createDate = formatDate(selectedListenNote.createDate);
+                        selectedListenNote.shareFlag = shareResultNotwithColour(selectedListenNote.shareFlag);
+                        $detailListenNoteForm.form('load',selectedListenNote);
+                        $detailListenNoteWin.window('open');
+                    }
                 }
             }
         ],
@@ -195,10 +206,9 @@ $(function () {
         }
     });
 
-    /*************查看详情*******************/
-
+    /*************听课记录*******************/
     var $viewListenNoteWin = $('#viewListenNoteWin').window({
-        title: "查看笔记", closed: true, modal: true, height: 600,
+        title: "听课记录", closed: true, modal: true, height: 600,
         width: 1024, iconCls: 'icon-add', collapsible: false, minimizable: false,
         footer: '#viewListenNoteWinFooter',
         onClose: function () {
@@ -206,11 +216,30 @@ $(function () {
         }
     });
 
-
-
     $('#viewListenNoteWinCloseBtn').linkbutton({
         onClick: function () {
             $viewListenNoteWin.window('close');
+        }
+    });
+
+    /*************听课记录详情*******************/
+
+    var $detailListenNoteForm = $('#detailListenNoteForm').form({
+        novalidate: true
+    });
+
+    var $detailListenNoteWin = $('#detailListenNoteWin').window({
+        title: "查看详情", closed: true, modal: true, height: 400,
+        width: 730, iconCls: 'icon-edit', collapsible: false, minimizable: false,
+        footer: '#detailListenNoteWinFooter',
+        onClose: function () {
+            $('#detailListenNoteForm').form('disableValidation').form('reset');
+        }
+    });
+
+    $('#detailListenNoteWinCloseBtn').linkbutton({
+        onClick: function () {
+            $detailListenNoteWin.window('close');
         }
     });
 
@@ -231,6 +260,15 @@ $(function () {
             return "<span style='color:red;'>" + '否' + "</span>";
         } else {
             return "<span style='color:blue;'>" + '是' + "</span>";
+        }
+    }
+
+    function shareResultNotwithColour(value, row, index) {
+
+        if (0 == value ) {
+            return "否";
+        } else {
+            return "是";
         }
     }
 
