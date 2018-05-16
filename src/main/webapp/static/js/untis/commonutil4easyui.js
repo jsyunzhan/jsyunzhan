@@ -266,17 +266,7 @@ function formatAmount(val) {
     }
 }
 
-/**
- * 只设置日期格式，不包含时间
- * @param val
- * @returns {*}
- */
-function formatDate(val) {
-    if (val == null || val == '' || val == 'undefined') {
-        return "";
-    }
-    return Date.format(val, currentDateFormat);
-}
+
 /**
  * 统计专用
  * @param val

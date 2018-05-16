@@ -53,7 +53,21 @@
         <table id="qureGrid"></table>
     </div>
 
-
+    <!-- 查看详情表单 -->
+    <div id="viewListenNoteWin">
+        <%--<div class="easyui-layout" style="width: 425px;height: 330px;margin:10px 3px">--%>
+            <%----%>
+        <%--</div>--%>
+            <div style="width:100%;height:100%" data-options="region:'west',collapsible:true">
+                <table id="viewListenNoteGrid"></table>
+            </div>
+        <div id="viewListenNoteWinFooter" style="text-align:center;padding:5px">
+            <a id="viewListenNoteWinCloseBtn" href="javascript:void(0);" iconCls="icon-cancel" class="easyui-linkbutton"
+               style="margin-right:20px;">
+                返回
+            </a>
+        </div>
+    </div>
 
 </body>
 </html>

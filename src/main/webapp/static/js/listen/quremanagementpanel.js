@@ -68,9 +68,12 @@ $(function () {
         ]],
         toolbar: [
             {
-                text: "新增", iconCls: 'icon-add',
+                text: "查看笔记", iconCls: 'icon-add',
                 handler: function () {
-                    $addListenerWin.window('open');
+                    $viewListenNoteGrid.datagrid("options").url = 'quremanpage/notelist';
+                    reqListenNoteObj.listenerId = selectedQure.id;
+                    $viewListenNoteGrid.datagrid("load");
+                    $viewListenNoteWin.window('open');
                 }
             }
         ],
@@ -84,6 +87,64 @@ $(function () {
         },
         onLoadSuccess: function () {
             selectedQure = $qureGrid.datagrid('getSelected');
+        }
+    });
+
+    var selectedListenNote, reqListenNoteObj = {};
+    var $viewListenNoteGrid = $('#viewListenNoteGrid').datagrid({
+        method: 'GET',
+        rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
+        singleSelect: true,
+        border: false,
+        remoteSort: false,
+        pagination: true,
+        pageSize: 10,
+        pageList: [10, 50, 100, 150],
+        columns: [[
+            {
+                field: 'schoolName', title: "学校", width: 100, sortable: true,
+                align: 'left'
+            },{
+                field: 'className', title: "班级名称", width: 100, sortable: true,
+                align: 'left'
+            },{
+                field: 'disciplineName', title: "学科", width: 100, sortable: true,
+                align: 'left'
+            },{
+                field: 'teacherName', title: "执教老师", width: 100, sortable: true,
+                align: 'left'
+            },{
+                field: 'scoreName', title: "评分", width: 100, sortable: true,
+                align: 'left'
+            },{
+                field: 'shareFlag', title: "是否分享", width: 100, sortable: true,
+                align: 'left',formatter:shareResult
+            },{
+                field: 'listenPath', title: "听课地址", width: 100, sortable: true,
+                align: 'left'
+            },{
+                field: 'createDate', title: "听课时间", width: 100, sortable: true,
+                align: 'left',formatter:formatDate
+            }
+        ]],
+        toolbar: [
+            {
+                text: "查看详情", iconCls: 'icon-add',
+                handler: function () {
+
+                }
+            }
+        ],
+        onBeforeLoad: function (param) {
+            getPage(param);
+            $.extend(param, reqListenNoteObj);
+        },
+        onSelect: function (index, row) {
+            selectedListenNote = row;
+
+        },
+        onLoadSuccess: function () {
+            selectedListenNote = $viewListenNoteGrid.datagrid('getSelected');
         }
     });
 
@@ -110,6 +171,25 @@ $(function () {
         }
     });
 
+    /*************查看详情*******************/
+
+    var $viewListenNoteWin = $('#viewListenNoteWin').window({
+        title: "查看笔记", closed: true, modal: true, height: 600,
+        width: 1024, iconCls: 'icon-add', collapsible: false, minimizable: false,
+        footer: '#viewListenNoteWinFooter',
+        onClose: function () {
+
+        }
+    });
+
+
+
+    $('#viewListenNoteWinCloseBtn').linkbutton({
+        onClick: function () {
+            $viewListenNoteWin.window('close');
+        }
+    });
+
     /*********************达到节数***********************/
     function listenResult(value, row, index) {
 
@@ -117,6 +197,16 @@ $(function () {
             return "<span style='color:blue;'>" + value + "</span>";
         } else {
             return "<span style='color:red;'>" + value + "</span>";
+        }
+    }
+
+    /*********************是否分享***********************/
+    function shareResult(value, row, index) {
+
+        if (0 == value ) {
+            return "<span style='color:red;'>" + '否' + "</span>";
+        } else {
+            return "<span style='color:blue;'>" + '是' + "</span>";
         }
     }
 

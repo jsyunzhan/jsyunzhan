@@ -9,6 +9,7 @@
         <typeAlias alias="ResourceEntityInfo" type="domain.shiro.entity.ResourceEntity"/>
         <typeAlias alias="RoleEntityInfo" type="domain.system.entity.RoleEntity"/>
         <typeAlias alias="ListenerEntityInfo" type="domain.person.entity.ListenerEntity"/>
+        <typeAlias alias="NoteEntityInfo" type="domain.listen.entity.NoteEntity"/>
     </typeAliases>
 
 </configuration>
