@@ -18,7 +18,7 @@
 
 
     <div data-options="region:'center'">
-        <table id="listenerGrid"></table>
+        <table id="phoneMessGrid"></table>
     </div>
 
 
