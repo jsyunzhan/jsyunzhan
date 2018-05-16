@@ -55,9 +55,35 @@
 
     <!-- 查看详情表单 -->
     <div id="viewListenNoteWin">
-        <%--<div class="easyui-layout" style="width: 425px;height: 330px;margin:10px 3px">--%>
-            <%----%>
-        <%--</div>--%>
+
+            <div style="height:103px" data-options="region:'north',collapsible:false">
+                <form id="queryListenNoteFrom" name="queryListenNoteFrom" method="post">
+                    <table align="center" style="line-height: 30px;margin-top: 10px">
+                        <tr>
+                            <td><span style="margin-left: 15px;">听课起始时间</span></td>
+                            <td><input class="easyui-datebox" name="beginDate" data-options="prompt:'请选择...'"/></td>
+
+
+                            <td><span style="margin-left: 15px;">至</span></td>
+                            <td><input class="easyui-datebox" name="endDate" data-options="prompt:'请选择...'"></td>
+                        </tr>
+
+                    </table>
+                    <table align="center" style="margin-bottom: 10px;margin-top: 10px">
+                        <tr>
+                            <td colspan="7" style="text-align: center;">
+                                    <span style="margin-left: 10px;">
+                                        <a href="#" class="easyui-linkbutton"
+                                           id="logSearchTwo">确定</a>
+                                        <a href="#" class="easyui-linkbutton"
+                                           id="logResertTwo" style="margin-left:25px">取消</a>
+                                    </span>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
             <div style="width:100%;height:100%" data-options="region:'west',collapsible:true">
                 <table id="viewListenNoteGrid"></table>
             </div>

@@ -90,6 +90,29 @@ $(function () {
         }
     });
 
+    /********************查询**************************/
+    var $queryListenCountFrom = $('#queryListenCountFrom').form({
+        novalidate: true
+    });
+
+    $('#logSearch').linkbutton({
+        iconCls: 'icon-ok',
+        onClick: function () {
+            reqObj = $queryListenCountFrom.serializeObject();
+            $qureGrid.datagrid('load');
+        }
+    });
+
+    $('#logResert').linkbutton({
+        iconCls: 'icon-cancel',
+        onClick: function () {
+            reqObj = null;
+            reqObj.yearString = new Date().getFullYear();
+            $queryListenCountFrom.form('reset');
+            $qureGrid.datagrid('reload');
+        }
+    });
+
     var selectedListenNote, reqListenNoteObj = {};
     var $viewListenNoteGrid = $('#viewListenNoteGrid').datagrid({
         method: 'GET',
@@ -149,25 +172,26 @@ $(function () {
     });
 
     /********************查询**************************/
-    var $queryListenCountFrom = $('#queryListenCountFrom').form({
+    var $queryListenNoteFrom = $('#queryListenNoteFrom').form({
         novalidate: true
     });
 
-    $('#logSearch').linkbutton({
+    $('#logSearchTwo').linkbutton({
         iconCls: 'icon-ok',
         onClick: function () {
-            reqObj = $queryListenCountFrom.serializeObject();
-            $qureGrid.datagrid('load');
+            reqListenNoteObj = $queryListenNoteFrom.serializeObject();
+            reqListenNoteObj.listenerId = selectedQure.id;
+            $viewListenNoteGrid.datagrid('load');
         }
     });
 
-    $('#logResert').linkbutton({
+    $('#logResertTwo').linkbutton({
         iconCls: 'icon-cancel',
         onClick: function () {
-            reqObj = null;
-            reqObj.yearString = new Date().getFullYear();
-            $queryListenCountFrom.form('reset');
-            $qureGrid.datagrid('reload');
+            reqListenNoteObj = {};
+            reqListenNoteObj.listenerId = selectedQure.id;
+            $queryListenNoteFrom.form('reset');
+            $viewListenNoteGrid.datagrid('reload');
         }
     });
 

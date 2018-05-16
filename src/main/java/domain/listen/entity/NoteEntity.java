@@ -55,6 +55,13 @@ public class NoteEntity extends AbstractEntity{
     //听课地点
     private String listenPath;
 
+    //听课开始时间
+    private String beginDate;
+
+    //听课结束时间
+    private String endDate;
+
+
     @Override
     public String toString() {
         return "NoteEntity{" +

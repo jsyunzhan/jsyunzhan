@@ -2,15 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.listen.dao.NoteDao">
-    <sql id="listenerConditionSql">
-      <if test="listenerName!=null and listenerName!=''">
-          AND t.LISTENER_NAME like concat(concat('%',#{listenerName}),'%')
-      </if>
-        <if test="listenerNumb!=null and listenerNumb!=''">
-            AND t.LISTENER_NUMB like concat(concat('%',#{listenerNumb}),'%')
+    <sql id="noteConditionSql">
+        <if test="beginDate!=null and beginDate!=''">
+            <![CDATA[AND DATE(t.CREATE_DATA)>=#{beginDate}]]>
         </if>
-        <if test="schoolName!=null and schoolName!=''">
-            AND t.SCHOOL_NAME like concat(concat('%',#{schoolName}),'%')
+        <if test="endDate!=null and endDate!=''">
+            <![CDATA[AND DATE(t.CREATE_DATA)<=#{endDate}]]>
         </if>
     </sql>
 
@@ -20,6 +17,7 @@
         FROM t_listen_notes t
         WHERE t.DELETE_FLAG='1'
         AND t.LISTENER_ID=#{listenerId}
+        <include refid="noteConditionSql"/>
     </select>
 
     <!--查询集合-->
@@ -46,6 +44,7 @@
         FROM t_listen_notes t
         WHERE t.DELETE_FLAG='1'
         AND t.LISTENER_ID=#{listenerId}
+        <include refid="noteConditionSql"/>
         ORDER BY t.CREATE_DATA
     </select>
 
