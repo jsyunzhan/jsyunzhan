@@ -1,4 +1,21 @@
+var w_height = $(window).height();
+
+function addTab(title, url){
+    if ($('#content').tabs('exists', title)){
+        $('#content').tabs('select', title);
+    } else {
+        var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+        $('#content').tabs('add',{
+            title:title,
+            content:content,
+            closable:true
+        });
+    }
+}
+
 $(function(){
+
+
 
     $.ajax({
         url: '/security/resources/'+roleId,
@@ -20,15 +37,14 @@ $(function(){
                     num++;
                 }else{
                     if(resouces[i+1]&&resouces[i+1].parentId) {
-                        _html += '<li url="'+resouces[i].resourceUrl+'">'+resouces[i].resourceName+'</li>';
+                        _html += '<li onclick="addTab('+'\''+resouces[i].resourceName+'\''+','+'\''+resouces[i].resourceUrl+'\''+')">'+resouces[i].resourceName+'</li>';
                     }else{
-                        _html += '<li url="'+resouces[i].resourceUrl+'">'+resouces[i].resourceName+'</li></ul></div>';
+                        _html += '<li onclick="addTab('+'\''+resouces[i].resourceName+'\''+','+'\''+resouces[i].resourceUrl+'\''+')">'+resouces[i].resourceName+'</li></ul></div>';
                     }
                 }
             }
             $(".sidebar").append(_html);
             modular_click();
-            li_url();
         }
     });
 
@@ -60,9 +76,6 @@ $(function(){
         })
     }
 
-    $("iframe").attr("height",$(window).height()-80);
-    $(".sidebar").css("max-height",$(window).height()-80);
-
     function personal(){
         $(".personal").mouseover(function(){
             $(".personal_ul").show();
@@ -76,10 +89,10 @@ $(function(){
     }
     personal();
 
-    function li_url(){
-        $(".modular ul li").click(function(){
-            $("iframe").attr("src",$(this).attr("url"))
-        })
-    }
+    $(".sidebar").css("max-height",w_height-70);
+    $(".easyui-tabs").css("height",w_height-70);
+
+
+
 
 })

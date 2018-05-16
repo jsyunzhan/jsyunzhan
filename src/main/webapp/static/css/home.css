@@ -19,20 +19,22 @@
     width: 110%;
 }
 
-.aa{
+.scroll_hide{
     width: 15%;
     float: left;
     overflow: hidden;
 }
 
 .main_content{
-    float: left;
+    float: right;
     width: 85%;
 }
 
 iframe{
     outline: 0;
     border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .modular .title_first{
@@ -109,14 +111,20 @@ iframe{
     width: 100%;
     text-align: center;
     padding: 3px 25px;
-    color: #666;
 }
 
-.personal_ul span{
-    display: block;
+.personal_ul li a span{
+    display: inline-block;
     vertical-align: top;
-    float: left;
-    width: 14px;
-    height: 14px;
-    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+/*重置EasyUI*/
+#content{
+    padding:0 !important;
+    overflow: hidden;
+    background: #fff;
 }

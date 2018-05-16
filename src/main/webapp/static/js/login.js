@@ -3,6 +3,11 @@ $(function(){
     $("#loginBtn").on('click',function () {
         login();
     });
+    $(document).keydown(function(event){
+        if(event.keyCode == 13){
+            login();
+        }
+    })
 
     function login() {
         var data = $('#loginForm').serializeObject();

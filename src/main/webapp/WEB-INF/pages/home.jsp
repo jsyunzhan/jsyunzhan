@@ -9,10 +9,14 @@
     <link rel="shortcut icon" href="../../static/images/favicon.ico">
     <%--以上三个meta不可或缺--%>
     <link rel="stylesheet" href="../../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link href="../../static/easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="../../static/easyui/themes/icon.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../static/css/public.css">
     <link rel="stylesheet" href="../../static/css/home.css">
     <script src="../../static/jquery/jquery-1.12.4.min.js"></script>
     <script src="../../static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="../../static/easyui/jquery.min.js"></script>
+    <script src="../../static/easyui/jquery.easyui.min.js"></script>
     <script src="../../static/js/public.js"></script>
     <script src="../../static/js/home.js"></script>
     <title>后台首页</title>
@@ -33,21 +37,22 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu personal_ul">
-                    <li class="clearfix">
+                    <li>
                         <a href="javascript:;"><span><img src="../../static/images/modify.png"></span>忘记密码</a>
                     </li>
-                    <li class="clearfix">
+                    <li>
                         <a href="javascript:;"><span><img src="../../static/images/signOut.png"></span>退出登录</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="clearfix">
-            <div class="aa">
+            <div class="scroll_hide">
                 <div class="sidebar tc white"></div>
             </div>
             <div class="main_content">
-                <iframe src="" width="100%" height="300px"></iframe>
+                <div id="content" class="easyui-tabs">
+                </div>
             </div>
         </div>
     </div>
