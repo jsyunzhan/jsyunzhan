@@ -235,6 +235,10 @@ $(function () {
             return
         }
 
+        if (selectedlistener.openId){
+            showWarningMessage("该用户已经注册，不可删除！");
+            return
+        }
 
         var msg = String.format("您确定要删除用户：<span style='color: red;'>{0}</span>？", selectedlistener.listenerName);
 
