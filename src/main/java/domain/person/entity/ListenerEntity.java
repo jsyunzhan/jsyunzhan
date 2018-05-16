@@ -23,6 +23,36 @@ public class ListenerEntity extends AbstractEntity {
     //记录open_id(空:未注册)
     private Long openId;
 
+    //年份
+    private String yearString;
+
+    //听课总数
+    private String listenCount;
+
+    //三月听课数量
+    private Long threeCount;
+
+    //四月听课数量
+    private Long fourCount;
+
+    //五月听课数量
+    private Long fiveCount;
+
+    //六月听课数量
+    private Long sixCount;
+
+    //九月听课数量
+    private Long nineCount;
+
+    //十月听课数量
+    private Long tenCount;
+
+    //十一月听课数量
+    private Long elevenCount;
+
+    //十二月听课数量
+    private Long twelveCount;
+
     @Override
     public String toString() {
         return "ListenerEntity{" +

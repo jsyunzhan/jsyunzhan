@@ -31,6 +31,24 @@
         t.SCHOOL_NAME schoolName,
         t.PERMISSION_FLAG permissionFlag,
         t.OPEN_ID openId,
+        (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
+        b.LISTENER_ID=t.ID) listenCount,
+        (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
+        b.LISTENER_ID=t.ID AND Year(b.CREATE_DATA) = #{yearString} and Month(b.CREATE_DATA) = 3 ) threeCount,
+        (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
+        b.LISTENER_ID=t.ID AND Year(b.CREATE_DATA) = #{yearString} and Month(b.CREATE_DATA) = 4 ) fourCount,
+        (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
+        b.LISTENER_ID=t.ID AND Year(b.CREATE_DATA) = #{yearString} and Month(b.CREATE_DATA) = 5 ) fiveCount,
+        (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
+        b.LISTENER_ID=t.ID AND Year(b.CREATE_DATA) = #{yearString} and Month(b.CREATE_DATA) = 6 ) sixCount,
+        (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
+        b.LISTENER_ID=t.ID AND Year(b.CREATE_DATA) = #{yearString} and Month(b.CREATE_DATA) = 9 ) nineCount,
+        (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
+        b.LISTENER_ID=t.ID AND Year(b.CREATE_DATA) = #{yearString} and Month(b.CREATE_DATA) = 10 ) tenCount,
+        (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
+        b.LISTENER_ID=t.ID AND Year(b.CREATE_DATA) = #{yearString} and Month(b.CREATE_DATA) = 11 ) elevenCount,
+        (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
+        b.LISTENER_ID=t.ID AND Year(b.CREATE_DATA) = #{yearString} and Month(b.CREATE_DATA) = 12 ) twelveCount,
         t.CREATE_USER_ID createUserId,
         t.CREATE_DATA createDate,
         t.UPDATE_USER_ID updateUserId,

@@ -42,6 +42,8 @@ public class ListenerManagementController extends AbstractActionController{
     @RequestMapping(value = LISTENER_MAN_LIST)
     @ResponseBody
     public PageQueryResult listenerList(ListenerEntity listenerEntity){
+
+
         return listenerManagementService.listenerList(listenerEntity);
     }
 
