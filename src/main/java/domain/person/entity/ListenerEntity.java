@@ -21,7 +21,7 @@ public class ListenerEntity extends AbstractEntity {
     private Long permissionFlag;
 
     //记录open_id(空:未注册)
-    private Long openId;
+    private String openId;
 
     //年份
     private String yearString;
