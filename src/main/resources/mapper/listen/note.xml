@@ -46,6 +46,7 @@
         AND t.LISTENER_ID=#{listenerId}
         <include refid="noteConditionSql"/>
         ORDER BY t.CREATE_DATA
+        LIMIT #{rows} OFFSET #{page}
     </select>
 
 </mapper>

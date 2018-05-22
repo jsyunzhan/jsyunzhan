@@ -24,6 +24,7 @@
         FROM t_message_phone t
         WHERE t.DELETE_FLAG='1'
         ORDER BY t.CREATE_DATA
+        LIMIT #{rows} OFFSET #{page}
     </select>
 
     <!--手机公告新增-->
