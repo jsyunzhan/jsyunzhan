@@ -56,7 +56,7 @@
         FROM t_person_listener t
         WHERE t.DELETE_FLAG='1'
         <include refid="listenerConditionSql"/>
-        ORDER BY t.CREATE_DATA
+        ORDER BY t.CREATE_DATA DESC
         LIMIT #{rows} OFFSET #{page}
     </select>
 

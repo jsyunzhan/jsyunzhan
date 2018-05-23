@@ -45,7 +45,7 @@
         WHERE t.DELETE_FLAG='1'
         AND t.LISTENER_ID=#{listenerId}
         <include refid="noteConditionSql"/>
-        ORDER BY t.CREATE_DATA
+        ORDER BY t.CREATE_DATA DESC
         LIMIT #{rows} OFFSET #{page}
     </select>
 

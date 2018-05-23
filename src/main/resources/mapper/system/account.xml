@@ -69,7 +69,7 @@
         FROM t_sys_account t
         LEFT JOIN t_sys_role b ON t.ROLE_ID=b.ID
         WHERE t.DELETE_FLAG='1'
-        ORDER BY t.CREATE_DATA
+        ORDER BY t.CREATE_DATA DESC
         LIMIT #{rows} OFFSET #{page}
         <include refid="accountConditionSql"/>
     </select>

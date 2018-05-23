@@ -23,7 +23,7 @@
         t.UPDATE_DATA updateDate
         FROM t_message_phone t
         WHERE t.DELETE_FLAG='1'
-        ORDER BY t.CREATE_DATA
+        ORDER BY t.CREATE_DATA DESC
         LIMIT #{rows} OFFSET #{page}
     </select>
 
