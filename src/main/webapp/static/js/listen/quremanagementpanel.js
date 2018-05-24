@@ -163,6 +163,26 @@ $(function () {
                     }else {
                         selectedListenNote.createDate = formatDate(selectedListenNote.createDate);
                         selectedListenNote.shareFlag = shareResultNotwithColour(selectedListenNote.shareFlag);
+
+
+                        var data = {picturePath:selectedListenNote.picturePath};
+                        var url = "/listen/getPictureByte";
+                        $.ajax({
+                            url:url,type:"POST",contentType: "application/json",data:JSON.stringify(data),async: false,
+                            success:function (r) {
+                                console.log(r)
+                                var listenerPicture = $('#listenerPicture');
+                                listenerPicture.empty();
+
+
+                                for (var i=0;i<r.length;i++){
+                                    var picture = '<img src="data:image/gif;base64,' + r[i] + '" style="width:100%;height:100%">';
+                                    listenerPicture.append(picture);
+                                }
+
+                            }
+                        });
+
                         $detailListenNoteForm.form('load',selectedListenNote);
                         $detailListenNoteWin.window('open');
                     }

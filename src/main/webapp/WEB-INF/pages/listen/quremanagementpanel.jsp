@@ -166,7 +166,7 @@
 
                     </label>
                     </th>
-                    <td width="200"><input class="easyui-textbox control" name="createDate" readonly="readonly"/></td>
+                    <td width="200" id="listenerPicture"></td>
                 </tr>
 
 
