@@ -16,7 +16,7 @@ $(function () {
 
     var selectedaccount, reqObj = {};
     var $accountGrid = $('#accountGrid').datagrid({
-        url: '/system/accountmanpage/accountlist', method: 'GET',
+        url: path + '/system/accountmanpage/accountlist', method: 'GET',
         rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
         singleSelect: true,
         border: false,

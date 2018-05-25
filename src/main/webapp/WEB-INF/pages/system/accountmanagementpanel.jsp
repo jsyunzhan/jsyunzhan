@@ -13,8 +13,6 @@
     <title>Title</title>
     <jsp:include flush="true" page="/WEB-INF/pages/commons/servercommonjs.jsp"/>
 
-    <%--<script src="../../../static/js/system/accountmanagementpanel.js"></script>--%>
-
     <script type="text/javascript"
             src="<c:url value="/static/js/system/accountmanagementpanel.js"/>"></script>
 </head>
