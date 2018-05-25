@@ -2,7 +2,7 @@ $(function () {
 
     var selectedPhoneMess, reqObj = {};
     var $phoneMessGrid = $('#phoneMessGrid').datagrid({
-        url: '/message/phonemanpage/list', method: 'GET',
+        url: path+ '/message/phonemanpage/list', method: 'GET',
         rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
         singleSelect: true,
         border: false,
@@ -82,7 +82,7 @@ $(function () {
             }
 
             var messageData = $addMessageForm.serializeObject(),
-                url = "/message/phonemanpage/add";
+                url = path + "/message/phonemanpage/add";
 
 
             $.ajax({
@@ -125,7 +125,7 @@ $(function () {
             }
 
             var messageData = $editMessageForm.serializeObject(),
-                url = "/message/phonemanpage/edit";
+                url = path + "/message/phonemanpage/edit";
             messageData.id = selectedPhoneMess.id;
             $.ajax({
                 url:url,type:"POST",contentType: "application/json",data:JSON.stringify(messageData),
@@ -159,7 +159,7 @@ $(function () {
 
         showConfirm(msg, function () {
             $.ajax({
-                url:"/message/phonemanpage/delete/"+selectedPhoneMess.id,
+                url:path + "/message/phonemanpage/delete/"+selectedPhoneMess.id,
                 type:"GET",dataType:"json",
                 success:function (r) {
                     $phoneMessGrid.datagrid('reload');
