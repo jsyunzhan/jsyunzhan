@@ -1,4 +1,7 @@
+
 $(function(){
+
+    console.log(path);
 
     $("#loginBtn").on('click',function () {
         login();
@@ -12,14 +15,17 @@ $(function(){
     function login() {
         var data = $('#loginForm').serializeObject();
         $.ajax({
-            url: '/security/login',
-            type: 'POST', dataType: "json", timeout: 360000,
+            url: path +'/security/login',
+            type: 'POST', dataType: "json",
             data: data,
             success: function (serverResponse) {
-
+                console.log(serverResponse);
+                console.log("3");
                 if (serverResponse.success) {
-                    window.location.href = "/security/home";
+                    console.log("1");
+                    location.href = path + "/security/home";
                 } else {
+                    console.log("2");
                     $("#userError").text(serverResponse.reason);
                     $("#userError").addClass("red_1");
                 }

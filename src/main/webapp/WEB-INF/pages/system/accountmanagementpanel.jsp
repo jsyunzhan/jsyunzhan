@@ -6,12 +6,17 @@
   用户管理
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>Title</title>
     <jsp:include flush="true" page="/WEB-INF/pages/commons/servercommonjs.jsp"/>
 
-    <script src="../../../static/js/system/accountmanagementpanel.js"></script>
+    <%--<script src="../../../static/js/system/accountmanagementpanel.js"></script>--%>
+
+    <script type="text/javascript"
+            src="<c:url value="/static/js/system/accountmanagementpanel.js"/>"></script>
 </head>
 <body>
 <body class="easyui-layout">

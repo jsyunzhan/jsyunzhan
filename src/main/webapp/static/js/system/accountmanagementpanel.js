@@ -7,7 +7,7 @@ $(function () {
     });
 
     $.ajax({
-        url:"/system/accountmanpage/getAllRole",
+        url:path + "/system/accountmanpage/getAllRole",
         type:"GET",dataType:"json",
         success:function (r) {
             $addRoleId.combobox('loadData',r);
@@ -105,7 +105,7 @@ $(function () {
             }
 
             var accountData = $addAccountForm.serializeObject(),
-                url = "/system/accountmanpage/add";
+                url = path + "/system/accountmanpage/add";
 
             var data = {loginName:accountData.loginName};
             if (!checkLoginName(data)){
@@ -157,7 +157,7 @@ $(function () {
             }
 
             var accountData = $editAccountForm.serializeObject(),
-                url = "/system/accountmanpage/edit";
+                url = path + "/system/accountmanpage/edit";
 
             var data = {id:selectedaccount.id,loginName:accountData.loginName};
             if (!checkLoginName(data)){
@@ -197,7 +197,7 @@ $(function () {
 
         showConfirm(msg, function () {
             $.ajax({
-                url:"/system/accountmanpage/delete/"+selectedaccount.id,
+                url:path + "/system/accountmanpage/delete/"+selectedaccount.id,
                 type:"GET",dataType:"json",
                 success:function (r) {
                     $accountGrid.datagrid('reload');

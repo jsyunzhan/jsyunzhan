@@ -4,7 +4,7 @@ $(function () {
 
     var selectedrole, reqObj = {};
     var $rolesGrid = $('#rolesGrid').datagrid({
-        url: '/system/rolemanpage/rolelist', method: 'GET',
+        url: path + '/system/rolemanpage/rolelist', method: 'GET',
         rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
         singleSelect: true,
         border: false,
@@ -49,7 +49,7 @@ $(function () {
                 handler: function () {
 
                     var data = $('#reourecesTree').tree('getChecked'),
-                    url = "/system/rolemanpage/authorization";
+                    url = path + "/system/rolemanpage/authorization";
 
                     var reourecesArray = [];
 
@@ -90,7 +90,7 @@ $(function () {
             var roleId = row.id;
 
             $.ajax({
-                url: '/security/resources/'+roleId,
+                url: path + '/security/resources/'+roleId,
                 type: 'GET',
                 dataType: "json",async: false,
                 success: function (r) {
@@ -132,7 +132,7 @@ $(function () {
             }
 
             var addRoleData = $addRolesForm.serializeObject(),
-                url = "/system/rolemanpage/add";
+                url = path + "/system/rolemanpage/add";
 
             var data = {roleName:addRoleData.roleName};
             if (!checkRoleName(data)){
@@ -184,7 +184,7 @@ $(function () {
             }
 
             var editRoleData = $editRolesForm.serializeObject(),
-                url = "/system/rolemanpage/edit";
+                url = path + "/system/rolemanpage/edit";
 
             editRoleData.id = selectedrole.id;
 

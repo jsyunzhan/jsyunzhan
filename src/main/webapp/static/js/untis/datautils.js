@@ -11,7 +11,7 @@ function getPage(param) {
 function checkRoleName(data) {
     var flag = false;
     $.ajax({
-        url: "/system/rolemanpage/checkrolename" , type: "POST", dataType:"json",data:data,async: false,
+        url: path + "/system/rolemanpage/checkrolename" , type: "POST", dataType:"json",data:data,async: false,
         success: function (r) {
             flag = r;
         }
@@ -23,7 +23,7 @@ function checkRoleName(data) {
 function checkLoginName(data) {
     var flag = false;
     $.ajax({
-        url: "/system/accountmanpage/checkaccountname" , type: "POST", dataType:"json",data:data,async: false,
+        url: path + "/system/accountmanpage/checkaccountname" , type: "POST", dataType:"json",data:data,async: false,
         success: function (r) {
             flag = r;
         }
