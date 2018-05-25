@@ -32,7 +32,7 @@ $(function(){
                     _html += '<div class="title_first" data-target="#modular_child'+num+'" data-toggle="collapse" id="'+resouces[i].id+'">';
                     _html += '<div class="icon_title"><img src="'+path+resouces[i].imageUrl+'"></div>'+resouces[i].resourceName;
                     _html += '<div class="arrow white_right"><img src="'+path+'/static/images/white_right.png"></div>';
-                    _html += '<div class="arrow white_down none"><img src="${APP_PATH}/static/images/white_down.png"></div></div>';
+                    _html += '<div class="arrow white_down none"><img src="'+path+'/static/images/white_down.png"></div></div>';
                     _html += '<ul id="modular_child'+num+'" class="collapse">';
                     num++;
                 }else{
@@ -95,4 +95,4 @@ $(function(){
 
 
 
-})
+});
