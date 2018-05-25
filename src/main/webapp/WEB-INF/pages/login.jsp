@@ -4,44 +4,22 @@
 <!doctype html>
 <html>
 <head>
-
-
+    <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-
-    <%--<link rel="shortcut icon" href="../../static/images/favicon.ico">--%>
-
-    <jsp:include flush="true" page="/WEB-INF/pages/commons/servercommonjs.jsp"/>
-
-    <%--以上三个meta不可或缺--%>
-    <%--<link rel="stylesheet" href="../../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">--%>
-    <%--<link rel="stylesheet" href="../../static/css/public.css">--%>
-    <%--<link rel="stylesheet" href="../../static/css/login.css">--%>
-
-    <link rel="shortcut icon" href="<c:url value="/static/images/favicon.ico"/>">
-    <link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/static/css/public.css"/>"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/static/css/login.css"/>"/>
-
-
-    <%--<script src="../../static/jquery/jquery-1.7.2.min.js"></script>--%>
-    <%--<script src="../../static/js/public.js"></script>--%>
-    <%--<script src="../../static/js/login.js"></script>--%>
-    <%--<script src="../../static/js/untis/jquery.jdirk.js"></script>--%>
-
-    <script type="text/javascript"
-            src="<c:url value="/static/jquery/jquery-1.7.2.min.js"/>"></script>
-    <script type="text/javascript"
-            src="<c:url value="/static/js/public.js"/>"></script>
-    <script type="text/javascript"
-            src="<c:url value="/static/js/login.js"/>"></script>
-    <script type="text/javascript"
-            src="<c:url value="/static/js/untis/jquery.jdirk.js"/>"></script>
+    <link rel="shortcut icon" href="${APP_PATH}/static/images/favicon.ico">
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
-
+    <%--以上三个meta不可或缺--%>
+    <link rel="stylesheet" href="${APP_PATH}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${APP_PATH}/static/css/public.css">
+    <link rel="stylesheet" href="${APP_PATH}/static/css/login.css">
+    <script src="${APP_PATH}/static/jquery/jquery-1.7.2.min.js"></script>
+    <script src="${APP_PATH}/static/js/public.js"></script>
+    <script src="${APP_PATH}/static/js/login.js"></script>
+    <script src="${APP_PATH}/static/js/untis/jquery.jdirk.js"></script>
     <title>后台登录</title>
 </head>
 <body>
@@ -72,5 +50,7 @@
         </div>
     </div>
 </body>
-
+<script>
+    var path  = '<%=request.getContextPath()%>';
+</script>
 </html>
