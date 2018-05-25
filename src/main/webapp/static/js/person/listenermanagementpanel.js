@@ -1,7 +1,7 @@
 $(function () {
     var selectedlistener, reqObj = {};
     var $listenerGrid = $('#listenerGrid').datagrid({
-        url: '/person/listenermanpage/list', method: 'GET',
+        url: path + '/person/listenermanpage/list', method: 'GET',
         rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
         singleSelect: true,
         border: false,
@@ -70,7 +70,7 @@ $(function () {
 
                     showConfirm(msg, function () {
                         $.ajax({
-                            url:"/person/listenermanpage/authorization/"+selectedlistener.id,
+                            url:path + "/person/listenermanpage/authorization/"+selectedlistener.id,
                             type:"GET",dataType:"json",
                             success:function (r) {
                                 $listenerGrid.datagrid('reload');
@@ -93,7 +93,7 @@ $(function () {
 
                     showConfirm(msg, function () {
                         $.ajax({
-                            url:"/person/listenermanpage/authorizationnot/"+selectedlistener.id,
+                            url: path + "/person/listenermanpage/authorizationnot/"+selectedlistener.id,
                             type:"GET",dataType:"json",
                             success:function (r) {
                                 $listenerGrid.datagrid('reload');
@@ -162,7 +162,7 @@ $(function () {
             }
 
             var listenerData = $addListenerForm.serializeObject(),
-                url = "/person/listenermanpage/add";
+                url = path + "/person/listenermanpage/add";
 
 
             $.ajax({
@@ -205,7 +205,7 @@ $(function () {
             }
 
             var listenerData = $editListenerForm.serializeObject(),
-                url = "/person/listenermanpage/edit";
+                url = path + "/person/listenermanpage/edit";
 
             listenerData.id = selectedlistener.id;
 
@@ -244,7 +244,7 @@ $(function () {
 
         showConfirm(msg, function () {
             $.ajax({
-                url:"/person/listenermanpage/delete/"+selectedlistener.id,
+                url: path + "/person/listenermanpage/delete/"+selectedlistener.id,
                 type:"GET",dataType:"json",
                 success:function (r) {
                     $listenerGrid.datagrid('reload');
