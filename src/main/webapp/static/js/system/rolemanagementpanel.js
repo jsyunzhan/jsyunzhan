@@ -231,7 +231,7 @@ $(function () {
 
         showConfirm(msg, function () {
             $.ajax({
-                url:"/system/rolemanpage/delete/"+selectedrole.id,
+                url: path + "/system/rolemanpage/delete/"+selectedrole.id,
                 type:"GET",dataType:"json",
                 success:function (r) {
                     $rolesGrid.datagrid('reload');
@@ -244,7 +244,7 @@ $(function () {
     /****************************************右边树*****************************/
 
     var $reourecesTree = $('#reourecesTree').tree({
-        url: '/system/rolemanpage/resources', method: 'GET', checkbox:true,animate: true,lines: true,cascadeCheck: false,
+        url: path + '/system/rolemanpage/resources', method: 'GET', checkbox:true,animate: true,lines: true,cascadeCheck: false,
         onLoadSuccess: function (node, param) {
             for (var i=0;i<reourceObj.length;i++){
                 var node = $('#reourecesTree').tree('find', reourceObj[i].id);
