@@ -15,7 +15,7 @@ $(function () {
 
     reqObj.yearString = new Date().getFullYear();
     var $qureGrid = $('#qureGrid').datagrid({
-        url: '/person/listenermanpage/list', method: 'GET',
+        url: path + '/person/listenermanpage/list', method: 'GET',
         rownumbers: true, animate: false, collapsible: true, idField: 'id', fit: true, striped: true,
         singleSelect: true,
         border: false,
@@ -73,7 +73,7 @@ $(function () {
                     if (!selectedQure) {
                         showWarningMessage(SYSTEM_MESSAGE.msg_please_select_record);
                     }else {
-                        $viewListenNoteGrid.datagrid("options").url = 'quremanpage/notelist';
+                        $viewListenNoteGrid.datagrid("options").url = path + '/listen/quremanpage/notelist';
                         reqListenNoteObj.listenerId = selectedQure.id;
                         $viewListenNoteGrid.datagrid("load");
                         $viewListenNoteWin.window('open');
@@ -166,7 +166,7 @@ $(function () {
 
 
                         var data = {picturePath:selectedListenNote.picturePath};
-                        var url = "/listen/getPictureByte";
+                        var url = path + "/listen/getPictureByte";
                         $.ajax({
                             url:url,type:"POST",contentType: "application/json",data:JSON.stringify(data),async: false,
                             success:function (r) {
