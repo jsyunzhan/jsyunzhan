@@ -8,10 +8,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="shortcut icon" href="${APP_PATH}/static/images/favicon.ico">
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
+    <link rel="shortcut icon" href="${APP_PATH}/static/images/favicon.ico">
     <%--以上三个meta不可或缺--%>
     <link rel="stylesheet" href="${APP_PATH}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="${APP_PATH}/static/css/public.css">
