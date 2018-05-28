@@ -6,6 +6,8 @@ import domain.shiro.service.UserSecurityService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +26,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/security")
 public class UserSecurityController extends AbstractActionController{
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserSecurityController.class);
 
     private UserSecurityService userSecurityService;
 
@@ -49,6 +52,12 @@ public class UserSecurityController extends AbstractActionController{
     @ResponseBody
     public JsonResponseVO userLogin(@RequestParam("loginName") String loginName,
                              @RequestParam("password") String password){
+
+
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("登录认证,loginName:{}", loginName);
+        }
+
 
         //登录信息验证
         final Subject securitySubject = SecurityUtils.getSubject();
