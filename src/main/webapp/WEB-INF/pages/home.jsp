@@ -6,11 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="shortcut icon" href="../../static/images/favicon.ico">
-
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
+
+    <link rel="shortcut icon" href="${APP_PATH}/static/images/favicon.ico">
+
+
     <%--以上三个meta不可或缺--%>
     <link rel="stylesheet" href="${APP_PATH}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link href="${APP_PATH}/static/easyui/themes/default/easyui.css" rel="stylesheet" />
@@ -35,7 +37,7 @@
                     <div style="width:30px; height:30px;">
                         <img src="${APP_PATH}/static/images/person.png">
                     </div>
-                    <div style="width:60px;line-height: 30px;">调研员</div>
+                    <div style="width:70px;line-height: 30px;">${roleName}</div>
                     <div style="width:16px; height: 16px;margin: 7px;">
                         <img src="${APP_PATH}/static/images/white_down.png">
                     </div>

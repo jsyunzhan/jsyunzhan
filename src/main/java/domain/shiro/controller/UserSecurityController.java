@@ -59,7 +59,8 @@ public class UserSecurityController extends AbstractActionController{
             final UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
             securitySubject.login(token);
             result.setSuccess(Boolean.TRUE);
-            result.setReason("");
+            // rememberme
+            token.setRememberMe(true);
         }   catch (UnknownAccountException ex) {
 
             result.setReason("账号不存在");
@@ -89,9 +90,11 @@ public class UserSecurityController extends AbstractActionController{
     @RequestMapping(value = "/home")
     public ModelAndView toHomePage(){
         final Long roleId = getRoleId();
+        final String roleName = getRoleName();
 
         final ModelAndView mv = new ModelAndView("home");
         mv.addObject("roleId",roleId);
+        mv.addObject("roleName",roleName);
 
         return mv;
     }
