@@ -7,6 +7,8 @@ import domain.system.dao.RoleDao;
 import domain.system.entity.AuthorizationVOEntity;
 import domain.system.entity.RoleEntity;
 import domain.system.service.RoleManagementService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,7 @@ import static com.google.common.collect.Lists.newArrayList;
 @Service
 @Transactional
 public class RoleManagementServiceImpl implements RoleManagementService{
+    private static final Logger LOGGER = LoggerFactory.getLogger(RoleManagementServiceImpl.class);
 
     private final RoleDao roleDao;
     private final ResourceDao resourceDao;
@@ -47,23 +50,34 @@ public class RoleManagementServiceImpl implements RoleManagementService{
 
     @Override
     public Boolean addRole(RoleEntity roleEntity) {
-        return roleDao.addRole(roleEntity) > 0;
+        final Boolean flag = roleDao.addRole(roleEntity) > 0;
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("角色新增结果:{}",flag);
+        }
+        return flag;
     }
 
     @Override
     public Boolean checkRoleName(Long id, String roleName) {
-        Integer flag = roleDao.checkRoleName(id,roleName);
-        return flag<1;
+        return roleDao.checkRoleName(id,roleName) < 1;
     }
 
     @Override
     public Boolean editRole(RoleEntity roleEntity) {
-        return roleDao.editRole(roleEntity) > 0;
+        final Boolean flag = roleDao.editRole(roleEntity) > 0;
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("角色修改结果:{}",flag);
+        }
+        return flag;
     }
 
     @Override
     public Boolean deleRole(Long id, Long loginId) {
-        return roleDao.deleRole(id,loginId);
+        final Boolean flag = roleDao.deleRole(id,loginId) > 0;
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("角色删除结果:{}",flag);
+        }
+        return flag;
     }
 
     @Override
@@ -76,13 +90,20 @@ public class RoleManagementServiceImpl implements RoleManagementService{
         final Long roleId = authorizationVOEntity.getRoleId();
         final List<ResourceEntity> resourceEntities = authorizationVOEntity.getResourceEntities();
 
-        resourceDao.deleteResourceByRoleId(roleId,loginId);
+        final Boolean flag = resourceDao.deleteResourceByRoleId(roleId,loginId) > 0;
 
-        for (ResourceEntity resourceEntity:
-        resourceEntities) {
-            resourceEntity.setCreateUserId(loginId);
-            resourceDao.addAuthorization(resourceEntity.getId(),roleId,loginId);
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("角色授权结果:{}",flag);
         }
-        return Boolean.TRUE;
+
+        if (flag){
+            for (ResourceEntity resourceEntity:
+                    resourceEntities) {
+                resourceEntity.setCreateUserId(loginId);
+                resourceDao.addAuthorization(resourceEntity.getId(),roleId,loginId);
+            }
+        }
+
+        return flag;
     }
 }

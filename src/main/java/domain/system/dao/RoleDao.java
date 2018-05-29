@@ -48,7 +48,7 @@ public interface RoleDao {
      * @param loginId 登录id
      * @return Boolean
      */
-    Boolean deleRole(@Param("id") Long id,@Param("updateUserId") Long loginId);
+    Integer deleRole(@Param("id") Long id,@Param("updateUserId") Long loginId);
 
     /**
      * 获取所有角色-供下拉框加载
