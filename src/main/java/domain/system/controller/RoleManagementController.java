@@ -7,6 +7,8 @@ import domain.shiro.entity.ResourceEntity;
 import domain.system.entity.AuthorizationVOEntity;
 import domain.system.entity.RoleEntity;
 import domain.system.service.RoleManagementService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,8 @@ import static domain.system.SystemWebURLMapping.*;
  */
 @Controller
 public class RoleManagementController extends AbstractActionController{
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RoleManagementController.class);
 
     private final RoleManagementService roleManagementService;
 
@@ -64,12 +68,22 @@ public class RoleManagementController extends AbstractActionController{
     @ResponseBody
     public JsonResponseVO addRole(@RequestBody RoleEntity roleEntity){
 
+
+
         roleEntity.setCreateUserId(getLoginId());
         JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
 
-        final Boolean flag = roleManagementService.addRole(roleEntity);
+        try {
 
-        jsonResponseVO.setSuccess(flag);
+            final Boolean flag = roleManagementService.addRole(roleEntity);
+            jsonResponseVO.setSuccess(flag);
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("角色名新增,roleName:{}",roleEntity.getRoleName());
+            }
+        }catch (Exception e){
+            LOGGER.error("业务处理异常");
+        }
+
         return jsonResponseVO;
     }
 
@@ -91,8 +105,19 @@ public class RoleManagementController extends AbstractActionController{
     public JsonResponseVO editRole(@RequestBody RoleEntity roleEntity){
         roleEntity.setUpdateUserId(getLoginId());
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
-        final Boolean flag = roleManagementService.editRole(roleEntity);
-        jsonResponseVO.setSuccess(flag);
+
+        try {
+
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("角色名修改,roleName:{}",roleEntity.getRoleName());
+            }
+            final Boolean flag = roleManagementService.editRole(roleEntity);
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常");
+        }
+
+
         return jsonResponseVO;
     }
 
@@ -103,12 +128,24 @@ public class RoleManagementController extends AbstractActionController{
     @ResponseBody
     public JsonResponseVO deleRole(@PathVariable("id") Long id){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
-        final Boolean flag = roleManagementService.deleRole(id,getLoginId());
-        jsonResponseVO.setSuccess(flag);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("角色名删除,id:{}",id);
+            }
+            final Boolean flag = roleManagementService.deleRole(id,getLoginId());
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常");
+        }
+
         return jsonResponseVO;
     }
 
 
+    /**
+     * 树
+     * @return List
+     */
     @RequestMapping(value = RESOURCES_LIST_GET)
     @ResponseBody
     public List resourceList(){
@@ -120,11 +157,11 @@ public class RoleManagementController extends AbstractActionController{
             treeList = createTreeGridTree(list, ZERO, ResourceEntity.class,
                     RESOURCE_NAME, PARENT_ID);
         } catch (ClassNotFoundException e) {
-//            LOGGER.error("构建树反射未找到类异常:", e);
+            LOGGER.error("构建树反射未找到类异常:", e);
         } catch (IllegalAccessException e) {
-//            LOGGER.error("构建树反射安全权限异常:", e);
+            LOGGER.error("构建树反射安全权限异常:", e);
         } catch (NoSuchFieldException e) {
-//            LOGGER.error("构建树反射未找到文件异常:", e);
+            LOGGER.error("构建树反射未找到文件异常:", e);
         }
         return treeList;
     }
@@ -138,8 +175,16 @@ public class RoleManagementController extends AbstractActionController{
     @ResponseBody
     public JsonResponseVO authorization(@RequestBody AuthorizationVOEntity authorizationVOEntity){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
-        final Boolean flag = roleManagementService.authorization(authorizationVOEntity,getLoginId());
-        jsonResponseVO.setSuccess(flag);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("角色授权,roleId:{}",authorizationVOEntity.getRoleId());
+            }
+            final Boolean flag = roleManagementService.authorization(authorizationVOEntity,getLoginId());
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常");
+        }
+
         return jsonResponseVO;
     }
 }
