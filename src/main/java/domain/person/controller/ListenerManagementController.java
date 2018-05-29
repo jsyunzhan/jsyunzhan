@@ -5,6 +5,8 @@ import domain.person.service.ListenerManagementService;
 import domain.shiro.controller.AbstractActionController;
 import domain.shiro.entity.JsonResponseVO;
 import domain.shiro.entity.PageQueryResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,8 @@ import static domain.person.PersonWebURLMapping.*;
  */
 @Controller
 public class ListenerManagementController extends AbstractActionController{
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ListenerManagementController.class);
 
     private ListenerManagementService listenerManagementService;
 
@@ -56,9 +60,18 @@ public class ListenerManagementController extends AbstractActionController{
     @ResponseBody
     public JsonResponseVO addListener(@RequestBody ListenerEntity listenerEntity){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
-        listenerEntity.setCreateUserId(getLoginId());
-        final Boolean flag = listenerManagementService.addListener(listenerEntity);
-        jsonResponseVO.setSuccess(flag);
+
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("听课人员新增,listenerName:{}",listenerEntity.getListenerName());
+            }
+            listenerEntity.setCreateUserId(getLoginId());
+            final Boolean flag = listenerManagementService.addListener(listenerEntity);
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
         return jsonResponseVO;
     }
 
@@ -72,8 +85,16 @@ public class ListenerManagementController extends AbstractActionController{
     public JsonResponseVO editListener(@RequestBody ListenerEntity listenerEntity){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
         listenerEntity.setUpdateUserId(getLoginId());
-        final Boolean flag = listenerManagementService.editListener(listenerEntity);
-        jsonResponseVO.setSuccess(flag);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("听课人员修改,listenerName:{}",listenerEntity.getListenerName());
+            }
+            final Boolean flag = listenerManagementService.editListener(listenerEntity);
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
         return jsonResponseVO;
     }
 
@@ -86,8 +107,17 @@ public class ListenerManagementController extends AbstractActionController{
     @ResponseBody
     public JsonResponseVO deleteListener(@PathVariable("id") Long id){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
-        final Boolean flag = listenerManagementService.deleteListener(id,getLoginId());
-        jsonResponseVO.setSuccess(flag);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("听课人员删除,id:{}",id);
+            }
+            final Boolean flag = listenerManagementService.deleteListener(id,getLoginId());
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
+
         return jsonResponseVO;
     }
 
@@ -100,17 +130,38 @@ public class ListenerManagementController extends AbstractActionController{
     @ResponseBody
     public JsonResponseVO  authorizationListener(@PathVariable("id") Long id){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
-        final Boolean flag = listenerManagementService.authorizationListener(id,getLoginId());
-        jsonResponseVO.setSuccess(flag);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("听课人员授权,id:{}",id);
+            }
+            final Boolean flag = listenerManagementService.authorizationListener(id,getLoginId());
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
         return jsonResponseVO;
     }
 
+    /**
+     * 取消授权
+     * @param id id
+     * @return JsonResponseVO
+     */
     @RequestMapping(value = LISTENER_MAN_AUTHORIZATION_NOT)
     @ResponseBody
     public JsonResponseVO authorizationListenerNot(@PathVariable("id") Long id){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
-        final Boolean flag = listenerManagementService.authorizationListenerNot(id,getLoginId());
-        jsonResponseVO.setSuccess(flag);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("听课人员解除授权,id:{}",id);
+            }
+            final Boolean flag = listenerManagementService.authorizationListenerNot(id,getLoginId());
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
         return jsonResponseVO;
     }
 }

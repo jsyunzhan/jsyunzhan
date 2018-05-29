@@ -4,6 +4,8 @@ import domain.person.dao.ListenerDao;
 import domain.person.entity.ListenerEntity;
 import domain.person.service.ListenerManagementService;
 import domain.shiro.entity.PageQueryResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,7 @@ import static com.google.common.collect.Lists.newArrayList;
 @Service
 @Transactional
 public class ListenerManagementServiceImpl implements ListenerManagementService{
+    private static final Logger LOGGER = LoggerFactory.getLogger(ListenerManagementServiceImpl.class);
 
     private ListenerDao listenerDao;
 
@@ -42,26 +45,47 @@ public class ListenerManagementServiceImpl implements ListenerManagementService{
 
     @Override
     public Boolean addListener(ListenerEntity listenerEntity) {
-        return listenerDao.addListener(listenerEntity) > 0;
+        final Boolean flag = listenerDao.addListener(listenerEntity) > 0;
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("听课人员新增结果:",flag);
+        }
+        return flag;
     }
 
     @Override
     public Boolean editListener(ListenerEntity listenerEntity) {
-        return listenerDao.editListener(listenerEntity) > 0;
+        final Boolean flag = listenerDao.editListener(listenerEntity) > 0;
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("听课人员修改结果:",flag);
+        }
+        return flag;
     }
 
     @Override
     public Boolean deleteListener(Long id, Long loginId) {
-        return listenerDao.deleteListener(id,loginId) > 0;
+        final Boolean flag = listenerDao.deleteListener(id,loginId) > 0;
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("听课人员删除结果:",flag);
+        }
+        return flag;
     }
 
     @Override
     public Boolean authorizationListener(Long id, Long loginId) {
-        return listenerDao.authorizationListener(id,loginId) >0;
+        final Boolean flag = listenerDao.authorizationListener(id,loginId) >0;
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("听课人员授权结果:",flag);
+        }
+        return flag;
     }
 
     @Override
     public Boolean authorizationListenerNot(Long id, Long loginId) {
-        return listenerDao.authorizationListenerNot(id,loginId) >0;
+        final Boolean flag = listenerDao.authorizationListenerNot(id,loginId) >0;
+
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("听课人员解除授权结果:",flag);
+        }
+        return flag;
     }
 }
