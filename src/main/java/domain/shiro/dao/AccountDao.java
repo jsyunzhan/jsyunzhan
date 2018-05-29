@@ -59,7 +59,7 @@ public interface AccountDao {
      * @param accountEntity 修改实体
      * @return Boolean
      */
-    Boolean editAccount(AccountEntity accountEntity);
+    Integer editAccount(AccountEntity accountEntity);
 
     /**
      * 删除
@@ -67,5 +67,5 @@ public interface AccountDao {
      * @param loginId 登录id
      * @return Boolean
      */
-    Boolean deleteAccount(@Param("id") Long id,@Param("updateUserId") Long loginId);
+    Integer deleteAccount(@Param("id") Long id,@Param("updateUserId") Long loginId);
 }

@@ -81,7 +81,7 @@ public class RoleManagementController extends AbstractActionController{
                 LOGGER.debug("角色名新增,roleName:{}",roleEntity.getRoleName());
             }
         }catch (Exception e){
-            LOGGER.error("业务处理异常");
+            LOGGER.error("业务处理异常:",e);
         }
 
         return jsonResponseVO;
@@ -114,7 +114,7 @@ public class RoleManagementController extends AbstractActionController{
             final Boolean flag = roleManagementService.editRole(roleEntity);
             jsonResponseVO.setSuccess(flag);
         }catch (Exception e){
-            LOGGER.error("业务处理异常");
+            LOGGER.error("业务处理异常:",e);
         }
 
 
@@ -135,7 +135,7 @@ public class RoleManagementController extends AbstractActionController{
             final Boolean flag = roleManagementService.deleRole(id,getLoginId());
             jsonResponseVO.setSuccess(flag);
         }catch (Exception e){
-            LOGGER.error("业务处理异常");
+            LOGGER.error("业务处理异常:",e);
         }
 
         return jsonResponseVO;
@@ -182,7 +182,7 @@ public class RoleManagementController extends AbstractActionController{
             final Boolean flag = roleManagementService.authorization(authorizationVOEntity,getLoginId());
             jsonResponseVO.setSuccess(flag);
         }catch (Exception e){
-            LOGGER.error("业务处理异常");
+            LOGGER.error("业务处理异常:",e);
         }
 
         return jsonResponseVO;

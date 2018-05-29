@@ -6,6 +6,8 @@ import domain.shiro.entity.PageQueryResult;
 import domain.system.dao.RoleDao;
 import domain.system.entity.RoleEntity;
 import domain.system.service.AccountManagementService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import static com.google.common.collect.Lists.newArrayList;
 @Service
 @Transactional
 public class AccountManagementServiceImpl implements AccountManagementService{
+    private static final Logger LOGGER = LoggerFactory.getLogger(AccountManagementServiceImpl.class);
+
     private final AccountDao accountDao;
     private final RoleDao roleDao;
 
@@ -57,7 +61,11 @@ public class AccountManagementServiceImpl implements AccountManagementService{
 
     @Override
     public Boolean accountAdd(AccountEntity accountEntity) {
-        return accountDao.addAccout(accountEntity) > 0;
+        final Boolean flag = accountDao.addAccout(accountEntity) > 0;
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("用户新增结果:",flag);
+        }
+        return flag;
     }
 
     @Override
@@ -67,11 +75,21 @@ public class AccountManagementServiceImpl implements AccountManagementService{
 
     @Override
     public Boolean accountEdit(AccountEntity accountEntity) {
-        return accountDao.editAccount(accountEntity);
+        final Boolean flag = accountDao.editAccount(accountEntity) > 0;
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("用户修改结果:",flag);
+        }
+        return flag;
     }
 
     @Override
     public Boolean accountDelete(Long id, Long loginId) {
-        return accountDao.deleteAccount(id,loginId);
+
+        final Boolean flag = accountDao.deleteAccount(id,loginId) > 0;
+
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("用户删除结果:",flag);
+        }
+        return flag;
     }
 }

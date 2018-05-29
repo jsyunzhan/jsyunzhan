@@ -6,6 +6,8 @@ import domain.shiro.entity.JsonResponseVO;
 import domain.shiro.entity.PageQueryResult;
 import domain.system.entity.RoleEntity;
 import domain.system.service.AccountManagementService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import static domain.system.SystemWebURLMapping.*;
  */
 @Controller
 public class AccountManagementController extends AbstractActionController{
+    private static final Logger LOGGER = LoggerFactory.getLogger(AccountManagementController.class);
 
     private final AccountManagementService accountManagementService;
 
@@ -69,8 +72,16 @@ public class AccountManagementController extends AbstractActionController{
     public JsonResponseVO accountAdd(@RequestBody AccountEntity accountEntity){
         accountEntity.setCreateUserId(getLoginId());
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
-        final Boolean flage = accountManagementService.accountAdd(accountEntity);
-        jsonResponseVO.setSuccess(flage);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("用户添加,loginName:{}",accountEntity.getLoginName());
+            }
+            final Boolean flage = accountManagementService.accountAdd(accountEntity);
+            jsonResponseVO.setSuccess(flage);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常",e);
+        }
+
         return jsonResponseVO;
     }
 
@@ -84,19 +95,40 @@ public class AccountManagementController extends AbstractActionController{
     public JsonResponseVO accountEdit(@RequestBody AccountEntity accountEntity){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
         accountEntity.setUpdateUserId(getLoginId());
-        final Boolean flag = accountManagementService.accountEdit(accountEntity);
 
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("用户修改,loginName:{}",accountEntity.getLoginName());
+            }
+            final Boolean flag = accountManagementService.accountEdit(accountEntity);
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
         return jsonResponseVO;
 
     }
 
+    /**
+     * 用户删除
+     * @param id id
+     * @return JsonResponseVO
+     */
     @RequestMapping(value = ACCOUNT_DELETE_POST)
     @ResponseBody
     public JsonResponseVO accountDelete(@PathVariable("id") Long id){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
 
-        final Boolean flag = accountManagementService.accountDelete(id,getLoginId());
-        jsonResponseVO.setSuccess(flag);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("用户删除,id:{}",id);
+            }
+            final Boolean flag = accountManagementService.accountDelete(id,getLoginId());
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
         return jsonResponseVO;
     }
 
