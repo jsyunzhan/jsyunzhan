@@ -54,6 +54,12 @@ public class QureManagementController extends AbstractActionController{
         return qureManagementService.noteListInfo(noteEntity);
     }
 
+    /**
+     * 获取图片64解码
+     * @param noteEntity noteEntity
+     * @return String[]
+     * @throws IOException io处理异常
+     */
     @RequestMapping(value = "/listen/getPictureByte")
     @ResponseBody
     public String[] getPictureByte(@RequestBody NoteEntity noteEntity) throws IOException {
