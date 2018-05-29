@@ -5,6 +5,8 @@ import domain.message.service.PhoneManagementService;
 import domain.shiro.controller.AbstractActionController;
 import domain.shiro.entity.JsonResponseVO;
 import domain.shiro.entity.PageQueryResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,7 @@ import static domain.message.MessageWebURLMapping.*;
  */
 @Controller
 public class PhoneManagementController extends AbstractActionController{
+    private static final Logger LOGGER = LoggerFactory.getLogger(PhoneManagementController.class);
 
     final private PhoneManagementService phoneManagementService;
 
@@ -59,9 +62,18 @@ public class PhoneManagementController extends AbstractActionController{
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
 
         phoneEntity.setCreateUserId(getLoginId());
-        final Boolean flag = phoneManagementService.phoneMessAdd(phoneEntity);
 
-        jsonResponseVO.setSuccess(flag);
+        try {
+
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("手机消息新增,title:{}",phoneEntity.getTitle());
+            }
+            final Boolean flag = phoneManagementService.phoneMessAdd(phoneEntity);
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
         return jsonResponseVO;
     }
 
@@ -76,9 +88,17 @@ public class PhoneManagementController extends AbstractActionController{
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
 
         phoneEntity.setUpdateUserId(getLoginId());
-        final Boolean flag = phoneManagementService.phoneMessEdit(phoneEntity);
 
-        jsonResponseVO.setSuccess(flag);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("手机消息修改,title:{}",phoneEntity.getTitle());
+            }
+            final Boolean flag = phoneManagementService.phoneMessEdit(phoneEntity);
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
         return jsonResponseVO;
     }
 
@@ -87,9 +107,16 @@ public class PhoneManagementController extends AbstractActionController{
     public JsonResponseVO phoneMessDelete(@PathVariable("id") Long id){
         final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
 
-        final Boolean flag = phoneManagementService.phoneMessDelete(id,getLoginId());
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("手机消息删除,id:{}",id);
+            }
+            final Boolean flag = phoneManagementService.phoneMessDelete(id,getLoginId());
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
 
-        jsonResponseVO.setSuccess(flag);
         return jsonResponseVO;
     }
 }
