@@ -160,7 +160,7 @@
                 </tr>
 
                 <tr>
-                    <th width="120"><label class="control-label required-mark" style="width:100px">评价
+                    <th width="120"><label class="control-label required-mark" style="width:100px">听课内容
 
                     </label>
                     </th>
