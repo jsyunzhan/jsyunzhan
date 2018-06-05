@@ -96,12 +96,10 @@ public class RoleManagementServiceImpl implements RoleManagementService{
             LOGGER.debug("角色授权结果:{}",flag);
         }
 
-        if (flag){
-            for (ResourceEntity resourceEntity:
-                    resourceEntities) {
-                resourceEntity.setCreateUserId(loginId);
-                resourceDao.addAuthorization(resourceEntity.getId(),roleId,loginId);
-            }
+        for (ResourceEntity resourceEntity:
+                resourceEntities) {
+            resourceEntity.setCreateUserId(loginId);
+            resourceDao.addAuthorization(resourceEntity.getId(),roleId,loginId);
         }
 
         return flag;
