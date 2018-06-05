@@ -120,4 +120,6 @@ public class UserSecurityController extends AbstractActionController{
 
         return userSecurityService.getResourceInfoByRoleId(roleId);
     }
+
+
 }

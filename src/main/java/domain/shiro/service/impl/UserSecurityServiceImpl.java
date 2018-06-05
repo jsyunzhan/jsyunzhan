@@ -3,6 +3,7 @@ package domain.shiro.service.impl;
 import domain.shiro.dao.AccountDao;
 import domain.shiro.dao.ResourceDao;
 import domain.shiro.entity.AccountEntity;
+import domain.shiro.entity.ParamEntity;
 import domain.shiro.entity.ResourceEntity;
 import domain.shiro.service.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,10 @@ public class UserSecurityServiceImpl implements UserSecurityService{
     @Override
     public List<ResourceEntity> getResourceInfoByRoleId(Long roleId) {
         return resourceDao.getResourceInfoByRoleId(roleId);
+    }
+
+    @Override
+    public List<ParamEntity> getParams(String paramType) {
+        return resourceDao.getParams(paramType);
     }
 }

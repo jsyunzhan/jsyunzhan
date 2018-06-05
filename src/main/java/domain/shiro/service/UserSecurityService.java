@@ -1,6 +1,7 @@
 package domain.shiro.service;
 
 import domain.shiro.entity.AccountEntity;
+import domain.shiro.entity.ParamEntity;
 import domain.shiro.entity.ResourceEntity;
 
 import java.util.List;
@@ -23,4 +24,11 @@ public interface UserSecurityService {
      * @return List<ResourceEntity> 资源信息
      */
     List<ResourceEntity>  getResourceInfoByRoleId(Long roleId);
+
+    /**
+     * 获取参数表参数
+     * @param paramType 参数类型
+     * @return List<ParamEntity>
+     */
+    List<ParamEntity> getParams(String paramType);
 }

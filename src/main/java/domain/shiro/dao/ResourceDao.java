@@ -1,5 +1,6 @@
 package domain.shiro.dao;
 
+import domain.shiro.entity.ParamEntity;
 import domain.shiro.entity.ResourceEntity;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -40,4 +41,11 @@ public interface ResourceDao {
      * @param loginId 当前登录id
      */
     Integer addAuthorization(@Param("resourceId") Long resourceId,@Param("roleId") Long roleId,@Param("createUserId") Long loginId);
+
+    /**
+     * 获取参数表参数
+     * @param paramType 参数类型
+     * @return List<ParamEntity>
+     */
+    List<ParamEntity> getParams(String paramType);
 }

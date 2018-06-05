@@ -1,4 +1,15 @@
 $(function () {
+
+    // 获取听课人员角色
+    $.ajax({
+        url:path + "/paramters/ROLE_TYPE",
+        type:"GET",
+        dataType:"json",
+        success:function (r) {
+            console.log(r)
+        }
+    });
+
     var selectedlistener, reqObj = {};
     var $listenerGrid = $('#listenerGrid').datagrid({
         url: path + '/person/listenermanpage/list', method: 'GET',

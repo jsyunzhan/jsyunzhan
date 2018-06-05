@@ -57,4 +57,19 @@
           NOW()
         )
     </insert>
+
+    <!--查询参数-->
+    <select id="getParams" resultType="ParamEntityInfo">
+        SELECT
+        t.ID id,
+        t.PARAM_NAME paramName,
+        t.PARAM_TYPE paramType,
+        t.CREATE_USER_ID createUserId,
+        t.CREATE_DATA createDate,
+        t.UPDATE_USER_ID updateUserId,
+        t.UPDATE_DATA updateDate
+        FROM t_sys_parameter t
+        WHERE t.DELETE_FLAG='1'
+        AND t.PARAM_TYPE=#{paramType}
+    </select>
 </mapper>

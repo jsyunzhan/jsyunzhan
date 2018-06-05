@@ -5,6 +5,8 @@ import domain.person.service.ListenerManagementService;
 import domain.shiro.controller.AbstractActionController;
 import domain.shiro.entity.JsonResponseVO;
 import domain.shiro.entity.PageQueryResult;
+import domain.shiro.entity.ParamEntity;
+import domain.shiro.service.UserSecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 import static domain.person.PersonWebForward.LISTEER_PAGE;
 import static domain.person.PersonWebURLMapping.*;
@@ -26,11 +30,14 @@ public class ListenerManagementController extends AbstractActionController{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ListenerManagementController.class);
 
-    private ListenerManagementService listenerManagementService;
+    final private ListenerManagementService listenerManagementService;
+    final private UserSecurityService userSecurityService;
 
     @Autowired
-    public ListenerManagementController(ListenerManagementService listenerManagementService){
+    public ListenerManagementController(ListenerManagementService listenerManagementService
+            ,UserSecurityService userSecurityService){
         this.listenerManagementService = listenerManagementService;
+        this.userSecurityService = userSecurityService;
     }
 
     @RequestMapping(value = LISTENER_MAN_PAGE)
@@ -163,5 +170,11 @@ public class ListenerManagementController extends AbstractActionController{
         }
 
         return jsonResponseVO;
+    }
+
+    @RequestMapping(value = "/paramters/{paramType}")
+    @ResponseBody
+    public List<ParamEntity> getParams(@PathVariable("paramType") String paramType){
+        return userSecurityService.getParams(paramType);
     }
 }
