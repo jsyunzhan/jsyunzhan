@@ -11,6 +11,7 @@ function addTab(title, url){
             closable:true
         });
     }
+    $("iframe").height(w_height-110);
 }
 
 $(function(){
@@ -91,8 +92,6 @@ $(function(){
 
     $(".sidebar").css("max-height",w_height-70);
     $(".easyui-tabs").css("height",w_height-70);
-
-
 
 
 });
