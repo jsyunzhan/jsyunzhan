@@ -79,6 +79,13 @@
                 </tr>
 
                 <tr>
+                    <th width="100"><label class="control-label required-mark" style="width:100px">听课人员职务</label>
+                    </th>
+                    <td width="200"><input id="addRoleType" name="roleTypeId" required="required"
+                                           data-options="prompt:'请选择...'"/></td>
+                </tr>
+
+                <tr>
                     <th width="120"><label class="control-label required-mark" style="width:110px"
                                            required="required">单位
 
@@ -136,6 +143,13 @@
                     </th>
                     <td width="200"><input class="easyui-textbox control" name="listenerNumb" required="required"
                                            data-options="prompt:'请输入...'"/></td>
+                </tr>
+
+                <tr>
+                    <th width="100"><label class="control-label required-mark" style="width:100px">听课人员职务</label>
+                    </th>
+                    <td width="200"><input id="editRoleType" name="roleTypeId" required="required"
+                                           data-options="prompt:'请选择...'"/></td>
                 </tr>
 
                 <tr>

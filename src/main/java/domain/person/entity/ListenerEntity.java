@@ -14,6 +14,12 @@ public class ListenerEntity extends AbstractEntity {
     //听课人员身份证
     private Long listenerNumb;
 
+    //听课人员职务id
+    private Long roleTypeId;
+
+    //听课人员职务
+    private String roleType;
+
     //学校名称
     private String schoolName;
 

@@ -1,12 +1,17 @@
 $(function () {
 
+    /*****************下拉框加载************************/
+    var $addRoleId = $('#addRoleType,#editRoleType').combobox({
+        panelHeight: 'auto', valueField: 'id',
+        textField: 'paramName', editable: false
+    });
     // 获取听课人员角色
     $.ajax({
         url:path + "/paramters/ROLE_TYPE",
         type:"GET",
         dataType:"json",
         success:function (r) {
-            console.log(r)
+            $addRoleId.combobox('loadData',r);
         }
     });
 
@@ -27,6 +32,10 @@ $(function () {
             },
             {
                 field: 'listenerNumb', title: "听课人员身份证", width: 100, sortable: true,
+                align: 'left'
+            },
+            {
+                field: 'roleType', title: "听课人员职务", width: 100, sortable: true,
                 align: 'left'
             },
             {
@@ -158,7 +167,7 @@ $(function () {
     });
 
     var $addListenerWin = $('#addListenerWin').window({
-        title: "新增", closed: true, modal: true, height: 228,
+        title: "新增", closed: true, modal: true, height: 258,
         width: 375, iconCls: 'icon-add', collapsible: false, minimizable: false,
         footer: '#addListenerWinFooter',
         onClose: function () {
@@ -201,7 +210,7 @@ $(function () {
     });
 
     var $editListenerWin = $('#editListenerWin').window({
-        title: "修改", closed: true, modal: true, height: 228,
+        title: "修改", closed: true, modal: true, height: 258,
         width: 375, iconCls: 'icon-edit', collapsible: false, minimizable: false,
         footer: '#editListenerWinFooter',
         onClose: function () {
