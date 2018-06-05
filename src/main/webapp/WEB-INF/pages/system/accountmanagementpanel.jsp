@@ -16,7 +16,6 @@
     <script type="text/javascript"
             src="<c:url value="/static/js/system/accountmanagementpanel.js"/>"></script>
 </head>
-<body>
 <body class="easyui-layout">
 
     <div data-options="region:'center'">

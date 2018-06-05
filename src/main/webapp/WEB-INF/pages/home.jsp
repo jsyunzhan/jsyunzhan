@@ -13,19 +13,21 @@
     <link rel="shortcut icon" href="${APP_PATH}/static/images/favicon.ico">
 
 
+
     <%--以上三个meta不可或缺--%>
     <link rel="stylesheet" href="${APP_PATH}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link href="${APP_PATH}/static/easyui/themes/default/easyui.css" rel="stylesheet" />
-    <link href="${APP_PATH}/static/easyui/themes/icon.css" rel="stylesheet" />
+    <%--<link href="${APP_PATH}/static/easyui/themes/default/easyui.css" rel="stylesheet" />--%>
+    <%--<link href="${APP_PATH}/static/easyui/themes/icon.css" rel="stylesheet" />--%>
     <link rel="stylesheet" href="${APP_PATH}/static/css/public.css">
     <link rel="stylesheet" href="${APP_PATH}/static/css/home.css">
     <script src="${APP_PATH}/static/jquery/jquery-1.12.4.min.js"></script>
     <script src="${APP_PATH}/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-    <script src="${APP_PATH}/static/easyui/jquery.min.js"></script>
-    <script src="${APP_PATH}/static/easyui/jquery.easyui.min.js"></script>
+    <%--<script src="${APP_PATH}/static/easyui/jquery.min.js"></script>--%>
+    <%--<script src="${APP_PATH}/static/easyui/jquery.easyui.min.js"></script>--%>
     <script src="${APP_PATH}/static/js/public.js"></script>
     <script src="${APP_PATH}/static/js/home.js"></script>
     <title>后台首页</title>
+    <jsp:include flush="true" page="/WEB-INF/pages/commons/servercommonjs.jsp"/>
 </head>
 <body class="b_gray2">
     <div class="container-fluid p0">
@@ -44,10 +46,10 @@
                 </div>
                 <ul class="dropdown-menu personal_ul">
                     <li>
-                        <a href="javascript:;"><span><img src="${APP_PATH}/static/images/modify.png"></span>忘记密码</a>
+                        <a id="editPassWord" href="javascript:;"><span><img src="${APP_PATH}/static/images/modify.png"></span>修改密码</a>
                     </li>
                     <li>
-                        <a href="${APP_PATH}-02=/shiro/logout"><span><img src="${APP_PATH}/static/images/signOut.png"></span>退出登录</a>
+                        <a href="${APP_PATH}/shiro/logout"><span><img src="${APP_PATH}/static/images/signOut.png"></span>退出登录</a>
 
                     </li>
                 </ul>
@@ -61,6 +63,47 @@
                 <div id="content" class="easyui-tabs">
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!--修改密码窗口-->
+    <div id="editPassWordWin">
+        <form id="editPassWordForm" class="control-form">
+            <table class="table_list" style="text-align: right;margin:3px;width:99%">
+
+
+                <tr>
+                    <th width="100"><label class="control-label required-mark" style="width:100px"
+                                           required="required">密码
+
+                    </label>
+                    </th>
+                    <td width="200"><input id="password" class="easyui-textbox control" type="password" name="password" required="required"
+                                           data-options="prompt:'请输入...'"/></td>
+                </tr>
+
+                <tr>
+                    <th width="100"><label class="control-label required-mark" style="width:100px"
+                                           required="required">确认密码
+
+                    </label>
+                    </th>
+                    <td width="200"><input id="confirmPassword" class="easyui-textbox control" type="password" required="required"
+                                           data-options="prompt:'请输入...'"/></td>
+                </tr>
+
+            </table>
+        </form>
+
+        <div id="editPassWordWinFooter" style="text-align:center;padding:5px">
+            <a id="editPassWordWinSubmitBtn" href="javascript:void(0);" iconCls="icon-ok" class="easyui-linkbutton"
+               style="margin-right:20px;">
+                确认
+            </a>
+            <a id="editPassWordWinCloseBtn" href="javascript:void(0);" iconCls="icon-cancel" style="margin-left:20px;"
+               class="easyui-linkbutton">
+                取消
+            </a>
         </div>
     </div>
 </body>

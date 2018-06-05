@@ -17,6 +17,60 @@ function addTab(title, url){
 $(function(){
 
 
+    $("#editPassWord").click(function () {
+
+        $('#editPassWordForm').form('disableValidation').form('reset');
+        $editPassWordWin.window('open');
+    });
+
+    /*************修改密码*******************/
+
+
+    $('#confirmPassword').textbox({
+
+        validType: 'passwordMatch["#password"]'
+    });
+
+    var $editPassWordForm = $('#editPassWordForm').form({
+        novalidate: true
+    });
+
+    var $editPassWordWin = $('#editPassWordWin').window({
+        title: "修改", closed: true, modal: true, height: 150,
+        width: 360, iconCls: 'icon-edit', collapsible: false, minimizable: false,
+        footer: '#editPassWordWinFooter',
+        onClose: function () {
+            $('#editPassWordForm').form('disableValidation').form('reset');
+        }
+    });
+
+    $('#editPassWordWinSubmitBtn').linkbutton({
+        onClick: function () {
+            if (!$('#editPassWordForm').form('enableValidation').form('validate')) {
+                return;
+            }
+
+            var password = $editPassWordForm.serializeObject(),
+                url = path + "/system/editpassword";
+
+
+            $.ajax({
+                url:url,type:"POST",contentType: "application/json",data:JSON.stringify(password),
+                success:function (r) {
+                    $editPassWordWin.window('close');
+                    showInfoMessage(SYSTEM_MESSAGE.msg_action_success)
+                }
+            })
+
+        }
+    });
+
+    $('#editPassWordWinCloseBtn').linkbutton({
+        onClick: function () {
+            $editPassWordWin.window('close');
+        }
+    });
+
 
     $.ajax({
         url: path + '/security/resources/'+roleId,

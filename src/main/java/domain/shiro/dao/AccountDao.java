@@ -68,4 +68,11 @@ public interface AccountDao {
      * @return Boolean
      */
     Integer deleteAccount(@Param("id") Long id,@Param("updateUserId") Long loginId);
+
+    /**
+     * 用户修改密码
+     * @param accountEntity 修改实体
+     * @return Integer
+     */
+    Integer editPassWord(AccountEntity accountEntity);
 }

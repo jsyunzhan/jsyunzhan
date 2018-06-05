@@ -92,4 +92,16 @@ public class AccountManagementServiceImpl implements AccountManagementService{
         }
         return flag;
     }
+
+    @Override
+    public Boolean editPassWord(AccountEntity accountEntity) {
+
+        final Boolean flag = accountDao.editPassWord(accountEntity) > 0;
+
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("用户修改密码结果:",flag);
+        }
+
+        return flag;
+    }
 }

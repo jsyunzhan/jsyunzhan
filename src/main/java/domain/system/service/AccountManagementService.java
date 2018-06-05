@@ -61,4 +61,11 @@ public interface AccountManagementService {
      * @return Boolean
      */
     Boolean accountDelete(Long id, Long loginId);
+
+    /**
+     * 修改密码
+     * @param accountEntity 修改实体
+     * @return Boolean
+     */
+    Boolean editPassWord(AccountEntity accountEntity);
 }

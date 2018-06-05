@@ -10,21 +10,13 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <%--<link href="../../../static/easyui/themes/default/easyui.css" rel="stylesheet" />--%>
-    <%--<link href="../../../static/easyui/themes/icon.css" rel="stylesheet" />--%>
-    <%--<link href="../../../static/css/customer.css" rel="stylesheet" />--%>
+
 
     <link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/static/easyui/themes/default/easyui.css"/>"/>
     <link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/static/easyui/themes/icon.css"/>"/>
     <link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/static/css/customer.css"/>"/>
 
-    <%--<script src="../../../static/easyui/jquery.min.js"></script>--%>
-    <%--<script src="../../../static/easyui/jquery.easyui.min.js"></script>--%>
-    <%--<script src="../../../static/js/untis/jquery.jdirk.js"></script>--%>
-    <%--<script src="../../../static/easyui/locale/easyui-lang-zh_CN.js"></script>--%>
-    <%--<script src="../../../static/js/untis/datautils.js"></script>--%>
-    <%--<script src="../../../static/js/untis/commonutil4easyui.js"></script>--%>
-    <%--<script src="../../../static/js/untis/message.js"></script>--%>
+
 
     <script type="text/javascript"
             src="<c:url value="/static/easyui/jquery.min.js"/>"></script>

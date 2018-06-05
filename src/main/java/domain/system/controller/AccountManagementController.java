@@ -145,4 +145,29 @@ public class AccountManagementController extends AbstractActionController{
                                          @RequestParam("loginName") String loginName){
         return accountManagementService.checkLoginName(id,loginName);
     }
+
+    /**
+     * 修改密码
+     * @return JsonResponseVO
+     */
+    @RequestMapping(value = EDIT_PASSWORD)
+    @ResponseBody
+    public JsonResponseVO editPassWord(@RequestBody AccountEntity accountEntity){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        final Long userId = getLoginId();
+        accountEntity.setId(userId);
+        accountEntity.setUpdateUserId(userId);
+
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("用户修改密码,id:{}",userId);
+            }
+            final Boolean flag = accountManagementService.editPassWord(accountEntity);
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
+        return jsonResponseVO;
+    }
 }

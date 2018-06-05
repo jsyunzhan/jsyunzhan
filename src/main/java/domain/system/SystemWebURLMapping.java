@@ -84,4 +84,9 @@ public final class SystemWebURLMapping {
      * 验证登录名是否重复
      */
     public static final String CHECK_LOGIN_NAME = ACCOUNT_MANAGEMENT_PAGE + "/checkaccountname";
+
+
+    /************************修改密码**********************************/
+    public static final String EDIT_PASSWORD = SYSTEM_ROOT + "editpassword";
+
 }

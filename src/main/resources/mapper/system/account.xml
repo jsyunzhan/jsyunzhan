@@ -105,4 +105,13 @@
         UPDATE_DATA=NOW()
         WHERE ID=#{id}
     </update>
+
+    <!--修改密码-->
+    <update id="editPassWord">
+        UPDATE t_sys_account SET
+        PASSWORD=#{password},
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
 </mapper>
