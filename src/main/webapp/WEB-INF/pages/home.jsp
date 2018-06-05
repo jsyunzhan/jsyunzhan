@@ -47,7 +47,7 @@
                         <a href="javascript:;"><span><img src="${APP_PATH}/static/images/modify.png"></span>忘记密码</a>
                     </li>
                     <li>
-                        <a href="javascript:;"><span><img src="${APP_PATH}/static/images/signOut.png"></span>退出登录</a>
+                        <a href="${APP_PATH}-02=/shiro/logout"><span><img src="${APP_PATH}/static/images/signOut.png"></span>退出登录</a>
 
                     </li>
                 </ul>
