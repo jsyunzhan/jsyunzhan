@@ -170,16 +170,31 @@ $(function () {
                         $.ajax({
                             url:url,type:"POST",contentType: "application/json",data:JSON.stringify(data),async: false,
                             success:function (r) {
-                                console.log(r)
                                 var listenerPicture = $('#listenerPicture');
                                 listenerPicture.empty();
-
-
-                                for (var i=0;i<r.length;i++){
-                                    var picture = '<img src="data:image/gif;base64,' + r[i] + '" style="width:100%;height:100%">';
-                                    listenerPicture.append(picture);
-                                }
-
+                                var imageNum = 0;
+                                var picture = '<div class="listenerLeft"><img src="'+path+'/static/images/white_left.png"></div>';
+                                picture += '<img src="data:image/gif;base64,'+r[imageNum]+'" class="showImage">';
+                                picture += '<div class="listenerRight"><img src="'+path+'/static/images/white_right.png"></div>';
+                                listenerPicture.append(picture);
+                                $(".listenerLeft").click(function () {
+                                    if (imageNum>0){
+                                        imageNum--;
+                                        $(".showImage").attr("src","data:image/gif;base64,"+r[imageNum]);
+                                    }else{
+                                        imageNum = r.length-1;
+                                        $(".showImage").attr("src","data:image/gif;base64,"+r[imageNum]);
+                                    }
+                                })
+                                $(".listenerRight").click(function () {
+                                    if (imageNum<r.length-1){
+                                        imageNum++;
+                                        $(".showImage").attr("src","data:image/gif;base64,"+r[imageNum]);
+                                    }else{
+                                        imageNum = 0;
+                                        $(".showImage").attr("src","data:image/gif;base64,"+r[imageNum]);
+                                    }
+                                })
                             }
                         });
 

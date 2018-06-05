@@ -227,3 +227,33 @@ tr.list_colspan > th {
 .tree-title {
     display: inline
 }
+
+.showImage{
+    width:200px;
+    height:200px;
+    margin: 0 auto;
+}
+
+#listenerPicture{
+    position: relative;
+}
+
+.listenerLeft,.listenerRight{
+    width: 40px;
+    position: absolute;
+    top: 80px;
+    cursor: pointer;
+}
+
+.listenerLeft{
+    left: 0;
+}
+
+.listenerRight{
+    right: 0;
+}
+
+img{
+    display: block;
+    width: 100%;
+}
