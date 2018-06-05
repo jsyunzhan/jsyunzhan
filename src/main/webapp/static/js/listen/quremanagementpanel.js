@@ -33,35 +33,35 @@ $(function () {
                 align: 'left'
             },
             {
-                field: 'threeCount', title: reqObj.yearString+"年3月听课次数", width: 130, sortable: true,
+                field: 'threeCount', title: "三月听课次数", width: 100, sortable: true,
                 align: 'left',formatter:listenResult
             },
             {
-                field: 'fourCount', title: reqObj.yearString+"年4月听课次数", width: 130, sortable: true,
+                field: 'fourCount', title: "四月听课次数", width: 100, sortable: true,
                 align: 'left',formatter:listenResult
             },
             {
-                field: 'fiveCount', title: reqObj.yearString+"年5月听课次数", width: 130, sortable: true,
+                field: 'fiveCount', title: "五月听课次数", width: 100, sortable: true,
                 align: 'left',formatter:listenResult
             },
             {
-                field: 'sixCount', title: reqObj.yearString+"年6月听课次数", width: 130, sortable: true,
+                field: 'sixCount', title: "六月听课次数", width: 100, sortable: true,
                 align: 'left',formatter:listenResult
             },
             {
-                field: 'nineCount', title: reqObj.yearString+"年9月听课次数", width: 130, sortable: true,
+                field: 'nineCount', title: "九月听课次数", width: 100, sortable: true,
                 align: 'left',formatter:listenResult
             },
             {
-                field: 'tenCount', title: reqObj.yearString+"年10月听课次数", width: 130, sortable: true,
+                field: 'tenCount', title: "十月听课次数", width: 100, sortable: true,
                 align: 'left',formatter:listenResult
             },
             {
-                field: 'elevenCount', title: reqObj.yearString+"年11月听课次数", width: 130, sortable: true,
+                field: 'elevenCount', title: "十一月听课次数", width: 100, sortable: true,
                 align: 'left',formatter:listenResult
             },
             {
-                field: 'twelveCount', title: reqObj.yearString+"年12月听课次数", width: 130, sortable: true,
+                field: 'twelveCount', title: "十二月听课次数", width: 100, sortable: true,
                 align: 'left',formatter:listenResult
             }
 
