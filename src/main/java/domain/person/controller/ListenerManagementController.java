@@ -129,7 +129,7 @@ public class ListenerManagementController extends AbstractActionController{
     }
 
     /**
-     * 听课人员授权
+     * 听课人员私有笔记授权
      * @param id id
      * @return JsonResponseVO
      */
@@ -151,7 +151,7 @@ public class ListenerManagementController extends AbstractActionController{
     }
 
     /**
-     * 取消授权
+     * 私有笔记取消授权
      * @param id id
      * @return JsonResponseVO
      */
@@ -176,5 +176,44 @@ public class ListenerManagementController extends AbstractActionController{
     @ResponseBody
     public List<ParamEntity> getParams(@PathVariable("paramType") String paramType){
         return userSecurityService.getParams(paramType);
+    }
+
+    /**
+     * 机关进校园授权
+     * @param id id
+     * @return JsonResponseVO
+     */
+    @RequestMapping(value = LISTENER_MAN_ORGAN)
+    @ResponseBody
+    public JsonResponseVO  organListener(@PathVariable("id") Long id){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("听课人员授权，机关进校园,id:{}",id);
+            }
+            final Boolean flag = listenerManagementService.organListener(id,getLoginId());
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
+        return jsonResponseVO;
+    }
+
+    @RequestMapping(value = LISTENER_MAN_ORGANNOT)
+    @ResponseBody
+    public JsonResponseVO  organnotListener(@PathVariable("id") Long id){
+        final JsonResponseVO jsonResponseVO = new JsonResponseVO(Boolean.FALSE);
+        try {
+            if (LOGGER.isDebugEnabled()){
+                LOGGER.debug("听课人员解除授权，机关进校园,id:{}",id);
+            }
+            final Boolean flag = listenerManagementService.organnotListener(id,getLoginId());
+            jsonResponseVO.setSuccess(flag);
+        }catch (Exception e){
+            LOGGER.error("业务处理异常:",e);
+        }
+
+        return jsonResponseVO;
     }
 }

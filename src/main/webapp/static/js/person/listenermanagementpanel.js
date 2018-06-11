@@ -43,7 +43,11 @@ $(function () {
                 align: 'left'
             },
             {
-                field: 'permissionFlag', title: "是否拥有权限", width: 100, sortable: true,
+                field: 'permissionFlag', title: "查看私有笔记权限", width: 130, sortable: true,
+                align: 'left',formatter:permissionResult
+            },
+            {
+                field: 'organFlag', title: "机关进校园提交权限", width: 130, sortable: true,
                 align: 'left',formatter:permissionResult
             },{
                 field: 'openId', title: "是否注册", width: 100, sortable: true,
@@ -78,7 +82,7 @@ $(function () {
                 }
             },
             {
-                text: "授权", iconCls: 'icon-remove',
+                text: "私有笔记授权", iconCls: 'icon-remove',
                 handler: function () {
 
                     if (selectedlistener.permissionFlag == '1'){
@@ -86,7 +90,7 @@ $(function () {
                         return
                     }
 
-                    var msg = String.format("您确定要授权用户：<span style='color: red;'>{0}</span>？", selectedlistener.listenerName);
+                    var msg = String.format("您确定要授权私有笔记，用户：<span style='color: red;'>{0}</span>？", selectedlistener.listenerName);
 
                     showConfirm(msg, function () {
                         $.ajax({
@@ -101,7 +105,7 @@ $(function () {
                 }
             },
             {
-                text: "解除授权", iconCls: 'icon-remove',
+                text: "私有笔记解除授权", iconCls: 'icon-remove',
                 handler: function () {
 
                     if (selectedlistener.permissionFlag == '0'){
@@ -109,11 +113,56 @@ $(function () {
                         return
                     }
 
-                    var msg = String.format("您确定要解除用户权限：<span style='color: red;'>{0}</span>？", selectedlistener.listenerName);
+                    var msg = String.format("您确定要解除私有笔记权限，用户：<span style='color: red;'>{0}</span>？", selectedlistener.listenerName);
 
                     showConfirm(msg, function () {
                         $.ajax({
                             url: path + "/person/listenermanpage/authorizationnot/"+selectedlistener.id,
+                            type:"GET",dataType:"json",
+                            success:function (r) {
+                                $listenerGrid.datagrid('reload');
+                            }
+                        })
+                    })
+
+                }
+            },{
+                text: "机关进校园授权", iconCls: 'icon-remove',
+                handler: function () {
+
+                    if (selectedlistener.organFlag == '1'){
+                        showWarningMessage("该用户已经拥有权限，请重新选择！");
+                        return
+                    }
+
+                    var msg = String.format("您确定要授权机关进校园提交，用户：<span style='color: red;'>{0}</span>？", selectedlistener.listenerName);
+
+                    showConfirm(msg, function () {
+                        $.ajax({
+                            url:path + "/person/listenermanpage/organ/"+selectedlistener.id,
+                            type:"GET",dataType:"json",
+                            success:function (r) {
+                                $listenerGrid.datagrid('reload');
+                            }
+                        })
+                    })
+
+                }
+            },
+            {
+                text: "机关进校园解除授权", iconCls: 'icon-remove',
+                handler: function () {
+
+                    if (selectedlistener.organFlag == '0'){
+                        showWarningMessage("该用户没有权限，请重新选择！");
+                        return
+                    }
+
+                    var msg = String.format("您确定要解除机关进校园提交，用户：<span style='color: red;'>{0}</span>？", selectedlistener.listenerName);
+
+                    showConfirm(msg, function () {
+                        $.ajax({
+                            url: path + "/person/listenermanpage/organnot/"+selectedlistener.id,
                             type:"GET",dataType:"json",
                             success:function (r) {
                                 $listenerGrid.datagrid('reload');

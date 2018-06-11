@@ -59,4 +59,20 @@ public interface ListenerDao {
      * @return 当前登录id
      */
     Integer authorizationListenerNot(@Param("id") Long id,@Param("updateUserId") Long loginId);
+
+    /**
+     * 机关进校园笔记提交授权
+     * @param id id
+     * @param loginId 当前登录id
+     * @return Integer
+     */
+    Integer organListener(@Param("id") Long id,@Param("updateUserId") Long loginId);
+
+    /**
+     * 机关进校园笔记提交解除授权
+     * @param id id
+     * @param loginId 当前登录id
+     * @return Integer
+     */
+    Integer organnotListener(@Param("id")Long id,@Param("updateUserId") Long loginId);
 }

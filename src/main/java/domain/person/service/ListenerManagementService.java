@@ -34,7 +34,7 @@ public interface ListenerManagementService {
     Boolean deleteListener(Long id, Long loginId);
 
     /**
-     * 听课人员授权
+     * 听课人员查看私有笔记授权
      * @param id id
      * @param loginId 当前登录id
      * @return Boolean
@@ -42,10 +42,26 @@ public interface ListenerManagementService {
     Boolean authorizationListener(Long id, Long loginId);
 
     /**
-     * 解除授权
+     * 查看私有笔记解除授权
      * @param id id
      * @param loginId 当前登录id
      * @return Boolean
      */
     Boolean authorizationListenerNot(Long id, Long loginId);
+
+    /**
+     * 机关进校园笔记提交授权
+     * @param id id
+     * @param loginId 当前登录id
+     * @return Boolean
+     */
+    Boolean organListener(Long id, Long loginId);
+
+    /**
+     * 机关进校园笔记提交解除授权
+     * @param id id
+     * @param loginId 当前登录id
+     * @return Boolean
+     */
+    Boolean organnotListener(Long id, Long loginId);
 }

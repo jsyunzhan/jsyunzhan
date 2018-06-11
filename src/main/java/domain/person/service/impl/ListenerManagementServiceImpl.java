@@ -88,4 +88,24 @@ public class ListenerManagementServiceImpl implements ListenerManagementService{
         }
         return flag;
     }
+
+    @Override
+    public Boolean organListener(Long id, Long loginId) {
+        final Boolean flag = listenerDao.organListener(id,loginId) > 0;
+
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("机关进校园提交授权结果:",flag);
+        }
+        return flag;
+    }
+
+    @Override
+    public Boolean organnotListener(Long id, Long loginId) {
+        final Boolean flag = listenerDao.organnotListener(id,loginId) > 0;
+
+        if (LOGGER.isDebugEnabled()){
+            LOGGER.debug("机关进校园提交解除授权结果:",flag);
+        }
+        return flag;
+    }
 }

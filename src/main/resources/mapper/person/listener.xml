@@ -32,6 +32,7 @@
         t.ROLE_TYPE roleTypeId,
         (SELECT b.PARAM_NAME FROM  t_sys_parameter b where b.ID=t.ROLE_TYPE) roleType,
         t.PERMISSION_FLAG permissionFlag,
+        t.ORGAN_FLAG organFlag,
         t.OPEN_ID openId,
         (SELECT COUNT(*) FROM t_listen_notes b WHERE b.DELETE_FLAG='1' AND
         b.LISTENER_ID=t.ID) listenCount,
@@ -119,6 +120,24 @@
     <update id="authorizationListenerNot">
         UPDATE t_person_listener SET
         PERMISSION_FLAG='0',
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
+
+    <!--授权-->
+    <update id="organListener">
+        UPDATE t_person_listener SET
+        ORGAN_FLAG='1',
+        UPDATE_USER_ID=#{updateUserId},
+        UPDATE_DATA=NOW()
+        WHERE ID=#{id}
+    </update>
+
+    <!--解除授权-->
+    <update id="organnotListener">
+        UPDATE t_person_listener SET
+        ORGAN_FLAG='0',
         UPDATE_USER_ID=#{updateUserId},
         UPDATE_DATA=NOW()
         WHERE ID=#{id}

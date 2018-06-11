@@ -26,6 +26,9 @@ public class ListenerEntity extends AbstractEntity {
     //查看私有笔记权限(0为没有权限,1为有权限)
     private Long permissionFlag;
 
+    //机关进校园的权限(0为没有权限,1为有权限)
+    private Long organFlag;
+
     //记录open_id(空:未注册)
     private String openId;
 
