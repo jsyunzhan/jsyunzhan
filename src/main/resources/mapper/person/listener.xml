@@ -72,6 +72,7 @@
         SCHOOL_NAME,
         ROLE_TYPE,
         PERMISSION_FLAG,
+        ORGAN_FLAG,
         CREATE_USER_ID,
         CREATE_DATA
         ) VALUE (
@@ -80,6 +81,7 @@
         #{schoolName},
         #{roleTypeId},
         #{permissionFlag},
+        #{organFlag},
         #{createUserId},
         NOW()
         )
@@ -93,6 +95,7 @@
         SCHOOL_NAME=#{schoolName},
         ROLE_TYPE=#{roleTypeId},
         PERMISSION_FLAG=#{permissionFlag},
+        ORGAN_FLAG=#{organFlag},
         UPDATE_USER_ID=#{updateUserId},
         UPDATE_DATA=NOW()
         WHERE ID=#{id}

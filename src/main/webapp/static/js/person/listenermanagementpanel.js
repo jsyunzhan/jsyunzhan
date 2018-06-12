@@ -216,7 +216,7 @@ $(function () {
     });
 
     var $addListenerWin = $('#addListenerWin').window({
-        title: "新增", closed: true, modal: true, height: 258,
+        title: "新增", closed: true, modal: true, height: 290,
         width: 375, iconCls: 'icon-add', collapsible: false, minimizable: false,
         footer: '#addListenerWinFooter',
         onClose: function () {
@@ -259,7 +259,7 @@ $(function () {
     });
 
     var $editListenerWin = $('#editListenerWin').window({
-        title: "修改", closed: true, modal: true, height: 258,
+        title: "修改", closed: true, modal: true, height: 290,
         width: 375, iconCls: 'icon-edit', collapsible: false, minimizable: false,
         footer: '#editListenerWinFooter',
         onClose: function () {

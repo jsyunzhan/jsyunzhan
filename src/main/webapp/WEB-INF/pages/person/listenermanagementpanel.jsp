@@ -96,7 +96,7 @@
                 </tr>
 
                 <tr>
-                    <th width="120"><label class="control-label required-mark" style="width:100px">是否拥有权限</label>
+                    <th width="120"><label class="control-label required-mark" style="width:100px">私有笔记权限</label>
                     </th>
                     <td width="200">
                         <select class="easyui-combobox" name="permissionFlag" required="required" data-options="width:'169',panelHeight:'auto',editable:false">
@@ -106,6 +106,16 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <th width="120"><label class="control-label required-mark" style="width:100px">机关进校园权限</label>
+                    </th>
+                    <td width="200">
+                        <select class="easyui-combobox" name="organFlag" required="required" data-options="width:'169',panelHeight:'auto',editable:false">
+                            <option value="0">否</option>
+                            <option value="1">是</option>
+                        </select>
+                    </td>
+                </tr>
             </table>
         </form>
 
@@ -167,6 +177,17 @@
                     </th>
                     <td width="200">
                         <select class="easyui-combobox" name="permissionFlag" required="required" data-options="width:'169',panelHeight:'auto',editable:false">
+                            <option value="0">否</option>
+                            <option value="1">是</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th width="120"><label class="control-label required-mark" style="width:100px">机关进校园权限</label>
+                    </th>
+                    <td width="200">
+                        <select class="easyui-combobox" name="organFlag" required="required" data-options="width:'169',panelHeight:'auto',editable:false">
                             <option value="0">否</option>
                             <option value="1">是</option>
                         </select>
