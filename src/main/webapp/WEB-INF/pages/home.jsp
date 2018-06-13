@@ -31,7 +31,7 @@
 </head>
 <body class="b_gray2">
     <div class="container-fluid p0">
-        <div class="tit_home row m0 pr white">
+        <div class="tit_home row m0 pr white" style="display: block;">
             <img src="${APP_PATH}/static/images/tit_bg.jpg" class="tit_bg">
             <div class="pa title_project">高邮市教育局听课管理系统</div>
             <div class="pa personal" style="background: url(123.png)">
