@@ -19,8 +19,6 @@
 
     <jsp:include flush="true" page="/WEB-INF/pages/commons/servercommonjs.jsp"/>
 
-    <%--<script src="../../../static/js/system/rolemanagementpanel.js"></script>--%>
-
     <script type="text/javascript"
             src="<c:url value="/static/js/system/rolemanagementpanel.js"/>"></script>
 
